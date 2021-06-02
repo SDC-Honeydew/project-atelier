@@ -17,6 +17,6 @@ jobs:
             ls -al
             echo '^^^That should look familiar^^^'
       - run:
-          name: Running in a Unique Container
+          name: Testing Jest
           command: |
-            node -v
+            npm test
