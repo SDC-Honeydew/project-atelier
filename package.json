@@ -7,7 +7,6 @@
     "test": "jest",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon server.js"
-
   },
   "repository": {
     "type": "git",
