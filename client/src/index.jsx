@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios'
 
 class App extends React.Component{
   constructor(props){
@@ -7,9 +8,20 @@ class App extends React.Component{
     this.state ={}
   }
 
+  testToken() {
+    axios.get('/test', (req, res) => {
+      console.log('test clicked')
+    })
+  }
+
   render() {
     return (
-      <h1>Hello World!</h1>
+      <div>
+        <h1>Hello World!</h1>
+      <button onClick={() => this.testToken()}>Test</button>
+
+      </div>
+
     )
   }
 }

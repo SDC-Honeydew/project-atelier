@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack --mode development --watch",
-    "server-dev": "nodemon server.js"
+    "server-dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
