@@ -1,7 +1,6 @@
 version: 2.1
 jobs:
   build:
-    # pre-built images: https://circleci.com/docs/2.0/circleci-images/
     docker:
       - image: circleci/node:10-browsers
     steps:
@@ -18,3 +17,5 @@ jobs:
       - run:
           name: Run Tests
           command: npm test
+      - store_test_results:
+          path: test-results
