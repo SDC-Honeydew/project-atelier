@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Jest to make sure it works Renders Hello World 1`] = `
+<h1
+  id="test"
+>
+  Hello World!
+</h1>
+`;
