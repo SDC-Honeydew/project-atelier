@@ -16,10 +16,10 @@ describe('Testing Jest to make sure it works', () => {
     expect(sum(1, 3)).toBe(4);
   })
 
-  // it('Renders Hello World', () => {
-  //   const app = shallow(<App />)
+  it('Renders Hello World', () => {
+    const app = shallow(<App />)
 
-  //   expect(app.exists()).toBe(true);
-  // })
+    expect(app.exists()).toBe(true);
+  })
 })
 
