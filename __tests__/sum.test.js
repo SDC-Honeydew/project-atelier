@@ -1,5 +1,6 @@
 const sum = require('../sum');
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import App from '../client/src/app.jsx';
 
