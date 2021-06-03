@@ -1,5 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import axios from 'axios'
 
 class App extends React.Component{
@@ -25,5 +25,10 @@ class App extends React.Component{
     )
   }
 }
+=======
+import React from 'react';
+import App from './App.jsx';
 
-ReactDOM.render(<App />, document.getElementById('app'))
+>>>>>>> fedfd4ff51101763bbc905aa75b48d3b211102aa
+
+ReactDOM.render(<App />, document.getElementById('app'));
