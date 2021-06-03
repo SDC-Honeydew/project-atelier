@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import relatedProducts from './related/relatedProducts.jsx'
+import RelatedProducts from './related/relatedProducts.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +10,10 @@ class App extends React.Component {
 
   render() {
     return (
+      <div>
       <h1 id='test'>Hello World!</h1>
-      <relatedProducts/>
+      <RelatedProducts/>
+      </div>
     )
   }
 }

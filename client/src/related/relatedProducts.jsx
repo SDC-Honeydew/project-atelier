@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class relatedProducts extends React.Component {
+class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -14,4 +14,4 @@ class relatedProducts extends React.Component {
   }
 }
 
-export default relatedProducts;
+export default RelatedProducts;
