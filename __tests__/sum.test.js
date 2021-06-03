@@ -18,7 +18,7 @@ describe('Testing Jest to make sure it works', () => {
   it('Renders Hello World', () => {
     const app = shallow(<App />)
 
-    expect(app.find('#test').exists()).toBe(true);
+    expect(app.exists()).toBe(true);
   })
 })
 
