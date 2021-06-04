@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import App from '../client/src/app.jsx';
 
+
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
