@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-//import config from '../../../config.js';
-//import config from '/config.js';
+
 
 class Overview extends React.Component {
   constructor(props) {
