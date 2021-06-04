@@ -8,4 +8,4 @@ describe('App component', () => {
     render(<App />);
     expect(screen.getByText('Hello World!')).toBeInTheDocument();
   });
-})
+});
