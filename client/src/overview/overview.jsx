@@ -8,12 +8,12 @@ class Overview extends React.Component {
     this.state = {};
   }
 
-  testClick() {
+  getProductPage() {
     axios({
       method: 'get',
-      url: '/test',
+      url: '/product',
     })
-      .then(res => console.log(res))
+      .then(res => console.log(res.data))
       .catch(err => console.log(err, 'whyyyyy'));
 
   }
@@ -22,7 +22,7 @@ class Overview extends React.Component {
     return (
       <div>
         <p>This will be the Overview component!</p>
-        <button onClick={() => this.testClick()}>Test</button>
+        <button onClick={() => this.getProductPage()}>Test</button>
       </div>
     );
   }

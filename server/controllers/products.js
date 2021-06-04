@@ -1,4 +1,5 @@
 const axios = require('axios');
+const config = require('../../config.js');
 
 
 module.exports = {
@@ -10,10 +11,10 @@ module.exports = {
         'Authorization': `${config.TOKEN}`
       },
       params: {
-        page: 2
+        page: 1
       }
     })
-      .then(data => res.send(data))
+      .then(products => res.send(products.data))
       .catch(err => console.log(err));
   }
 };
