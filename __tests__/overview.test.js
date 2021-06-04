@@ -16,8 +16,8 @@ describe('Overview Component', () => {
     render(<Overview />);
 
     expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
-    expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
-    expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
-    expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
+    expect(screen.getByTestId('image-gallery')).toBeInTheDocument();
+    expect(screen.getByTestId('product-info')).toBeInTheDocument();
+    expect(screen.getByTestId('style-select')).toBeInTheDocument();
   });
 });
