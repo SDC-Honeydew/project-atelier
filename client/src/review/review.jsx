@@ -1,6 +1,5 @@
 import React from 'react';
 import ReviewList from './reviewList.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 
 class Review extends React.Component {

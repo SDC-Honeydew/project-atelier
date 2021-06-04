@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1 id='test'>Hello World test!</h1>
+        <h1 id='test'>Hello World!</h1>
         <RelatedProducts />
         <Review />
       </div>
