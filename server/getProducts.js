@@ -1,5 +1,5 @@
-const axios = require('axios')
-const config = require('../config.js')
+const axios = require('axios');
+const config = require('../config.js');
 
 getProducts = (callback) => {
 
@@ -13,11 +13,11 @@ getProducts = (callback) => {
       page: 2
     }
   })
-  .then(res => callback(res))
-  .catch(err => console.log(err))
-}
+    .then(res => callback(res))
+    .catch(err => console.log(err));
+};
 
 
 module.exports = {
   getProducts
-}
+};

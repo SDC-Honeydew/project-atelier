@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import config from '../../../config.js';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -6,9 +8,22 @@ class Overview extends React.Component {
     this.state = {};
   }
 
+  testClick() {
+    axios({
+      method: 'get',
+      url: '/test',
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err, 'whyyyyy'));
+
+  }
+
   render() {
     return (
-      <div>This will be the Overview Component!</div>
+      <div>
+        <p>This will be the Overview component!</p>
+        <button onClick={() => this.testClick()}>Test</button>
+      </div>
     );
   }
 }
