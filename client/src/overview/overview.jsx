@@ -8,7 +8,7 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div>This will be the Overview Component!</div>
+      <div>This will be the Overview Component!!</div>
     );
   }
 }
