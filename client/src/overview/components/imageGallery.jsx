@@ -8,7 +8,7 @@ class ImageGallery extends React.Component {
 
   render() {
     return (
-      <div>This will add an imageGallery!</div>
+      <div data-testid='image-gallery'>This will add an imageGallery!</div>
     );
   }
 }

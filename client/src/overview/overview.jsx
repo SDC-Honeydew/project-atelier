@@ -26,7 +26,7 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div style={{border: '1px solid black'}}>
+      <div className='product-overview' style={{border: '1px solid black'}}>
         <p>This will be the Overview component!!</p>
         <ProductInformation />
         <StyleSelector />

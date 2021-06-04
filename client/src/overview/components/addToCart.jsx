@@ -8,7 +8,7 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div>This will add product to cart!</div>
+      <div data-testid='add-to-cart'>This will add product to cart!</div>
     );
   }
 }
