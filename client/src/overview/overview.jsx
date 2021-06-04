@@ -1,6 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
+import StyleSelector from './components/styleSelect.jsx';
+import AddToCart from './components/AddToCart.jsx';
+import ImageGallery from './components/imageGallery.jsx';
+import ProductInformation from './components/productInfo.jsx';
+
+
 
 class Overview extends React.Component {
   constructor(props) {
@@ -20,8 +26,12 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{border: '1px solid black'}}>
         <p>This will be the Overview component!!</p>
+        <ProductInformation />
+        <StyleSelector />
+        <AddToCart />
+        <ImageGallery />
         <button onClick={() => this.getProductPage()}>Test</button>
       </div>
     );
