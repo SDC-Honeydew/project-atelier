@@ -1,14 +1,12 @@
 const sum = require('../sum');
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import App from '../client/src/app.jsx';
 
-import { configure } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
-import { shallow } from 'enzyme';
 
 
 describe('Testing Jest to make sure it works', () => {
