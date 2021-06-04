@@ -1,5 +1,6 @@
 import React from 'react';
 import RelatedProducts from './related/relatedProducts.jsx';
+import Review from './review/review.jsx';
 import ProductOverview from './overview/overview.jsx';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
         <h1 id='test'>Hello World!</h1>
         <ProductOverview />
         <RelatedProducts/>
+        <Review />
       </div>
     );
   }
