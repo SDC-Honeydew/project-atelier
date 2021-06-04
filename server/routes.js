@@ -1,7 +1,7 @@
-var controller = require('./controllers');
+var controllers = require('./controllers');
 var router = require('express').Router();
 
-router.get('/product', controller.products.getOnePage);
+router.get('/product', controllers.products.getOnePage);
 
 
 
