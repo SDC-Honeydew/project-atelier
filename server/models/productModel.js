@@ -61,12 +61,23 @@ module.exports = {
             relevantInfo['results'] = styles.data.results;
           })
           .then(() => {
-            //console.log(relevantInfo)
-            callback(relevantInfo)
+            axios({
+              method: 'GET',
+              url: BASE_URL + `/${id}`,
+              headers: AUTH
+            })
+              .then(productInfo => {
+                relevantInfo['features'] = productInfo.data.features;
+              })
+              .then(() => {
+                //console.log(relevantInfo)
+                callback(relevantInfo);
+              })
+              .catch(err => console.log(err));
           })
           .catch(err => console.log('Error in styles call', err));
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 
 };

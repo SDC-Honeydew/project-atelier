@@ -53,6 +53,7 @@ class Overview extends React.Component {
         <div className='overview-bottom-row'>
           <ProductDescription />
         </div>
+        <button onClick={() => this.getOneProduct()}>Button</button>
       </div>
     );
   }
