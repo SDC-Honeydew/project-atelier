@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1622918710164" clover="3.2.0">
-  <project timestamp="1622918710164" name="All files">
-    <metrics statements="34" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="23" coveredmethods="19" elements="57" coveredelements="49" complexity="0" loc="34" ncloc="34" packages="6" files="11" classes="11"/>
+<coverage generated="1622928968503" clover="3.2.0">
+  <project timestamp="1622928968503" name="All files">
+    <metrics statements="36" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="24" coveredmethods="21" elements="60" coveredelements="54" complexity="0" loc="36" ncloc="36" packages="6" files="12" classes="12"/>
     <package name="project-atelier">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="sum.js" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/sum.js">
@@ -20,20 +20,19 @@
       </file>
     </package>
     <package name="project-atelier.client.src.overview">
-      <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+      <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
       <file name="overview.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/overview.jsx">
-        <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="35" count="3" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
       </file>
     </package>
     <package name="project-atelier.client.src.overview.components">
-      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
       <file name="addToCart.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/addToCart.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="3" type="stmt"/>
@@ -41,6 +40,12 @@
         <line num="10" count="3" type="stmt"/>
       </file>
       <file name="imageGallery.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/imageGallery.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+      </file>
+      <file name="productDescription.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/productDescription.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>

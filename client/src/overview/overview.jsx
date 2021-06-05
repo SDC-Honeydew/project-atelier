@@ -39,21 +39,24 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div className='overview-product' style={{border: '1px solid black'}}>
-        <p className='overview-title'>This will be the Overview component!!</p>
-        {console.log(this.state.product)}
+      <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
           <ImageGallery />
           <div className='overview-right-col'>
-            <ProductInformation data={this.state.product}/>
-            <StyleSelector />
+            <ProductInformation
+              category={this.state.product.category}
+              name={this.state.product.name}/>
+            <StyleSelector styles={this.state.product.styles}/>
             <AddToCart />
           </div>
         </div>
         <div className='overview-bottom-row'>
-          <ProductDescription />
+          <ProductDescription
+            description={this.state.product.description}
+            slogan = {this.state.product.slogan}
+          />
         </div>
-        <button onClick={() => this.getOneProduct()}>Button</button>
+        {/* <button onClick={() => this.getOneProduct()}>Button</button> */}
       </div>
     );
   }

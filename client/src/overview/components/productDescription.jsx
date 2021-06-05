@@ -8,7 +8,10 @@ class ProductDescription extends React.Component {
 
   render() {
     return (
-      <div>This is a product description!</div>
+      <div data-testid='product-description'>
+        <h5>{this.props.slogan}</h5>
+        <p>{this.props.description}</p>
+      </div>
     );
   }
 }

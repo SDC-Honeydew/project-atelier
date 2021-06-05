@@ -58,7 +58,7 @@ module.exports = {
         })
           .then(styles => {
             //console.log('style data', styles.data.results)
-            relevantInfo['results'] = styles.data.results;
+            relevantInfo['styles'] = styles.data.results;
           })
           .then(() => {
             axios({

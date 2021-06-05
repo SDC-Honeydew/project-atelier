@@ -10,7 +10,7 @@ configure({ adapter: new Adapter() });
 describe('Overview Component', () => {
   test('it renders', () => {
     render(<Overview />);
-    expect(screen.getByText('This will be the Overview component!!')).toBeInTheDocument();
+    expect(screen.getByTestId('overview')).toBeInTheDocument();
   });
   test('Load four sub components', () => {
     render(<Overview />);
@@ -19,5 +19,6 @@ describe('Overview Component', () => {
     expect(screen.getByTestId('image-gallery')).toBeInTheDocument();
     expect(screen.getByTestId('product-info')).toBeInTheDocument();
     expect(screen.getByTestId('style-select')).toBeInTheDocument();
+    expect(screen.getByTestId('product-description')).toBeInTheDocument();
   });
 });
