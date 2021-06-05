@@ -1,3 +1,18 @@
 .overview-title {
   color: blue;
 }
+
+.product-overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-top-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.overview-right-col {
+  display: flex;
+  flex-direction: column;
+}
