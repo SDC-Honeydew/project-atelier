@@ -1,13 +1,15 @@
 const config = require('../../config.js');
-const axios = require('axios')
+const axios = require('axios');
+
+const BASE_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products';
+const AUTH = {'Authorization': `${config.TOKEN}`};
+
 module.exports = {
   getOneProduct: (callback) => {
     axios({
-      method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products',
-      headers: {
-        'Authorization': `${config.TOKEN}`
-      },
+      method: 'GET',
+      url: BASE_URL,
+      headers: AUTH,
       params: {
         page: 1,
         count: 1
@@ -15,5 +17,12 @@ module.exports = {
     })
       .then(products => callback(products))
       .catch(err => console.log(err));
-  }
+  },
+  // getProductPrice: (id, callback) => {
+  //   axios({
+  //     method: 'GET',
+  //     url: BASE_URL
+  //   })
+  // }
+
 };
