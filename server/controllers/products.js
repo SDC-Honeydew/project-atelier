@@ -1,20 +1,15 @@
 const axios = require('axios');
 const config = require('../../config.js');
+const Models = require('../models')
 
 
 module.exports = {
-  getOnePage: (req, res) => {
-    axios({
-      method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products',
-      headers: {
-        'Authorization': `${config.TOKEN}`
-      },
-      params: {
-        page: 1
+  returnOneProduct: (req, res) => {
+    Models.productModels.getOneProduct((product) => {
+      if (product) {
+        res.send(product.data)
       }
     })
-      .then(products => res.send(products.data))
-      .catch(err => console.log(err));
-  }
+  },
+
 };

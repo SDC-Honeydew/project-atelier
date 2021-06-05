@@ -21,7 +21,7 @@ class Overview extends React.Component {
     };
   }
 
-  getProductPage() {
+  getOneProduct() {
     axios({
       method: 'get',
       url: '/product',
@@ -39,7 +39,7 @@ class Overview extends React.Component {
         <StyleSelector />
         <AddToCart />
         <ImageGallery />
-        <button onClick={() => this.getProductPage()}>Test</button>
+        <button onClick={() => this.getOneProduct()}>Test</button>
       </div>
     );
   }
