@@ -35,6 +35,38 @@ module.exports = {
     })
       .then(info => callback(info))
       .catch(err => console.log(err));
+  },
+  getModuleInfo: (callback) => {
+    var relevantInfo = {};
+    axios({
+      method: 'GET',
+      url: BASE_URL,
+      headers: AUTH,
+      params: {
+        page: 1,
+        count: 1
+      }
+    })
+      .then(product => {
+        //console.log(product)
+        relevantInfo = product.data[0];
+        var id = product.data[0].id;
+        axios({
+          method: 'GET',
+          url: BASE_URL + `/${id}/styles`,
+          headers: AUTH
+        })
+          .then(styles => {
+            //console.log('style data', styles.data.results)
+            relevantInfo['results'] = styles.data.results;
+          })
+          .then(() => {
+            //console.log(relevantInfo)
+            callback(relevantInfo)
+          })
+          .catch(err => console.log('Error in styles call', err));
+      })
+      .catch(err => console.log(err))
   }
 
 };

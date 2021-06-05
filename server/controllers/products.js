@@ -25,6 +25,15 @@ module.exports = {
       if (info) {
         res.send(info.data);
       }
-    })
+    });
+  },
+  getRelevantInfo: (req, res) => {
+    Models.products.getModuleInfo(info => {
+      if (info) {
+        res.send(info);
+      } else {
+        console.log('could not send info')
+      }
+    });
   }
 };

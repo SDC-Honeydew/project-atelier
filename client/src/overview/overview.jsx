@@ -24,7 +24,7 @@ class Overview extends React.Component {
   getOneProduct() {
     axios({
       method: 'get',
-      url: '/product-info',
+      url: '/r-data',
     })
       .then(res => console.log(res.data))
       .catch(err => console.log(err, 'whyyyyy'));
@@ -34,7 +34,7 @@ class Overview extends React.Component {
   render() {
     return (
       <div className='product-overview' style={{border: '1px solid black'}}>
-        <p>This will be the Overview component!!</p>
+        <p className='overview-title'>This will be the Overview component!!</p>
         <ProductInformation data={this.state}/>
         <StyleSelector />
         <AddToCart />
