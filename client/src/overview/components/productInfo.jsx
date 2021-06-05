@@ -8,7 +8,10 @@ class ProductInformation extends React.Component {
 
   render() {
     return (
-      <div data-testid='product-info'>This will show product info!</div>
+      <div data-testid='product-info'>
+        <p>{this.props.data.category}</p>
+        <p>{this.props.data.name}</p>
+      </div>
     );
   }
 }
