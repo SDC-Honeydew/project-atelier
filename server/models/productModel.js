@@ -18,11 +18,23 @@ module.exports = {
       .then(products => callback(products))
       .catch(err => console.log(err));
   },
-  // getProductPrice: (id, callback) => {
-  //   axios({
-  //     method: 'GET',
-  //     url: BASE_URL
-  //   })
-  // }
+  getProductStyles: (id, callback) => {
+    axios({
+      method: 'GET',
+      url: BASE_URL + `/${id}/styles`,
+      headers: AUTH
+    })
+      .then(styles => callback(styles))
+      .catch(err => console.log(err));
+  },
+  getProductInfo: (id, callback) => {
+    axios({
+      method: 'GET',
+      url: BASE_URL + `/${id}`,
+      headers: AUTH
+    })
+      .then(info => callback(info))
+      .catch(err => console.log(err));
+  }
 
 };

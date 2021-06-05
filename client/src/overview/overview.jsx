@@ -24,7 +24,7 @@ class Overview extends React.Component {
   getOneProduct() {
     axios({
       method: 'get',
-      url: '/product',
+      url: '/product-info',
     })
       .then(res => console.log(res.data))
       .catch(err => console.log(err, 'whyyyyy'));
