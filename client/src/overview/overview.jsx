@@ -6,27 +6,32 @@ import AddToCart from './components/AddToCart.jsx';
 import ImageGallery from './components/imageGallery.jsx';
 import ProductInformation from './components/productInfo.jsx';
 
+import sampleData from './sampleRelevantInfo.json';
+
 
 
 class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      "id": 1,
-      "name": "Camo Onesie",
-      "slogan": "Blend in to your crowd",
-      "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-      "category": "Jackets",
-      "default_price": "140"
+      'product': sampleData
     };
   }
+
+  // componentDidMount() {
+  //   this.getOneProduct();
+  // }
 
   getOneProduct() {
     axios({
       method: 'get',
       url: '/r-data',
     })
-      .then(res => console.log(res.data))
+      .then(res => {
+        this.setState({
+          product: res.data
+        });
+      })
       .catch(err => console.log(err, 'whyyyyy'));
 
   }
@@ -35,11 +40,11 @@ class Overview extends React.Component {
     return (
       <div className='product-overview' style={{border: '1px solid black'}}>
         <p className='overview-title'>This will be the Overview component!!</p>
-        <ProductInformation data={this.state}/>
+        {console.log(this.state.product)}
+        <ProductInformation data={this.state.product}/>
         <StyleSelector />
         <AddToCart />
         <ImageGallery />
-        <button onClick={() => this.getOneProduct()}>Test</button>
       </div>
     );
   }
