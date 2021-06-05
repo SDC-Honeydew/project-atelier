@@ -22,7 +22,7 @@ class Overview extends React.Component {
   render() {
     return (
       <div>
-        <p>This will be the Overview component!!</p>
+        <p className='overview-title'>This will be the Overview component!!</p>
         <button onClick={() => this.getProductPage()}>Test</button>
       </div>
     );
