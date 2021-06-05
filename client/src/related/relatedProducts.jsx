@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RelatedList from './relatedList.jsx';
+import OutfitList from './outfitList.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -9,7 +11,10 @@ class RelatedProducts extends React.Component {
 
   render() {
     return (
-      <div id="relatedProducts">This will be the Related Products component!</div>
+      <div className ="related_relatedDiv">
+        <RelatedList />
+        <OutfitList />
+      </div>
     );
   }
 }
