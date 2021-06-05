@@ -41,12 +41,17 @@ class Overview extends React.Component {
     return (
       <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
-          <ImageGallery />
+          <ImageGallery
+            photo={this.state.product.styles[0].photos[0]}
+          />
           <div className='overview-right-col'>
             <ProductInformation
               category={this.state.product.category}
-              name={this.state.product.name}/>
-            <StyleSelector styles={this.state.product.styles}/>
+              name={this.state.product.name}
+            />
+            <StyleSelector
+              styles={this.state.product.styles}
+            />
             <AddToCart />
           </div>
         </div>

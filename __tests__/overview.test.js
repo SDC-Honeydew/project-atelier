@@ -12,7 +12,7 @@ describe('Overview Component', () => {
     render(<Overview />);
     expect(screen.getByTestId('overview')).toBeInTheDocument();
   });
-  test('Load four sub components', () => {
+  test('Loads five sub components', () => {
     render(<Overview />);
 
     expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();

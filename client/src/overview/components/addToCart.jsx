@@ -8,7 +8,16 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div data-testid='add-to-cart'>This will add product to cart!</div>
+      <div data-testid='add-to-cart' className='overview-add-to-cart'>
+        <div className='overview-btns-row-1'>
+          <button>Size</button>
+          <button>Quantity</button>
+        </div>
+        <div className='overview-btns-row-2'>
+          <button>Add to Bag</button>
+          <button>Star</button>
+        </div>
+      </div>
     );
   }
 }

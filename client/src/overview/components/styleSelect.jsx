@@ -8,7 +8,13 @@ class StyleSelector extends React.Component {
 
   render() {
     return (
-      <div data-testid='style-select'>This will show styles!</div>
+      <div data-testid='style-select'>
+        {this.props.styles.map(style => {
+          return (
+            <p>{style.name}</p>
+          );
+        })}
+      </div>
     );
   }
 }
