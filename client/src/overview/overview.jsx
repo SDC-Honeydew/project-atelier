@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 import StyleSelector from './components/styleSelect.jsx';
-import AddToCart from './components/AddToCart.jsx';
+import AddToCart from './components/addToCart.jsx';
 import ImageGallery from './components/imageGallery.jsx';
 import ProductInformation from './components/productInfo.jsx';
-import ProductDescription from './components/ProductDescription.jsx';
+import ProductDescription from './components/productDescription.jsx';
 
 import sampleData from './sampleRelevantInfo.json';
 
