@@ -2,7 +2,7 @@
   color: blue;
 }
 
-.product-overview {
+.overview-product {
   display: flex;
   flex-direction: column;
 }
@@ -15,4 +15,17 @@
 .overview-right-col {
   display: flex;
   flex-direction: column;
+}
+
+.overview-styles-thumbnails {
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.overview-styles-img {
+  list-style: none;
+  flex: 0 0 21%;
+  margin: 5px;
+  height: 100px;
 }

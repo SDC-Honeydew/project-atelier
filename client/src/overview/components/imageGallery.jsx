@@ -9,7 +9,7 @@ class ImageGallery extends React.Component {
   render() {
     return (
       <div data-testid='image-gallery'>
-        <img src={this.props.photo.url} width='500' height='700'></img>
+        <img src={this.props.photo.url} width='100' height='200'></img>
       </div>
     );
   }

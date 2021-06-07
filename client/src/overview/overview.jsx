@@ -48,6 +48,7 @@ class Overview extends React.Component {
             <ProductInformation
               category={this.state.product.category}
               name={this.state.product.name}
+              price={this.state.product.styles[0].original_price}
             />
             <StyleSelector
               styles={this.state.product.styles}

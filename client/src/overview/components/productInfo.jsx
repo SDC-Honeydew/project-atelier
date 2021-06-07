@@ -12,6 +12,7 @@ class ProductInformation extends React.Component {
         <div>**Stars will go here**</div>
         <p>{this.props.category}</p>
         <p>{this.props.name}</p>
+        <p>{`$${this.props.price}`}</p>
       </div>
     );
   }

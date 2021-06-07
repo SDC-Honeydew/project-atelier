@@ -8,13 +8,23 @@ class StyleSelector extends React.Component {
 
   render() {
     return (
-      <div data-testid='style-select'>
+      <ul className='overview-styles-thumbnails' data-testid='style-select'>
         {this.props.styles.map(style => {
           return (
-            <p>{style.name}</p>
+
+              <li className='overview-styles-img'>
+                <img
+                  src={style.photos[0].thumbnail_url}
+
+                  height='50'
+                  width='50'>
+                </img>
+                <p>{style.name}</p>
+              </li>
+
           );
         })}
-      </div>
+      </ul>
     );
   }
 }
