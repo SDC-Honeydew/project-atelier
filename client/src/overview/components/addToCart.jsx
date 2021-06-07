@@ -1,4 +1,5 @@
 import React from 'react';
+import Size from './size.jsx';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -8,9 +9,11 @@ class AddToCart extends React.Component {
 
   render() {
     return (
+
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
+         {console.log(this.props)}
         <div className='overview-btns-row-1'>
-          <button>Size</button>
+          <Size />
           <button>Quantity</button>
         </div>
         <div className='overview-btns-row-2'>

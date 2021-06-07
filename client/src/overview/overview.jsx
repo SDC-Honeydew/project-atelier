@@ -53,7 +53,7 @@ class Overview extends React.Component {
             <StyleSelector
               styles={this.state.product.styles}
             />
-            <AddToCart />
+            <AddToCart data={this.state.product.styles}/>
           </div>
         </div>
         <div className='overview-bottom-row'>

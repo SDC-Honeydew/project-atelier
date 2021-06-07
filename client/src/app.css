@@ -29,3 +29,25 @@
   margin: 5px;
   height: 100px;
 }
+
+.size-container {
+  position: relative;
+  display: inline-block;
+}
+
+.size-button {
+  padding: 0;
+  width: 50px;
+}
+
+.size-ul {
+  list-style: none;
+  background-color: white;
+}
+
+.size-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+}
