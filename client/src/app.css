@@ -2,6 +2,15 @@
   color: blue;
 }
 
-.related_relatedDiv {
+#related_relatedDiv {
   background-color: rgb(0, 255, 157);
+}
+
+#related_relatedList {
+  background-color:cornflowerblue;
+}
+
+.related_productCard {
+  width: 150px;
+  border: solid black;
 }

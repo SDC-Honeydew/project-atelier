@@ -11,7 +11,7 @@ class RelatedProducts extends React.Component {
 
   render() {
     return (
-      <div className ="related_relatedDiv">
+      <div id="related_relatedDiv">
         <RelatedList />
         <OutfitList />
       </div>
