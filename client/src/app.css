@@ -36,6 +36,15 @@
 }
 
 .overview-styles-checkbox {
+  display: none;
+  position: absolute;
+  left: 40px;
+  z-index: 1;
+  top: 0px;
+}
+
+.overview-styles-checkbox-hidden {
+  display: none;
   position: absolute;
   left: 40px;
   z-index: 1;
