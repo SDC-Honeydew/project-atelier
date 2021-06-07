@@ -6,7 +6,7 @@ class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSelected: true
+
     };
   }
 
@@ -16,7 +16,7 @@ class StyleSelector extends React.Component {
         <h3>{`Style > ${this.props.styles[0].name}`}</h3>
         <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
           {this.props.styles.map(style => {
-            return (<ProductStyle style={style} showCheck={this.state.isSelected}/>);
+            return (<ProductStyle style={style}/>);
             // return (
             //   <li className='overview-styles-imgs'>
             //     <img
