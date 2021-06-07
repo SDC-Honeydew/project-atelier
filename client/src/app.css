@@ -18,12 +18,12 @@
 }
 
 .overview-styles-thumbnails-container {
+  padding: 0px;
   display: flex;
   flex-wrap: wrap;
 }
 
 .overview-styles-imgs {
-  border: 1px solid black;
   position: relative;
   list-style: none;
   flex: 0 0 21%;
