@@ -12,6 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <h1 id='test'>Hello World!</h1>
+
         <RelatedProducts />
         <Review />
       </div>

@@ -2,7 +2,7 @@ node_modules/
 
 dist/
 
+#Token ignore
 config.js
 
-
-#Token ignore
+coverage
