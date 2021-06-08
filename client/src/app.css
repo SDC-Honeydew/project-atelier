@@ -1,3 +1,6 @@
+.overview-title {
+  color: blue;
+}
 
  .review-rating-text {
   float: left;
@@ -76,3 +79,4 @@
   height: 1px;
   clip: rect(1px, 1px, 1px, 1px);
 }
+

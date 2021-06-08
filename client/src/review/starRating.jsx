@@ -10,7 +10,7 @@ const StarRating = (props) => (
 const Star = (props) => {
   const changeGrade = (e) => {
     props.changeGradeIndex(e.target.value);
-  }
+  };
   return (
     <label className="star" style={props.style}>
       <input
@@ -23,7 +23,7 @@ const Star = (props) => {
       ★
     </label>
   );
-}
+};
 
 const StarRatingInput = (props) => {
   const [gradeIndex, setGradeIndex] = useState();
@@ -37,7 +37,7 @@ const StarRatingInput = (props) => {
     if (props.onClick) {
       props.onClick(index);
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -55,7 +55,7 @@ const StarRatingInput = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export { StarRatingInput, StarRating };
 export default StarRating;

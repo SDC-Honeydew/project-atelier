@@ -6,4 +6,4 @@ import './app.css';
 
 
 
-ReactDOM.render(<App review={reviewData} />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

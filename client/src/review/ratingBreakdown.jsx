@@ -15,6 +15,6 @@ const RatingBreakdown = (props) => (
     <ProgressBar text='2★' />
     <ProgressBar text='1★' />
   </div>
-)
+);
 
 export default RatingBreakdown;

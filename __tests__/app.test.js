@@ -10,4 +10,4 @@ describe('App component', () => {
     render(<App review={reviewData} />);
     expect(screen.getByText('Hello World!')).toBeInTheDocument();
   });
-})
+});
