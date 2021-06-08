@@ -1,30 +1,35 @@
 import React from 'react';
+import ProductStyle from './productStyle.jsx';
+
 
 class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentStyle: this.props.styles[0].name
+    };
+    this.onStyleClick = this.onStyleClick.bind(this);
+  }
+
+  onStyleClick(style) {
+
+    this.setState({
+      currentStyle: style
+    });
   }
 
   render() {
     return (
-      <ul className='overview-styles-thumbnails' data-testid='style-select'>
-        {this.props.styles.map(style => {
-          return (
-
-              <li className='overview-styles-img'>
-                <img
-                  src={style.photos[0].thumbnail_url}
-
-                  height='50'
-                  width='50'>
-                </img>
-                <p>{style.name}</p>
-              </li>
-
-          );
-        })}
-      </ul>
+      <div>
+        <h3>{`Style > ${this.props.styles[0].name}`}</h3>
+        <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
+          {this.props.styles.map(style => {
+            return (<ProductStyle style={style}
+                      toggle={this.onStyleClick}
+                      currentStyle={this.state.currentStyle}/>);
+          })}
+        </ul>
+      </div>
     );
   }
 }

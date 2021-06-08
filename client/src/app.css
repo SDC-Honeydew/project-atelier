@@ -17,13 +17,14 @@
   flex-direction: column;
 }
 
-.overview-styles-thumbnails {
-  border: 1px solid black;
+.overview-styles-thumbnails-container {
+  padding: 0px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.overview-styles-img {
+.overview-styles-imgs {
+  position: relative;
   list-style: none;
   flex: 0 0 21%;
   margin: 5px;
@@ -50,4 +51,23 @@
   top: 100%;
   left: 0;
   z-index: 2;
+}
+.overview-styles-img {
+  border-radius: 50px
+}
+
+.overview-styles-checkbox {
+  display: none;
+  position: absolute;
+  left: 40px;
+  z-index: 1;
+  top: 0px;
+}
+
+.overview-styles-checkbox-hidden {
+  display: none;
+  position: absolute;
+  left: 40px;
+  z-index: 1;
+  top: 0px;
 }
