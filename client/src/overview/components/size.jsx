@@ -41,9 +41,11 @@ class Size extends React.Component {
         {this.state.open && (
           <div className='size-dropdown'>
             <ul className='size-ul'>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
+              {
+                Object.keys(this.props.data).map((size, index) => (
+                  <li>{this.props.data[size].size}</li>
+                ))
+              }
             </ul>
           </div>
         )}

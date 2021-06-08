@@ -11,9 +11,9 @@ class AddToCart extends React.Component {
     return (
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
-         {console.log(this.props)}
         <div className='overview-btns-row-1'>
-          <Size />
+
+          <Size data={this.props.data[0].skus}/>
           <button>Quantity</button>
         </div>
         <div className='overview-btns-row-2'>
