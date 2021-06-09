@@ -29,7 +29,7 @@ class Size extends React.Component {
     return (
       <div className='size-container' data-testid='size-dropdown'ref={this.container}>
         <button className='size-button' onClick={() => this.props.setSize(`${this.props.size}`)}>{this.props.size}</button>
-        {this.props.openSizeDropdown&& (
+        {this.props.openSizeDropdown && (
           <div className='size-dropdown'>
             <ul className='size-ul'>
               {

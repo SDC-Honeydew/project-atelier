@@ -6,11 +6,12 @@ class AddToCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      sku: null,
       size: 'Select Size',
-      quantity: null,
+      quantity: '-',
       openSizeDropdown: false
     };
-    this.setSize = this.setSize.bind(this);
+    this.setSize = this.setProduct.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
@@ -21,10 +22,10 @@ class AddToCart extends React.Component {
     });
   }
 
-  setSize(size) {
+  setProduct(sku, size, quantity) {
     var openSizeDropdown = !this.state.openSizeDropdown;
     this.setState({
-      size, openSizeDropdown
+      sku, size, quantity, openSizeDropdown
     });
   }
 
@@ -33,8 +34,8 @@ class AddToCart extends React.Component {
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
-          <Size data={this.props.data[0].skus} setSize={this.setSize} size={this.state.size} openSizeDropdown={this.state.openSizeDropdown} closeSizeDropdown={this.closeDropdown}/>
-          <Quantity data={this.props.data[0].skus}/>
+          <Size data={this.props.data[0].skus} setSize={this.setProduct} size={this.state.size} openSizeDropdown={this.state.openSizeDropdown} closeSizeDropdown={this.closeDropdown}/>
+          <Quantity quantity={this.state.quantity}/>
         </div>
         <div className='overview-btns-row-2'>
           <button>Add to Bag</button>

@@ -8,7 +8,7 @@ class Quantity extends React.Component {
 
   render() {
     return (
-      <button>Quantity</button>
+      <button>{this.props.quantity}</button>
     )
   }
 }
