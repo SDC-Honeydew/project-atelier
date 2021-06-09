@@ -2,7 +2,13 @@ node_modules/
 
 dist/
 
+#Token ignore
 config.js
 
+<<<<<<< HEAD
 coverage/
 #Token ignore
+=======
+
+coverage
+>>>>>>> d6e6f1681a16c96574dbb92bebf29f15dbf1e3b3

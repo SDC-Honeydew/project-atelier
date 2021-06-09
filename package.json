@@ -4,7 +4,12 @@
   "description": "This is where we will create thorough setup instructions.",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "jest --coverage",
+=======
+    "test": "jest --silent --coverage",
+    "test-dev": "jest --silent --coverage --watch",
+>>>>>>> d6e6f1681a16c96574dbb92bebf29f15dbf1e3b3
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon server/index.js"
   },
@@ -28,6 +33,8 @@
     "eslint": "^7.27.0",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-react": "^7.24.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-css-modules": "^2.1.0",
     "jest-dom": "^4.0.0",
     "nodemon": "^2.0.7",
     "react-scripts": "4.0.3",
@@ -39,12 +46,14 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
-    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2"
   },
   "jest": {
     "moduleDirectories": [
       "node_modules"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
   }
 }
