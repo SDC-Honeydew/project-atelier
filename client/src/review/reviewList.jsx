@@ -7,8 +7,8 @@ const ReviewList = (props) => (
     <ReviewSort count={props.data.count} />
     {props.data.results.map(result => <ReviewComp result={result} />)}
     <div>
-      <button className='btn btn-primary' id='more-review'>MORE REVIEWS</button>
-      <button className='btn btn-primary' id='add-review'>ADD A REVIEW</button>
+      <button className='btn btn-primary mr-2' id='more-review'>MORE REVIEWS</button>
+      <button className='btn btn-primary mr-2' id='add-review'>ADD A REVIEW</button>
     </div>
   </div>
 );
