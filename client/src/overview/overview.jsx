@@ -42,7 +42,7 @@ class Overview extends React.Component {
       <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
           <ImageGallery
-            photo={this.state.product.styles[0].photos[0]}
+            photos={this.state.product.styles[0].photos}
           />
           <div className='overview-right-col'>
             <ProductInformation

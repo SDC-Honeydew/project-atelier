@@ -32,7 +32,7 @@ module.exports = {
       if (info) {
         res.send(info);
       } else {
-        console.log('could not send info')
+        console.log('could not send info');
       }
     });
   }

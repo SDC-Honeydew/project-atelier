@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRating from '../../review/starRating.jsx';
 
 class ProductInformation extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class ProductInformation extends React.Component {
   render() {
     return (
       <div data-testid='product-info'>
-        <div>**Stars will go here**</div>
+        <StarRating rating={2.5} />
         <p>{this.props.category}</p>
         <p>{this.props.name}</p>
         <p>{`$${this.props.price}`}</p>

@@ -1,3 +1,5 @@
+/*Overview*/
+
 .overview-title {
   color: blue;
 }
@@ -71,6 +73,27 @@
   z-index: 1;
   top: 0px;
 }
+
+/*Overview Image Gallery*/
+.overview-image-gallery {
+  position: relative;
+}
+
+
+.overview-thumbnails {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  padding: 10px;
+}
+.overview-thumbnails-img {
+  padding: 10px;
+}
+
+/*Review CSS*/
  .review-rating-text {
   float: left;
   width: 4rem;
