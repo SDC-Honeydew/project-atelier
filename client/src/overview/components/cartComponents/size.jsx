@@ -5,7 +5,8 @@ class Size extends React.Component {
     super(props);
     this.container = React.createRef();
     this.state = {
-      open: false
+      open: false,
+      selectedSize: 'Select Size'
     };
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -19,7 +20,16 @@ class Size extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
+  onSizeClick(size) {
+    var open = !this.state.open;
+    this.setState({
+      selectedSize: size,
+      open
+    });
+  }
+
   handleButtonClick() {
+    console.log('werks')
     var open = !this.state.open;
     this.setState({
       open
@@ -37,13 +47,13 @@ class Size extends React.Component {
   render() {
     return (
       <div className='size-container' data-testid='size-dropdown'ref={this.container}>
-        <button className='size-button' onClick={this.handleButtonClick}>Select Size</button>
+        <button className='size-button' onClick={this.handleButtonClick}>{this.state.selectedSize}</button>
         {this.state.open && (
           <div className='size-dropdown'>
             <ul className='size-ul'>
               {
                 Object.keys(this.props.data).map((sku, index) => (
-                  <li>{this.props.data[sku].size}</li>
+                  <li onClick={() => this.onSizeClick(this.props.data[sku].size)}>{this.props.data[sku].size}</li>
                 ))
               }
             </ul>
