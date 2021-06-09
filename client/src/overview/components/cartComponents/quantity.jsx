@@ -27,15 +27,18 @@ class Quantity extends React.Component {
     return (
       <div className='overview-quantity-container' data-testid='quantity-dropdown' ref={this.container}>
         <button className='overview-quantity-button' onClick={() => this.props.setQuantity(this.props.quantity)}>{this.props.size === 'Select Size' ? '-' : this.props.size !== 'Select Size' && this.props.selectedQuantity ? this.props.selectedQuantity : '1'}</button>
-        {this.props.openQuantityDropdown && (
+        {(this.props.openQuantityDropdown && this.props.size !== 'Select Size') && (
           <div className='overview-quantity-dropdown'>
-            <ul className='overview-quantity-ul'>
+            {<ul className='overview-quantity-ul'>
               {
                 Array.from(Array(this.props.quantity).slice(0, 15), (e, i) => (
                   <li onClick={() => this.props.setSelectedQuantity(i + 1)}key={i}>{i + 1}</li>
                 ))
               }
             </ul>
+            }
+            )
+
           </div>
         )}
 
