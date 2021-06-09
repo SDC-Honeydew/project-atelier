@@ -31,22 +31,22 @@
   height: 100px;
 }
 
-.size-container {
+.overview-size-container {
   position: relative;
   display: inline-block;
 }
 
-.size-button {
+.overview-size-button {
   padding: 0;
   width: 50px;
 }
 
-.size-ul {
+.overview-size-ul {
   list-style: none;
   background-color: white;
 }
 
-.size-dropdown {
+.overview-size-dropdown {
   position: absolute;
   top: 100%;
   left: 0;

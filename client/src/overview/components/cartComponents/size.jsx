@@ -27,14 +27,14 @@ class Size extends React.Component {
 
   render() {
     return (
-      <div className='size-container' data-testid='size-dropdown'ref={this.container}>
-        <button className='size-button' onClick={() => this.props.setSize(`${this.props.size}`)}>{this.props.size}</button>
+      <div className='overview-size-container' data-testid='size-dropdown'ref={this.container}>
+        <button className='overview-size-button' onClick={() => this.props.setSize(`${this.props.size}`)}>{this.props.size}</button>
         {this.props.openSizeDropdown && (
-          <div className='size-dropdown'>
-            <ul className='size-ul'>
+          <div className='overview-size-dropdown'>
+            <ul className='overview-size-ul'>
               {
                 Object.keys(this.props.data).map((sku, index) => (
-                  <li onClick={() => this.props.setSize(this.props.data[sku].size)}>{this.props.data[sku].size}</li>
+                  <li onClick={() => this.props.setSize(this.props.data[sku].size, this.props.data[sku].quantity)}>{this.props.data[sku].size}</li>
                 ))
               }
             </ul>

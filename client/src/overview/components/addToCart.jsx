@@ -11,7 +11,7 @@ class AddToCart extends React.Component {
       quantity: '-',
       openSizeDropdown: false
     };
-    this.setSize = this.setProduct.bind(this);
+    this.setProduct = this.setProduct.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
@@ -22,10 +22,10 @@ class AddToCart extends React.Component {
     });
   }
 
-  setProduct(sku, size, quantity) {
+  setProduct(size, quantity) {
     var openSizeDropdown = !this.state.openSizeDropdown;
     this.setState({
-      sku, size, quantity, openSizeDropdown
+      size, quantity,openSizeDropdown
     });
   }
 
