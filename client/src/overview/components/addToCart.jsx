@@ -1,11 +1,14 @@
 import React from 'react';
-import Size from './size.jsx';
+import Size from './cartComponents/size.jsx';
+import Quantity from './cartComponents/quantity.jsx'
 
 class AddToCart extends React.Component {
   constructor(props) {
     super(props);
-    //MANAGAE STATE HERERERERER
-    this.state = {};
+    this.state = {
+      size: null,
+      quantity: null
+    };
   }
 
   render() {
@@ -13,9 +16,9 @@ class AddToCart extends React.Component {
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
-        {/*MANAGE STATE IN THERE  */}
+          {/*MANAGE STATE IN THERE  */}
           <Size data={this.props.data[0].skus}/>
-          <button>Quantity</button>
+          <Quantity data={this.props.data[0].skus}/>
         </div>
         <div className='overview-btns-row-2'>
           <button>Add to Bag</button>

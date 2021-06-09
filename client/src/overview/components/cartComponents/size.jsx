@@ -37,13 +37,13 @@ class Size extends React.Component {
   render() {
     return (
       <div className='size-container' data-testid='size-dropdown'ref={this.container}>
-        <button className='size-button' onClick={this.handleButtonClick}>Size</button>
+        <button className='size-button' onClick={this.handleButtonClick}>Select Size</button>
         {this.state.open && (
           <div className='size-dropdown'>
             <ul className='size-ul'>
               {
-                Object.keys(this.props.data).map((size, index) => (
-                  <li>{this.props.data[size].size}</li>
+                Object.keys(this.props.data).map((sku, index) => (
+                  <li>{this.props.data[sku].size}</li>
                 ))
               }
             </ul>
