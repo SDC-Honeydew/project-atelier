@@ -12,12 +12,12 @@ const Star = (props) => {
     props.changeGradeIndex(e.target.value);
   };
   return (
-    <label className="star" style={props.style}>
+    <label className="review-star-input" style={props.style}>
       <input
         type="radio"
         name="rating"
         value={props.index}
-        className="stars_radio-input"
+        className="review-stars_radio-input"
         onClick={changeGrade}
       />
       ★
@@ -40,9 +40,9 @@ const StarRatingInput = (props) => {
   };
 
   return (
-    <div className="container">
-      <p className="result">{GRADES[gradeIndex] ? GRADES[gradeIndex] : 'You didn\'t review yet'}</p>
-      <div className="stars">
+    <div className="review-star-container">
+      <p className="review-star-result">{GRADES[gradeIndex] ? GRADES[gradeIndex] : 'You didn\'t review yet'}</p>
+      <div className="review-star-inputs">
         {
           GRADES.map((grade, index) => (
             <Star

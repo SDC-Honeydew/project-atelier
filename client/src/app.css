@@ -10,7 +10,7 @@
 
 .review-rating-progress {
   float: left;
-  width: 15rem;
+  width: 10rem;
   padding: 5px;
 }
 
@@ -47,31 +47,31 @@
 }
 
 
-.container {
+.review-star-container {
   padding: 16px;
   margin: 16px auto;
 }
 
-.result {
+.review-star-result {
   text-align: center;
   margin-bottom: 16px;
   font-weight: 900;
 }
 
-.stars {
+.review-star-inputs {
   display: flex;
   justify-content: center;
   gap: 8px;
 }
 
-.star {
+.review-star-input {
   position: relative;
   cursor: pointer;
   font-weight: 900;
   color: #ccc;
 }
 
-.stars_radio-input {
+.review-stars_radio-input {
   position: absolute;
   top: 0;
   left: 0;
@@ -80,3 +80,20 @@
   clip: rect(1px, 1px, 1px, 1px);
 }
 
+
+
+.review-header-area { grid-area: header; }
+.review-list-area { grid-area: list; }
+.review-ratingbreakdown-area {grid-area: rating;}
+.review-productbreakdown-area {grid-area: product;}
+
+.review-grid-container {
+  display: grid;
+  grid-template-areas:
+  'header header header header header header header'
+  'rating rating rating list list list list'
+  'rating rating rating list list list list'
+  'product product product list list list list';
+  grid-gap: 10px;
+  padding: 10px;
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReviewList from './reviewList.jsx';
 import RatingBreakdown from './ratingBreakdown.jsx';
+import ReviewSort from './reviewSort.jsx';
 import reviewData from '../../../reviewSampleData.json';
+import ProductBreakdown from './productBreakdown.jsx';
 import $ from 'jquery';
 class Review extends React.Component {
   constructor(props) {
@@ -27,9 +29,12 @@ class Review extends React.Component {
   render() {
     return (
       <div id="review">
-        This will be the review component!
-        <ReviewList data={this.state.data} />
-        <RatingBreakdown />
+        <div class='review-grid-container'>
+          <div class='review-header-area'>Rating & Reviews</div>
+          <div class='review-list-area'><ReviewList data={this.state.data} /></div>
+          <div class='review-ratingbreakdown-area'><RatingBreakdown /></div>
+          <div class='review-productbreakdown-area'><ProductBreakdown /></div>
+        </div>
       </div>
     );
   }
