@@ -20,7 +20,6 @@ const ProductStyle = (props) => {
         width='50'>
       </img>
       {props.showCheck && <Check />}
-      <p>{props.style.name}</p>
     </li>
   );
 };
