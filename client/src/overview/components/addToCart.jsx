@@ -8,14 +8,16 @@ class AddToCart extends React.Component {
     this.state = {
       sku: null,
       size: 'Select Size',
-      quantity: '-',
+      quantity: null,
+      selectedQuantity: null,
       openSizeDropdown: false,
       openQuantityDropdown: false
     };
     this.setProduct = this.setProduct.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
-    this.closeQuantityDropdown = this.closeQuantityDropdown.bind(this)
+    this.closeQuantityDropdown = this.closeQuantityDropdown.bind(this);
+    this.setSelectedQuantity = this.setSelectedQuantity.bind(this);
   }
 
   closeDropdown() {
@@ -34,16 +36,24 @@ class AddToCart extends React.Component {
 
   setProduct(size, quantity) {
     var openSizeDropdown = !this.state.openSizeDropdown;
+    var selectedQuantity = null;
     this.setState({
-      size, quantity, openSizeDropdown
+      size, quantity, openSizeDropdown, selectedQuantity
     });
   }
 
   setQuantity(quantity) {
-    var openQuantityDropdown = !this.state.openQuantityDropdown
+    var openQuantityDropdown = !this.state.openQuantityDropdown;
     this.setState({
       quantity, openQuantityDropdown
-    });
+    }, console.log(this.state));
+  }
+
+  setSelectedQuantity(selectedQuantity) {
+    var openQuantityDropdown = !this.state.openQuantityDropdown;
+    this.setState({
+      selectedQuantity, openQuantityDropdown
+    }, console.log(this.state))
   }
 
   render() {
@@ -52,7 +62,7 @@ class AddToCart extends React.Component {
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
           <Size data={this.props.data[0].skus} setSize={this.setProduct} size={this.state.size} openSizeDropdown={this.state.openSizeDropdown} closeSizeDropdown={this.closeDropdown}/>
-          <Quantity quantity={this.state.quantity} openQuantityDropdown={this.state.openQuantityDropdown} closeQuantityDropdown={this.closeQuantityDropdown} setQuantity={this.setQuantity}/>
+          <Quantity quantity={this.state.quantity} openQuantityDropdown={this.state.openQuantityDropdown} closeQuantityDropdown={this.closeQuantityDropdown} selectedQuantity={this.state.selectedQuantity}setQuantity={this.setQuantity} setSelectedQuantity={this.setSelectedQuantity} size={this.state.size}/>
         </div>
         <div className='overview-btns-row-2'>
           <button>Add to Bag</button>

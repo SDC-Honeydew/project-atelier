@@ -26,13 +26,13 @@ class Quantity extends React.Component {
   render() {
     return (
       <div className='overview-quantity-container' data-testid='quantity-dropdown' ref={this.container}>
-        <button className='overview-quantity-button' onClick={() => this.props.setQuantity(this.props.quantity)}>{this.props.quantity}</button>
+        <button className='overview-quantity-button' onClick={() => this.props.setQuantity(this.props.quantity)}>{this.props.size === 'Select Size' ? '-' : this.props.size !== 'Select Size' && this.props.selectedQuantity ? this.props.selectedQuantity : '1'}</button>
         {this.props.openQuantityDropdown && (
           <div className='overview-quantity-dropdown'>
             <ul className='overview-quantity-ul'>
               {
-                Array.from(Array(this.props.quantity), (e, i) => (
-                  <li key={i}>{i + 1}</li>
+                Array.from(Array(this.props.quantity).slice(0, 15), (e, i) => (
+                  <li onClick={() => this.props.setSelectedQuantity(i + 1)}key={i}>{i + 1}</li>
                 ))
               }
             </ul>
