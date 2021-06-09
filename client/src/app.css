@@ -2,7 +2,6 @@
   color: blue;
 }
 
-<<<<<<< HEAD
 .overview-product {
   display: flex;
   flex-direction: column;
@@ -72,7 +71,6 @@
   z-index: 1;
   top: 0px;
 }
-=======
  .review-rating-text {
   float: left;
   width: 4rem;
@@ -168,4 +166,3 @@
   grid-gap: 10px;
   padding: 10px;
 }
->>>>>>> d6e6f1681a16c96574dbb92bebf29f15dbf1e3b3

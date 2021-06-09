@@ -22,9 +22,9 @@ class StyleSelector extends React.Component {
       <div>
         <h3>{`Style > ${this.props.styles[0].name}`}</h3>
         <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
-          {this.props.styles.map(style => {
+          {this.props.styles.map((style, i) => {
             return (
-              <ProductStyle style={style} toggle={this.onStyleClick} currentStyle={this.state.currentStyle} showCheck={this.state.currentStyle === style.name}/>);
+              <ProductStyle key={i} style={style} toggle={this.onStyleClick} currentStyle={this.state.currentStyle} showCheck={this.state.currentStyle === style.name}/>);
           })}
         </ul>
       </div>

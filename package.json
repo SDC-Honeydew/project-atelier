@@ -4,12 +4,8 @@
   "description": "This is where we will create thorough setup instructions.",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "jest --coverage",
-=======
     "test": "jest --silent --coverage",
     "test-dev": "jest --silent --coverage --watch",
->>>>>>> d6e6f1681a16c96574dbb92bebf29f15dbf1e3b3
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon server/index.js"
   },

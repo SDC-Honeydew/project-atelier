@@ -7,6 +7,6 @@ const ProductDescription = (props) => {
       <p>{props.description}</p>
     </div>
   );
-}
+};
 
 export default ProductDescription;
