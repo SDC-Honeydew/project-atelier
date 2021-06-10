@@ -1,57 +1,42 @@
 import React from 'react';
 import ReviewList from './reviewList.jsx';
-import Carousel from 'react-bootstrap/Carousel';
-
+import RatingBreakdown from './ratingBreakdown.jsx';
+import ReviewSort from './reviewSort.jsx';
+import reviewData from '../../../reviewSampleData.json';
+import ProductBreakdown from './productBreakdown.jsx';
+import $ from 'jquery';
 class Review extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = { data: reviewData };
+    this.getReviewsData();
+  }
+
+  getReviewsData(id) {
+    $.ajax({
+      method: 'GET',
+      url: '/review',
+      data: { id: 22122 },
+      dataType: 'json',
+      success: (data) => {
+        this.setState({ data });
+        console.log(this.state.data);
+        console.log(reviewData);
+      }
+    });
   }
 
   render() {
     return (
       <div id="review">
-        This will be the review component!
-        <ReviewList />
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://img.abercrombie.com/is/image/anf/KIC_155-1244-0734-279_model1?policy=product-large"
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://img.abercrombie.com/is/image/anf/KIC_155-1246-2631-280_prod1?policy=product-large"
-              alt="Second slide"
-            />
-
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://img.abercrombie.com/is/image/anf/KIC_155-1244-0734-279_model5?policy=product-large"
-              alt="Third slide"
-            />
-
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
+        <div className='review-grid-container'>
+          <div className='review-header-area'>Rating & Reviews</div>
+          <div className='review-list-area'><ReviewList data={this.state.data} /></div>
+          <div className='review-ratingbreakdown-area'><RatingBreakdown data={this.state.data} /></div>
+          <div className='review-productbreakdown-area'><ProductBreakdown /></div>
+        </div>
       </div>
-    )
+    );
   }
 }
 
