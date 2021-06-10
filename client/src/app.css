@@ -95,8 +95,18 @@
 .overview-thumbnails-img-highlight {
   border: 3px solid green;
 }
+.overview-image-gallery-mainImg-enlarge {
+  width: 800px;
+  height: 700px;
+}
+/*
 
-/*Review CSS*/
+
+Review CSS
+
+
+
+*/
  .review-rating-text {
   float: left;
   width: 4rem;
