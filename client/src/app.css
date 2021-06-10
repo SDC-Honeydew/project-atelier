@@ -13,7 +13,10 @@
 .related_productCard {
   width: 150px;
   border: solid black;
- .review-rating-text {
+
+}
+
+.review-rating-text {
   float: left;
   width: 4rem;
 
