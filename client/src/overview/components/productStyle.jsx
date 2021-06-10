@@ -11,7 +11,7 @@ const Check = (props) => {
 
 const ProductStyle = (props) => {
   return (
-    <li className='overview-styles-imgs'>
+    <li className='overview-styles-imgs' data-testid='product-style'>
       <img
         src={props.style.photos[0].thumbnail_url}
         onClick={() => props.toggle(props.style.name)}

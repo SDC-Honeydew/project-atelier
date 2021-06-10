@@ -7,7 +7,7 @@ import ImageGallery from './components/imageGallery.jsx';
 import ProductInformation from './components/productInfo.jsx';
 import ProductDescription from './components/productDescription.jsx';
 
-import sampleData from './sampleRelevantInfo.json';
+import sampleData from './sampleRelevantData.json';
 
 
 
