@@ -92,6 +92,9 @@
 .overview-thumbnails-img {
   padding: 10px;
 }
+.overview-thumbnails-img-highlight {
+  border: 3px solid green;
+}
 
 /*Review CSS*/
  .review-rating-text {
