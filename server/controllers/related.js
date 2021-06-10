@@ -40,7 +40,6 @@ module.exports = {
         relatedProductData[i].category = responses[i].data.category;
         relatedProductData[i].features = responses[i].data.features;
       }
-      // console.log(relatedProductData);
     })).then(() => {
       // request to the style API for each product
       return axios.all(relatedProductIds.map((relatedProductID) =>
@@ -65,7 +64,41 @@ module.exports = {
           }
         }
       }
-      console.log('related products after adding style', relatedProductData);
+      // console.log('related products after adding style', relatedProductData);
+
+    })).then(() => {
+      // request to the reviews API for each product
+      return axios.all(relatedProductIds.map((relatedProductID) =>
+        axios({
+          method: 'get',
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta/?product_id=${relatedProductID}`,
+          headers: {
+            'Authorization': `${config.TOKEN}`
+          }
+        })
+      ));
+    }).then(axios.spread((...responses) => {
+
+      /// ad the average review to each product object
+
+      for (var i = 0; i < responses.length; i++) {
+        var currentProdRatings = responses[i].data.ratings;
+        // console.log(responses[i].data);
+        var count = Object.keys(responses[i].data.ratings).length;
+
+        if (count === 0) {
+          relatedProductData[i].avgReview = null;
+
+        } else {
+          var total = 0;
+          for (var key in currentProdRatings) {
+            total += currentProdRatings[key];
+          }
+          relatedProductData[i].avgReview = total / count;
+        }
+      }
+      console.log('related products after adding reviews', relatedProductData);
+      res.send(relatedProductData);
 
     })).catch((err) => {
       console.log('err retrieving related product data from API', err);
