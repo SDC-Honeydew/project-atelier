@@ -12,7 +12,7 @@ class RelatedList extends React.Component {
           'id': 11,
           'name': 'Air Minis 250',
           'category': 'Basketball Shoes',
-          'default_price': '0',
+          'original_price': '0',
           'image': 'urlplaceholder/style_1_photo_number.jpg',
           'avgReview': 4.3,
           'features': [
