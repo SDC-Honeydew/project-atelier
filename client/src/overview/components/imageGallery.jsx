@@ -10,7 +10,8 @@ class ImageGallery extends React.Component {
       currentImg: null,
       firstImg: this.props.photos[0].url,
       lastImg: this.props.photos[this.props.photos.length - 1].url,
-      enlarge: false
+      expand: false,
+      zoom: false
 
     };
 
@@ -24,15 +25,31 @@ class ImageGallery extends React.Component {
     this.setState({
       mainImg,
       currentIndex: i
-    })
+    });
   }
 
   enlargeImg() {
-    var enlarge = !this.state.enlarge;
-    this.setState({
-      enlarge
-    }, console.log(this.state.enlarge));
+    if (this.state.zoom) {
+      var zoom = !this.state.zoom;
+      var expand = !this.state.zoom;
+      this.setState({
+        expand, zoom
+      });
+    } else if (this.state.expand) {
+      var zoom = !this.state.zoom;
+      this.setState({
+        zoom
+      });
+    } else {
+      var expand = !this.state.expand;
+      this.setState({
+        expand
+      });
+
+    }
+
   }
+
 //need state for first and last picture
 //display right arrow on fist img
 //display left arrow on last img
@@ -41,7 +58,7 @@ class ImageGallery extends React.Component {
 
   render() {
     return (
-      <div style={{backgroundImage: `url(${this.state.mainImg})`}} className={`overview-image-gallery${this.state.enlarge ? '-enlarge' : ''}`} data-testid='image-gallery'>
+      <div style={{backgroundImage: `url(${this.state.mainImg})`}} onClick={() => this.enlargeImg()} className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
         {/* <img className={`overview-image-gallery-mainImg${this.state.enlarge ? '-enlarge' : ''}`} src={this.state.mainImg} width='400' height='600'></img> */}
         <div className='overview-thumbnails'>
           {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
