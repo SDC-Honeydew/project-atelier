@@ -77,8 +77,24 @@
 /*Overview Image Gallery*/
 .overview-image-gallery {
   position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 800px;
+}
+.overview-image-gallery-mainImg-enlarge {
+  width: 800px;
+  height: 700px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 3;
 }
 
+.overview-image-gallery-enlarge {
+  width: 1000px;
+  height: 800px;
+}
 
 .overview-thumbnails {
   display:flex;
@@ -95,9 +111,24 @@
 .overview-thumbnails-img-highlight {
   border: 3px solid green;
 }
-.overview-image-gallery-mainImg-enlarge {
-  width: 800px;
-  height: 700px;
+
+.overview-image-gallery-left-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 5%;
+}
+.overview-image-gallery-right-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 5%;
+}
+.overview-image-gallery-enlarge-button {
+  position: absolute;
+  z-index: 2;
+  right: 20%;
+
 }
 /*
 
