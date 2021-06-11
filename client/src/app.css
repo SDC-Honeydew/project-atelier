@@ -1,7 +1,16 @@
-/*Overview*/
+/*
 
+Overview
+
+*/
 .overview-title {
   color: blue;
+}
+.overview-btns-row-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 2em;
 }
 
 .overview-product {
@@ -30,7 +39,7 @@
   list-style: none;
   flex: 0 0 21%;
   margin: 5px;
-  height: 100px;
+  height: 4em;
 }
 
 .overview-size-container {
@@ -77,40 +86,41 @@
 /*Overview Image Gallery*/
 .overview-image-gallery {
   position: relative;
-  background-size: contain;
+  background-size: 400px 600px;
+  margin: 0px 50px;
   background-repeat: no-repeat;
-  width: 600px;
-  height: 800px;
+  width: 400px;
+  height: 600px;
   border: 3px solid pink
 }
 .overview-image-gallery-enlarge {
-  width: 800px;
-  height: 1000px;
-  background-size: contain;
+  width: 600px;
+  height: 800px;
+  background-size: 600px 800px;
   background-repeat: no-repeat;
-  position: absolute;
+  position: relative;
   z-index: 5;
-  border: 3px solid pink
 }
 
-/* .overview-image-gallery-enlarge {
-  width: 1000px;
-  height: 800px;
-} */
-
 .overview-thumbnails {
+  border: 2px solid red;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
   z-index: 1;
-  position: relative;
+  position: absolute;
   top: 0px;
   padding: 10px;
+  margin: 0;
+  left: 0px;
+  width: 50%;
 }
 .overview-thumbnails-img {
   padding: 10px;
+  width: 50px;
+  height: 50px;
 }
-.overview-thumbnails-img-highlight {
+.highlight {
   border: 3px solid green;
 }
 
@@ -118,7 +128,7 @@
   position: absolute;
   z-index: 2;
   top: 50%;
-  left: 5%;
+  left: 20%;
 }
 .overview-image-gallery-right-arrow {
   position: absolute;

@@ -45,7 +45,7 @@ class ImageGallery extends React.Component {
         {/* <img className={`overview-image-gallery-mainImg${this.state.enlarge ? '-enlarge' : ''}`} src={this.state.mainImg} width='400' height='600'></img> */}
         <div className='overview-thumbnails'>
           {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
-            <img onClick={(e) => this.setMainImg(e, key)} className={`overview-thumbnails-img${this.state.mainImg === img.url ? '-highlight' : ''}`}src={img.url} width='100' height='100'></img>
+            <img onClick={(e) => this.setMainImg(e, key)} className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}src={img.url}></img>
           ))}
         </div>
         <button onClick={(e) => this.setMainImage(e, this.state.currentIndex - 1)}className='overview-image-gallery-left-arrow'>L</button>
