@@ -83,17 +83,18 @@ module.exports = {
 
       for (var i = 0; i < responses.length; i++) {
         var currentProdRatings = responses[i].data.ratings;
-        // console.log(responses[i].data);
-        var count = Object.keys(responses[i].data.ratings).length;
+        // console.log('RATINGS FOR THE CURRENT PRODUCT /////', currentProdRatings);
+
+        var count = 0;
+        var total = 0;
+        for (var key in currentProdRatings) {
+          count += parseInt(currentProdRatings[key]);
+          total += parseInt(key) * parseInt(currentProdRatings[key]);
+        }
 
         if (count === 0) {
           relatedProductData[i].avgReview = null;
-
         } else {
-          var total = 0;
-          for (var key in currentProdRatings) {
-            total += currentProdRatings[key];
-          }
           relatedProductData[i].avgReview = total / count;
         }
       }

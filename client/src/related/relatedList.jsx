@@ -38,7 +38,9 @@ class RelatedList extends React.Component {
       },
     }
     ).then((response) => {
-      console.log('response from req to get /related in relatedList.jsx:', response);
+      this.setState({
+        products: response.data
+      });
     }).catch((error) => {
       console.log('ERROR from req to get /related in relatedList.jsx:', error);
     });
@@ -48,11 +50,13 @@ class RelatedList extends React.Component {
   render() {
     const products = this.state.products;
     return (
-      <div id='related_relatedList'>
+      <div id='related_relatedProducts'>
         <h6>RELATED PRODUCTS</h6>
-        {products.map((product) =>
-          <ProductCard productInfo={product} key={product.id}/>
-        )}
+        <div id='related_relatedList'>
+          {products.map((product) =>
+            <ProductCard productInfo={product} key={product.id}/>
+          )}
+        </div>
       </div>
     );
   }
