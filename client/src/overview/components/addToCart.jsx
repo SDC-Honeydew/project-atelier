@@ -61,8 +61,22 @@ class AddToCart extends React.Component {
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
-          <Size data={this.props.data[0].skus} setSize={this.setProduct} size={this.state.size} openSizeDropdown={this.state.openSizeDropdown} closeSizeDropdown={this.closeDropdown}/>
-          <Quantity quantity={this.state.quantity} openQuantityDropdown={this.state.openQuantityDropdown} closeQuantityDropdown={this.closeQuantityDropdown} selectedQuantity={this.state.selectedQuantity}setQuantity={this.setQuantity} setSelectedQuantity={this.setSelectedQuantity} size={this.state.size}/>
+          <Size
+            data={this.props.data[0].skus}
+            setSize={this.setProduct}
+            size={this.state.size}
+            openSizeDropdown={this.state.openSizeDropdown}
+            closeSizeDropdown={this.closeDropdown}
+          />
+          <Quantity
+            quantity={this.state.quantity}
+            openQuantityDropdown={this.state.openQuantityDropdown}
+            closeQuantityDropdown={this.closeQuantityDropdown}
+            selectedQuantity={this.state.selectedQuantity}
+            setQuantity={this.setQuantity}
+            setSelectedQuantity={this.setSelectedQuantity}
+            size={this.state.size}
+          />
         </div>
         <div className='overview-btns-row-2'>
           {(this.state.size && this.state.selectedQuantity) && (<button className='overview-addToCart-button'>Add to Cart</button>)}

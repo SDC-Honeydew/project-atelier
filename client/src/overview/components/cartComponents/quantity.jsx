@@ -38,13 +38,9 @@ class Quantity extends React.Component {
             </ul>
             }
             )
-
           </div>
         )}
-
-
       </div>
-
     )
   }
 }
