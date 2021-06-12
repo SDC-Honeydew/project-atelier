@@ -34,7 +34,7 @@ class RelatedList extends React.Component {
     axios.get('/related', {
       params: {
         // FIXME should pull item # based on current page
-        item: 22125
+        item: 22168
       },
     }
     ).then((response) => {

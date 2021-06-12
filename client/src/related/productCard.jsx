@@ -1,28 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StarRating from '../review/starRating.jsx';
+import SalePrice from './salePrice.jsx';
 
-class SalePrice extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    var jsx;
-    if (this.props.sale_price === null) {
-      jsx = (
-        <p className='related_details'>${this.props.original_price}</p>
-      );
-    } else {
-      jsx = (
-        <React.Fragment>
-          <span className='related_sale'>${this.props.sale_price}</span><span>${this.props.productInfo.original_price}</span>
-        </React.Fragment>
-      );
-      return jsx;
-    }
-  }
-}
 
 class ProductCard extends React.Component {
   constructor(props) {
