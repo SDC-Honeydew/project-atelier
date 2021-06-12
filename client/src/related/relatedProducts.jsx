@@ -10,9 +10,10 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
+    console.log('current item in relatedProduct component', this.props.item);
     return (
       <div id="related_relatedDiv">
-        <RelatedList />
+        <RelatedList item={this.props.item} handleCardClick={this.props.handleCardClick}/>
         <OutfitList />
       </div>
     );

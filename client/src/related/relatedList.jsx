@@ -30,11 +30,11 @@ class RelatedList extends React.Component {
     };
   }
 
-  componentDidMount() {
+  refreshItemList() {
     axios.get('/related', {
       params: {
         // FIXME should pull item # based on current page
-        item: 22168
+        item: this.props.item
       },
     }
     ).then((response) => {
@@ -46,15 +46,24 @@ class RelatedList extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.refreshItemList();
+  }
+
+  componentDidUpdate() {
+    this.refreshItemList();
+  }
+
 
   render() {
+    console.log('current products:', this.state.products);
     const products = this.state.products;
     return (
       <div id='related_relatedProducts'>
         <h6>RELATED PRODUCTS</h6>
         <div id='related_relatedList'>
           {products.map((product) =>
-            <ProductCard productInfo={product} key={product.id}/>
+            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick}/>
           )}
         </div>
       </div>
