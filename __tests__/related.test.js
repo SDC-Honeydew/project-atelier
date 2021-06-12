@@ -2,6 +2,14 @@ import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from '../client/src/app.jsx';
 import React from 'react';
+import RelatedProducts from '../client/src/related/relatedProducts.jsx';
+
+describe('Related component', () => {
+  test('it renders', () => {
+    render(<RelatedProducts />);
+    expect(screen.getByText('RELATED PRODUCTS')).toBeInTheDocument();
+  });
+});
 
 // Related Product Cards
 // The related product lists will consist of cards.  Each card will display the information for a single product.
