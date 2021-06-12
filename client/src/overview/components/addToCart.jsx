@@ -65,8 +65,8 @@ class AddToCart extends React.Component {
           <Quantity quantity={this.state.quantity} openQuantityDropdown={this.state.openQuantityDropdown} closeQuantityDropdown={this.closeQuantityDropdown} selectedQuantity={this.state.selectedQuantity}setQuantity={this.setQuantity} setSelectedQuantity={this.setSelectedQuantity} size={this.state.size}/>
         </div>
         <div className='overview-btns-row-2'>
-          {(this.state.size && this.state.selectedQuantity) && (<button>Add to Bag</button>)}
-          <button>Star</button>
+          {(this.state.size && this.state.selectedQuantity) && (<button className='overview-addToCart-button'>Add to Cart</button>)}
+          {/* <button>Star</button> */}
         </div>
       </div>
     );

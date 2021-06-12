@@ -6,11 +6,14 @@ Overview
 .overview-title {
   color: blue;
 }
-.overview-btns-row-1 {
+.overview-btns-row-1, .overview-btns-row-2 {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0 2em;
+  justify-content: space-evenly;
+}
+
+.overview-btns-row-2 {
+  margin-top: 15px;
 }
 
 .overview-product {
@@ -42,27 +45,30 @@ Overview
   height: 4em;
 }
 
-.overview-size-container {
+.overview-size-container, .overview-quantity-container {
   position: relative;
   display: inline-block;
 }
 
-.overview-size-button {
-  padding: 30px;
-  width: 100%;
+
+.overview-size-button, .overview-quantity-button, .overview-addToCart-button {
+  padding: 20px;
+  width: 10em;
+  height: 100%;
 }
 
-.overview-size-ul {
+.overview-size-ul, .overview-quantity-ul {
   list-style: none;
   background-color: white;
 }
 
-.overview-size-dropdown {
+.overview-size-dropdown, .overview-quantity-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 2;
 }
+
 .overview-styles-img {
   border-radius: 50px
 }
@@ -82,6 +88,7 @@ Overview
   z-index: 1;
   top: 0px;
 }
+
 
 /*Overview Image Gallery*/
 .overview-image-gallery {

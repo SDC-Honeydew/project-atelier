@@ -29,7 +29,7 @@ class ImageGallery extends React.Component {
   }
 
   enlargeImg(e) {
-    if (e.target.className.includes('right') || e.target.className.includes('left')) {
+    if (e.target.className.includes('right') || e.target.className.includes('left') || e.target.className.includes('thumbnails')) {
       return;
     }
     if (this.state.zoom) {
