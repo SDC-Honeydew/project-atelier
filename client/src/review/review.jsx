@@ -29,11 +29,11 @@ class Review extends React.Component {
   render() {
     return (
       <div id="review">
-        <div class='review-grid-container'>
-          <div class='review-header-area'>Rating & Reviews</div>
-          <div class='review-list-area'><ReviewList data={this.state.data} /></div>
-          <div class='review-ratingbreakdown-area'><RatingBreakdown /></div>
-          <div class='review-productbreakdown-area'><ProductBreakdown /></div>
+        <div className='review-grid-container'>
+          <div className='review-header-area'>Rating & Reviews</div>
+          <div className='review-list-area'><ReviewList data={this.state.data} /></div>
+          <div className='review-ratingbreakdown-area'><RatingBreakdown data={this.state.data} /></div>
+          <div className='review-productbreakdown-area'><ProductBreakdown /></div>
         </div>
       </div>
     );

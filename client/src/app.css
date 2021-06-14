@@ -249,8 +249,38 @@ Review CSS
   grid-template-areas:
   'header header header header header header header'
   'rating rating rating list list list list'
-  'rating rating rating list list list list'
   'product product product list list list list';
+  grid-gap: 10px;
+  grid-template-rows: 50px 300px 500px;
+  padding: 10px;
+}
+
+
+
+.review-card-rating-area { grid-area: rating; }
+.review-card-user-area { grid-area: user; text-align: right; font-size:x-small;}
+.review-card-title-area { grid-area: title; }
+.review-card-body-area {grid-area: body;}
+.review-card-response-area {grid-area: response;}
+
+.review-grid-card-container {
+  display: grid;
+  grid-template-areas:
+  'rating rating rating user user user'
+  'title title title title title title'
+  'body body body body body body'
+  'response response response response response response';
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.review-rating-star-area { grid-area: rating; font-size:large; }
+.review-rating-digit-area { grid-area: digit; text-align: left;}
+
+.review-grid-rating-container {
+  display: grid;
+  grid-template-areas:
+  ' digit  rating rating rating rating rating';
   grid-gap: 10px;
   padding: 10px;
 }
