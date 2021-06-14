@@ -15,8 +15,8 @@ class ImageGallery extends React.Component {
 
     };
 
-    this.setMainImage = this.setMainImg.bind(this);
-    this.enlarge = this.enlargeImg.bind(this);
+    this.setMainImg = this.setMainImg.bind(this);
+    this.expandImg = this.expandImg.bind(this);
   }
 
   setMainImg(e, i) {
@@ -28,7 +28,7 @@ class ImageGallery extends React.Component {
     });
   }
 
-  enlargeImg(e) {
+  expandImg(e) {
     if (e.target.className.includes('right') || e.target.className.includes('left') || e.target.className.includes('thumbnails')) {
       return;
     }
@@ -62,27 +62,33 @@ class ImageGallery extends React.Component {
   render() {
     return (
       <div
-        style={{backgroundImage: `url(${this.state.mainImg})`}}
-        onClick={(e) => this.enlargeImg(e)}
-        className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'
-      >
-        <div className='overview-thumbnails'>
-          {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
-            <img
-              onClick={(e) => this.setMainImg(e, key)}
-              className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-              src={img.url}>
-            </img>
-          ))}
-        </div>
-        <button
-          onClick={(e) => this.setMainImage(e, this.state.currentIndex - 1)}className='overview-image-gallery-left-arrow'
-        >L</button>
-        <button
-          onClick={(e) => this.setMainImage(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'
-        >R</button>
-        <button
-          onClick={(e) => this.enlargeImg(e)} className='overview-image-gallery-enlarge-button'>Make Bigger</button>
+        // style={{backgroundImage: `url(${this.state.mainImg})`}}
+        onClick={(e) => this.expandImg(e)}
+        className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
+          <img src={this.state.mainImg} className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}></img>
+        {!this.state.zoom &&
+          <div className='overview-thumbnails'>
+            {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
+              <img
+                onClick={(e) => this.setMainImg(e, key)}
+                className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+                src={img.url}>
+              </img>
+            ))}
+          </div>
+        }
+        {!this.state.zoom &&
+          <button
+            onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className='overview-image-gallery-left-arrow'>L</button>
+        }
+        {!this.state.zoom &&
+          <button
+            onClick={(e) => this.setMainImg(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'>R</button>
+        }
+        {!this.state.zoom &&
+          <button
+            onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>Make Bigger</button>
+        }
       </div>
     );
   }
