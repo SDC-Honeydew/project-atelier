@@ -78,8 +78,10 @@ describe('Overview Component', () => {
       let styles = sampleData.styles;
       let addToCart = render(<AddToCart data={styles}/>);
       let selectSize = screen.getByText(/select size/i);
+      let selectQuantity = screen.getByText(/-/)
 
-      expect(selectSize).toBeInTheDocument()
-    })
+      expect(selectSize).toBeInTheDocument();
+      expect(selectQuantity).toBeInTheDocument();
+    });
   });
 });
