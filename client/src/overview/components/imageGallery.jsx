@@ -61,7 +61,11 @@ class ImageGallery extends React.Component {
 
   render() {
     return (
-      <div style={{backgroundImage: `url(${this.state.mainImg})`}} onClick={(e) => this.enlargeImg(e)} className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
+      <div
+        style={{backgroundImage: `url(${this.state.mainImg})`}}
+        onClick={(e) => this.enlargeImg(e)}
+        className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'
+      >
         <div className='overview-thumbnails'>
           {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
             <img
@@ -71,9 +75,14 @@ class ImageGallery extends React.Component {
             </img>
           ))}
         </div>
-        <button onClick={(e) => this.setMainImage(e, this.state.currentIndex - 1)}className='overview-image-gallery-left-arrow'>L</button>
-        <button onClick={(e) => this.setMainImage(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'>R </button>
-        <button onClick={(e) => this.enlargeImg(e)} className='overview-image-gallery-enlarge-button' >Make Bigger</button>
+        <button
+          onClick={(e) => this.setMainImage(e, this.state.currentIndex - 1)}className='overview-image-gallery-left-arrow'
+        >L</button>
+        <button
+          onClick={(e) => this.setMainImage(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'
+        >R</button>
+        <button
+          onClick={(e) => this.enlargeImg(e)} className='overview-image-gallery-enlarge-button'>Make Bigger</button>
       </div>
     );
   }

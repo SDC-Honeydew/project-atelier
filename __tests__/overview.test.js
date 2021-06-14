@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Overview from '../client/src/overview/overview.jsx';
 import StyleSelector from '../client/src/overview/components/styleSelect.jsx';
+import ImageGallery from '../client/src/overview/components/imageGallery.jsx';
+import ProductInformation from '../client/src/overview/components/productInfo.jsx';
+import ProductDescription from '../client/src/overview/components/ProductDescription.jsx';
+import AddToCart from '../client/src/overview/components/addToCart.jsx';
+
 import React from 'react';
 import sampleData from '../client/src/overview/sampleRelevantData.json';
 
@@ -26,11 +31,55 @@ describe('Overview Component', () => {
     });
   });
 
-  describe('Testing Style Selector with Sample Data', () => {
+  describe('Style Selector renders with Sample Data', () => {
     test('Renders each style in selector', () => {
       var styles = sampleData.styles;
       let styleSelector = render(<StyleSelector styles={styles}/>);
       expect(styleSelector.getAllByRole('listitem').length).toEqual(styles.length);
     });
+  });
+
+  describe('Image Gallery renders with Sample Data', () => {
+    test('Renders all photos', () => {
+      var photos = sampleData.styles[0].photos;
+      let imageGallery = render(<ImageGallery photos={photos}/>);
+
+      expect(imageGallery.getAllByRole('img').length).toEqual(photos.length);
+      expect(imageGallery.getAllByRole('button').length).toEqual(3);
+    });
+
+  });
+
+  describe('Product Info renders with Sample Data', () => {
+    test('Renders category, name, price', () => {
+      let productInfo = render(
+        <ProductInformation
+          category={sampleData.category}
+          name={sampleData.name}
+          price={sampleData.styles[0]}
+        />);
+
+      expect(productInfo.getAllByRole('heading').length).toEqual(3);
+    });
+  });
+
+  describe('Product Description renders with Sample Data', () => {
+    test('renders description and slogan ', () => {
+      let productDescription = render(
+        <ProductDescription
+          description={sampleData.description}
+          slogan={sampleData.slogan}
+        />);
+    });
+  });
+
+  describe('Add to Cart renders with Sample Data', () => {
+    test('renders add to cart components', () => {
+      let styles = sampleData.styles;
+      let addToCart = render(<AddToCart data={styles}/>);
+      let selectSize = screen.getByText(/select size/i);
+
+      expect(selectSize).toBeInTheDocument()
+    })
   });
 });
