@@ -2,7 +2,6 @@ import React from 'react';
 import RelatedProducts from './related/relatedProducts.jsx';
 import Review from './review/review.jsx';
 import ProductOverview from './overview/overview.jsx';
-import $ from 'jquery';
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1 id='test'>Hello World!</h1>
         <ProductOverview />
         <RelatedProducts />
         <Review id={this.state.id} />
