@@ -6,7 +6,16 @@ import ProductOverview from './overview/overview.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      item: 22168
+    };
+    this.handleCardClick = this.handleCardClick.bind(this);
+  }
+
+  handleCardClick(newItem) {
+    this.setState({
+      item: newItem
+    });
   }
 
   render() {
@@ -14,7 +23,7 @@ class App extends React.Component {
       <div>
         <h1 id='test'>Hello World!</h1>
         <ProductOverview />
-        <RelatedProducts />
+        <RelatedProducts item={this.state.item} handleCardClick={this.handleCardClick}/>
         <Review />
       </div>
     );
