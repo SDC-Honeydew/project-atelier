@@ -16,7 +16,7 @@ class Review extends React.Component {
     $.ajax({
       method: 'GET',
       url: '/review',
-      data: { id: 22122 },
+      data: { id: this.props.id },
       dataType: 'json',
       success: (data) => {
         this.setState({ data });

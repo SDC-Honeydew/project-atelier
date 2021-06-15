@@ -1,25 +1,19 @@
 import React from 'react';
-import RelatedProducts from './related/relatedProducts.jsx';
-import Review from './review/review.jsx';
-import ProductOverview from './overview/overview.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import Home from './home.jsx';
 
-  render() {
-    return (
-      <div>
-        <h1 id='test'>Hello World!</h1>
-        <ProductOverview />
-        <RelatedProducts />
-        <Review />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
+  );
 }
-
-export default App;
-
