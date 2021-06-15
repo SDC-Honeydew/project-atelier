@@ -11,3 +11,6 @@ describe('App component', () => {
     expect(screen.getByText('Hello World!')).toBeInTheDocument();
   });
 });
+
+
+// Product card: The card itself will be clickable. Clicking the card will navigate to the detail page for that product.

@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RelatedList from './relatedList.jsx';
+import OutfitList from './outfitList.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -8,8 +10,12 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
+    console.log('current item in relatedProduct component', this.props.item);
     return (
-      <div id="relatedProducts">This will be the Related Products component!</div>
+      <div id="related_relatedDiv">
+        <RelatedList item={this.props.item} handleCardClick={this.props.handleCardClick}/>
+        <OutfitList />
+      </div>
     );
   }
 }
