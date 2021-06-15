@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/25</span>
+                <span class='fraction'>6/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/15</span>
+                <span class='fraction'>12/27</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/25</span>
+                <span class='fraction'>6/27</span>
             </div>
         
             
@@ -147,7 +147,20 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,13 +196,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,6 +233,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,13 +246,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,8 +280,8 @@ class ImageGallery extends React.Component {
 &nbsp;
     };
 &nbsp;
-    this.setMainImage = this.setMainImg.bind(this);
-    this.enlarge = this.enlargeImg.bind(this);
+    this.setMainImg = this.setMainImg.bind(this);
+    this.expandImg = this.expandImg.bind(this);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  se</span>tMainImg(e, i) {
@@ -267,21 +293,28 @@ class ImageGallery extends React.Component {
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  en</span>largeImg(e) {
+<span class="fstat-no" title="function not covered" >  ex</span>pandImg(e) {
 <span class="cstat-no" title="statement not covered" >    if (e.target.className.includes('right') || e.target.className.includes('left') || e.target.className.includes('thumbnails')) {</span>
 <span class="cstat-no" title="statement not covered" >      return;</span>
     }
 <span class="cstat-no" title="statement not covered" >    if (this.state.zoom) {</span>
       var zoom = <span class="cstat-no" title="statement not covered" >!this.state.zoom;</span>
-      var expand = <span class="cstat-no" title="statement not covered" >!this.state.zoom;</span>
-<span class="cstat-no" title="statement not covered" >      this.setState({</span>
-        expand, zoom
-      });
-    } else <span class="cstat-no" title="statement not covered" >if (this.state.expand) {</span>
-      var zoom = <span class="cstat-no" title="statement not covered" >!this.state.zoom;</span>
+      //var expand = !this.state.zoom;
 <span class="cstat-no" title="statement not covered" >      this.setState({</span>
         zoom
       });
+    } else <span class="cstat-no" title="statement not covered" >if (this.state.expand) {</span>
+<span class="cstat-no" title="statement not covered" >      if(e.target.className.includes('button')) {</span>
+        var expand = <span class="cstat-no" title="statement not covered" >!this.state.expand;</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({</span>
+          expand
+        })
+      } else {
+        var zoom = <span class="cstat-no" title="statement not covered" >!this.state.zoom;</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({</span>
+          zoom
+        });
+      }
     } else {
       var expand = <span class="cstat-no" title="statement not covered" >!this.state.expand;</span>
 <span class="cstat-no" title="statement not covered" >      this.setState({</span>
@@ -301,27 +334,33 @@ class ImageGallery extends React.Component {
   render() {
     return (
       &lt;div
-        style={{backgroundImage: `url(${this.state.mainImg})`}}
-        onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.enlargeImg(e)}</span>
-        className={`overview-image-gallery${this.state.expand ? <span class="branch-0 cbranch-no" title="branch not covered" >'-expand' </span>: ''}`} data-testid='image-gallery'
-      &gt;
-        &lt;div className='overview-thumbnails'&gt;
-          {this.state.thumbnailImgs.slice(0, 7).map((img, key) =&gt; (
-            &lt;img
-              onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.setMainImg(e, key)}</span>
-              className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-              src={img.url}&gt;
-            &lt;/img&gt;
-          ))}
-        &lt;/div&gt;
-        &lt;button
-          onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.setMainImage(e, this.state.currentIndex - 1)}</span>className='overview-image-gallery-left-arrow'
-        &gt;L&lt;/button&gt;
-        &lt;button
-          onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.setMainImage(e, this.state.currentIndex + 1)}</span> className='overview-image-gallery-right-arrow'
-        &gt;R&lt;/button&gt;
-        &lt;button
-          onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.enlargeImg(e)}</span> className='overview-image-gallery-enlarge-button'&gt;Make Bigger&lt;/button&gt;
+        // style={{backgroundImage: `url(${this.state.mainImg})`}}
+        onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.expandImg(e)}</span>
+        className={`overview-image-gallery${this.state.expand ? <span class="branch-0 cbranch-no" title="branch not covered" >'-expand' </span>: ''}`} data-testid='image-gallery'&gt;
+          &lt;img src={this.state.mainImg} className={`overview-image-gallery-img${this.state.expand ? <span class="branch-0 cbranch-no" title="branch not covered" >'-expand' </span>: ''}`}&gt;&lt;/img&gt;
+        {!this.state.zoom &amp;&amp;
+          &lt;div className='overview-thumbnails'&gt;
+            {this.state.thumbnailImgs.slice(0, 7).map((img, key) =&gt; (
+              &lt;img
+                onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.setMainImg(e, key)}</span>
+                className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+                src={img.url}&gt;
+              &lt;/img&gt;
+            ))}
+          &lt;/div&gt;
+        }
+        {!this.state.zoom &amp;&amp;
+          &lt;button
+            onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.setMainImg(e, this.state.currentIndex - 1)}</span> className='overview-image-gallery-left-arrow'&gt;L&lt;/button&gt;
+        }
+        {!this.state.zoom &amp;&amp;
+          &lt;button
+            onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.setMainImg(e, this.state.currentIndex + 1)}</span> className='overview-image-gallery-right-arrow'&gt;R&lt;/button&gt;
+        }
+        {!this.state.zoom &amp;&amp;
+          &lt;button
+            onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.expandImg(e)}</span> className='overview-image-gallery-enlarge-button'&gt;[]&lt;/button&gt;
+        }
       &lt;/div&gt;
     );
   }
@@ -334,7 +373,7 @@ export default ImageGallery;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Jun 14 2021 18:14:06 GMT-0500 (Central Daylight Time)
+                at Mon Jun 14 2021 23:00:39 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>

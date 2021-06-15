@@ -43,7 +43,7 @@ module.exports = {
       url: BASE_URL,
       headers: AUTH,
       params: {
-        page: 4,
+        page: 1,
         count: 1
       }
     })

@@ -15,14 +15,14 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: sampleData
+      product: sampleData,
+      currentStyleIndex: 0
     };
+
+    this.getOneProduct();
+
+    this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this)
   }
-
-  // componentDidMount() {
-  //   this.getOneProduct();
-
-  // }
 
   getOneProduct() {
     axios({
@@ -38,21 +38,30 @@ class Overview extends React.Component {
 
   }
 
+  setCurrentStyleIndex(currentStyleIndex) {
+    this.setState({
+      currentStyleIndex
+    });
+  }
+
   render() {
     return (
       <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
           <ImageGallery
-            photos={this.state.product.styles[0].photos}
+            photos={this.state.product.styles[this.state.currentStyleIndex].photos}
+            i={this.state.currentStyleIndex}
           />
           <div className='overview-right-col'>
             <ProductInformation
               category={this.state.product.category}
               name={this.state.product.name}
-              price={this.state.product.styles[0].original_price}
+              price={this.state.product.styles[this.state.currentStyleIndex].original_price}
             />
             <StyleSelector
               styles={this.state.product.styles}
+              currentStyleIndex={this.state.currentStyleIndex}
+              setCurrentStyleIndex={this.setCurrentStyleIndex}
             />
             <AddToCart data={this.state.product.styles}/>
           </div>

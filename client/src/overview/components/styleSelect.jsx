@@ -6,7 +6,7 @@ class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStyle: this.props.styles[0].name,
+
     };
     this.onStyleClick = this.onStyleClick.bind(this);
   }
@@ -20,16 +20,19 @@ class StyleSelector extends React.Component {
   render() {
     return (
       <div>
-        <h3>{`Style > ${this.state.currentStyle}`}</h3>
+        {console.log('props passed to style selector',this.props.currentStyleIndex)}
+        {console.log('style view state', this.state.currentStyleIndex)}
+        <h3>{`Style > ${this.props.styles[this.props.currentStyleIndex].name}`}</h3>
         <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
           {this.props.styles.map((style, i) => {
             return (
               <ProductStyle
                 key={i}
+                i={i}
                 style={style}
-                toggle={this.onStyleClick}
-                currentStyle={this.state.currentStyle}
-                showCheck={this.state.currentStyle === style.name}
+                toggle={this.props.setCurrentStyleIndex}
+                currentStyle={this.props.styles[this.props.currentStyleIndex].name}
+                showCheck={this.props.styles[this.props.currentStyleIndex].name === style.name}
               />);
           })}
         </ul>

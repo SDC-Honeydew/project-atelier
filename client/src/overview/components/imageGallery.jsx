@@ -14,10 +14,13 @@ class ImageGallery extends React.Component {
       zoom: false
 
     };
-
     this.setMainImg = this.setMainImg.bind(this);
     this.expandImg = this.expandImg.bind(this);
   }
+
+  // componentDidUpdate() {
+  //   //console.log('imagegallery',this.state)
+  // }
 
   setMainImg(e, i) {
     e.preventDefault();
@@ -72,13 +75,13 @@ class ImageGallery extends React.Component {
         // style={{backgroundImage: `url(${this.state.mainImg})`}}
         onClick={(e) => this.expandImg(e)}
         className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
-          <img src={this.state.mainImg} className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}></img>
+          <img src={this.props.photos[this.props.i].url} className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}></img>
         {!this.state.zoom &&
           <div className='overview-thumbnails'>
-            {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
+            {this.props.photos.slice(0, 7).map((img, key) => (
               <img
                 onClick={(e) => this.setMainImg(e, key)}
-                className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+                className={`overview-thumbnails-img${this.props.photos[this.props.i].url === img.url ? ' highlight' : ''}`}
                 src={img.url}>
               </img>
             ))}

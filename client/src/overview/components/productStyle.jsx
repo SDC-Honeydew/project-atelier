@@ -14,7 +14,7 @@ const ProductStyle = (props) => {
     <li className='overview-styles-imgs' data-testid='product-style'>
       <img
         src={props.style.photos[0].thumbnail_url}
-        onClick={() => props.toggle(props.style.name)}
+        onClick={() => props.toggle(props.i)}
         className='overview-styles-img'
         height='50'
         width='50'>

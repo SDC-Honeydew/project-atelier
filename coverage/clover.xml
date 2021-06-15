@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1623712446222" clover="3.2.0">
-  <project timestamp="1623712446222" name="All files">
-    <metrics statements="151" coveredstatements="92" conditionals="58" coveredconditionals="16" methods="76" coveredmethods="45" elements="285" coveredelements="153" complexity="0" loc="151" ncloc="151" packages="7" files="20" classes="20"/>
+<coverage generated="1623729639980" clover="3.2.0">
+  <project timestamp="1623729639981" name="All files">
+    <metrics statements="185" coveredstatements="116" conditionals="76" coveredconditionals="29" methods="93" coveredmethods="56" elements="354" coveredelements="201" complexity="0" loc="185" ncloc="185" packages="7" files="24" classes="24"/>
     <package name="project-atelier">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="sum.js" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/sum.js">
@@ -11,28 +11,31 @@
       </file>
     </package>
     <package name="project-atelier.client.src">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="app.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/app.jsx">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
       </file>
     </package>
     <package name="project-atelier.client.src.overview">
-      <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+      <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
       <file name="overview.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/overview.jsx">
-        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+        <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
         <line num="16" count="3" type="stmt"/>
         <line num="17" count="3" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="41" count="3" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
       </file>
     </package>
     <package name="project-atelier.client.src.overview.components">
-      <metrics statements="60" coveredstatements="28" conditionals="20" coveredconditionals="7" methods="27" coveredmethods="13"/>
+      <metrics statements="62" coveredstatements="28" conditionals="32" coveredconditionals="16" methods="27" coveredmethods="13"/>
       <file name="addToCart.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/addToCart.jsx">
         <metrics statements="19" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="7" coveredmethods="2"/>
         <line num="7" count="4" type="stmt"/>
@@ -56,7 +59,7 @@
         <line num="60" count="4" type="stmt"/>
       </file>
       <file name="imageGallery.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/imageGallery.jsx">
-        <metrics statements="25" coveredstatements="6" conditionals="15" coveredconditionals="3" methods="10" coveredmethods="3"/>
+        <metrics statements="27" coveredstatements="6" conditionals="27" coveredconditionals="12" methods="10" coveredmethods="3"/>
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="18" count="4" type="stmt"/>
@@ -68,24 +71,26 @@
         <line num="33" count="0" type="stmt"/>
         <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="63" count="4" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="71" count="24" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="70" count="4" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="79" count="24" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
       </file>
       <file name="productDescription.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/productDescription.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="4" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
       </file>
       <file name="productInfo.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/productInfo.jsx">
@@ -96,9 +101,9 @@
       </file>
       <file name="productStyle.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/overview/components/productStyle.jsx">
         <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="3" count="4" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
         <line num="13" count="24" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
@@ -144,29 +149,70 @@
       </file>
     </package>
     <package name="project-atelier.client.src.related">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="relatedProducts.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/related/relatedProducts.jsx">
+      <metrics statements="32" coveredstatements="26" conditionals="6" coveredconditionals="4" methods="17" coveredmethods="13"/>
+      <file name="outfitList.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/related/outfitList.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="productCard.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/related/productCard.jsx">
+        <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="2"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="19" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+      <file name="relatedList.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/related/relatedList.jsx">
+        <metrics statements="11" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="5"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+      </file>
+      <file name="relatedProducts.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/related/relatedProducts.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="salePrice.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/related/salePrice.jsx">
+        <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
       </file>
     </package>
     <package name="project-atelier.client.src.review">
       <metrics statements="55" coveredstatements="39" conditionals="19" coveredconditionals="6" methods="23" coveredmethods="17"/>
       <file name="productBreakdown.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/productBreakdown.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="3" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
       </file>
       <file name="progressBar.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/progressBar.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
       </file>
       <file name="ratingBreakdown.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/ratingBreakdown.jsx">
         <metrics statements="15" coveredstatements="14" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="4"/>
-        <line num="7" count="3" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="2" type="cond" truecount="1" falsecount="1"/>
@@ -195,34 +241,34 @@
       </file>
       <file name="reviewComp.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/reviewComp.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="7" coveredconditionals="3" methods="3" coveredmethods="3"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
         <line num="21" count="2" type="stmt"/>
       </file>
       <file name="reviewList.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/reviewList.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
       </file>
       <file name="reviewSort.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/reviewSort.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
       </file>
       <file name="starRating.jsx" path="/Users/tylerbrinkman/Documents/Hack/project-atelier/client/src/review/starRating.jsx">
         <metrics statements="16" coveredstatements="4" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="1"/>
-        <line num="2" count="4" type="stmt"/>
-        <line num="3" count="10" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="18" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="28" count="4" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>

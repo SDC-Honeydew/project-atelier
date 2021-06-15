@@ -7,10 +7,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-
-    };
-=======
       item: 22168
     };
     this.handleCardClick = this.handleCardClick.bind(this);
@@ -20,7 +16,6 @@ class App extends React.Component {
     this.setState({
       item: newItem
     });
->>>>>>> 86a41fa0f6b6b0c927d054e73942f8466869bd88
   }
 
   render() {
