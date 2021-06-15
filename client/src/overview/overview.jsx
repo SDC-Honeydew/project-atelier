@@ -15,23 +15,24 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'product': sampleData
+      product: sampleData
     };
   }
 
   // componentDidMount() {
   //   this.getOneProduct();
+
   // }
 
   getOneProduct() {
     axios({
-      method: 'get',
+      method: 'GET',
       url: '/r-data',
     })
       .then(res => {
         this.setState({
           product: res.data
-        });
+        }, console.log('this',this.state.product));
       })
       .catch(err => console.log(err, 'whyyyyy'));
 
@@ -62,7 +63,7 @@ class Overview extends React.Component {
             slogan = {this.state.product.slogan}
           />
         </div>
-        {/* <button onClick={() => this.getOneProduct()}>Button</button> */}
+        <button onClick={() => this.getOneProduct()}>Button</button>
       </div>
     );
   }

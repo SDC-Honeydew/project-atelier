@@ -159,13 +159,13 @@ Overview
   position: absolute;
   z-index: 2;
   top: 50%;
-  left: 10%;
+  left: 3%;
 }
 .overview-image-gallery-right-arrow {
   position: absolute;
   z-index: 2;
   top: 50%;
-  right: 5%;
+  right: 3%;
 }
 .overview-image-gallery-enlarge-button {
   position: absolute;

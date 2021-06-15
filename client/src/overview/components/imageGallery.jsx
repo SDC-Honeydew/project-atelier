@@ -34,15 +34,22 @@ class ImageGallery extends React.Component {
     }
     if (this.state.zoom) {
       var zoom = !this.state.zoom;
-      var expand = !this.state.zoom;
-      this.setState({
-        expand, zoom
-      });
-    } else if (this.state.expand) {
-      var zoom = !this.state.zoom;
+      //var expand = !this.state.zoom;
       this.setState({
         zoom
       });
+    } else if (this.state.expand) {
+      if(e.target.className.includes('button')) {
+        var expand = !this.state.expand;
+        this.setState({
+          expand
+        })
+      } else {
+        var zoom = !this.state.zoom;
+        this.setState({
+          zoom
+        });
+      }
     } else {
       var expand = !this.state.expand;
       this.setState({
@@ -87,7 +94,7 @@ class ImageGallery extends React.Component {
         }
         {!this.state.zoom &&
           <button
-            onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>Make Bigger</button>
+            onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>[]</button>
         }
       </div>
     );

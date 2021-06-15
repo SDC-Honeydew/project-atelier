@@ -37,13 +37,13 @@ module.exports = {
       .catch(err => console.log(err));
   },
   getModuleInfo: (callback) => {
-    var relevantInfo = {};
+    var relevantInfo;
     axios({
       method: 'GET',
       url: BASE_URL,
       headers: AUTH,
       params: {
-        page: 1,
+        page: 4,
         count: 1
       }
     })
