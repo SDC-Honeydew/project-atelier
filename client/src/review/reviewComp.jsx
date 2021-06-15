@@ -16,11 +16,13 @@ const ReviewComp = (props) => (
       <h6 className="card-subtitle mb-2 text-muted">{props.result.summary}</h6>
     </div>
     <div className='review-card-body-area'>
-      <p className="card-text">
+      <div className="card-text">
         {props.result.body}
-        {props.result.photos.map(photo => <img src={photo.url} />)}
-        {props.result.recommend && <div>✅ I recommend this item</div>}
-      </p>
+        <br />
+        {props.result.photos.map(photo => <img src={photo.url} width="100px" height="100px" />)}
+        <br />
+        {props.result.recommend && <p>✅ I recommend this item</p>}
+      </div>
 
     </div>
     <div className='review-card-response-area'>

@@ -19,7 +19,7 @@ const Star = (props) => {
         value={props.index}
         className="review-stars_radio-input"
         onClick={changeGrade}
-      />
+        required />
       ★
     </label>
   );
@@ -27,7 +27,7 @@ const Star = (props) => {
 
 const StarRatingInput = (props) => {
   const [gradeIndex, setGradeIndex] = useState();
-  const GRADES = ['Poor', 'Fair', 'Good', 'Very good', 'Excellent'];
+  const GRADES = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
   const activeStar = {
     color: '#f8ce0b'
   };
@@ -35,13 +35,13 @@ const StarRatingInput = (props) => {
   const changeGradeIndex = (index) => {
     setGradeIndex(index);
     if (props.onClick) {
-      props.onClick(index);
+      props.onClick(Number(index) + 1);
     }
   };
 
   return (
     <div className="review-star-container">
-      <p className="review-star-result">{GRADES[gradeIndex] ? GRADES[gradeIndex] : 'You didn\'t review yet'}</p>
+      <h6 className="review-star-result">{GRADES[gradeIndex] ? GRADES[gradeIndex] : 'You didn\'t review yet'}</h6>
       <div className="review-star-inputs">
         {
           GRADES.map((grade, index) => (

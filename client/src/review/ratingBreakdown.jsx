@@ -26,7 +26,7 @@ const RatingBreakdown = (props) => {
   }, new Array(5).fill(0));
 
   return (
-    <div>
+    <div style={{ width: '400px', marginLeft: '50px' }}>
       <div className='review-grid-rating-container'>
         <div className='review-rating-digit-area'>
           <h1>{avgRating}</h1>
@@ -36,11 +36,11 @@ const RatingBreakdown = (props) => {
         </div>
       </div>
       <p>{recommend * 100}% recommend this product</p>
-      <ProgressBar text='5 Star' percentage={ratingDistribution[4] / count * 100} />
-      <ProgressBar text='4 Star' percentage={ratingDistribution[3] / count * 100} />
-      <ProgressBar text='3 Star' percentage={ratingDistribution[2] / count * 100} />
-      <ProgressBar text='2 Star' percentage={ratingDistribution[1] / count * 100} />
-      <ProgressBar text='1 Star' percentage={ratingDistribution[0] / count * 100} />
+      <ProgressBar text='5 Star' percentage={ratingDistribution[4] / count * 100} onClick={props.addStarFilter} />
+      <ProgressBar text='4 Star' percentage={ratingDistribution[3] / count * 100} onClick={props.addStarFilter} />
+      <ProgressBar text='3 Star' percentage={ratingDistribution[2] / count * 100} onClick={props.addStarFilter} />
+      <ProgressBar text='2 Star' percentage={ratingDistribution[1] / count * 100} onClick={props.addStarFilter} />
+      <ProgressBar text='1 Star' percentage={ratingDistribution[0] / count * 100} onClick={props.addStarFilter} />
     </div>
   );
 };
