@@ -3,18 +3,96 @@ import '@testing-library/jest-dom';
 import App from '../client/src/app.jsx';
 import React from 'react';
 import RelatedProducts from '../client/src/related/relatedProducts.jsx';
+import RelatedList from '../client/src/related/relatedList.jsx';
+import ProductCard from '../client/src/related/productCard.jsx';
 
-describe('Related component', () => {
+var products = [
+  {
+    'id': 11,
+    'name': 'Air Minis 250',
+    'category': 'Basketball Shoes',
+    'original_price': '0',
+    'image': 'urlplaceholder/style_1_photo_number.jpg',
+    'avgReview': 4.3,
+    'features': [
+      {
+        'feature': 'Sole',
+        'value': 'Rubber'
+      },
+      {
+        'feature': 'Material',
+        'value': 'FullControlSkin'
+      }
+    ]
+  },
+  {
+    'id': 14,
+    'name': 'Air Moonis 250',
+    'category': 'Soccer Shoes',
+    'original_price': '350',
+    'sale_price': '300',
+    'image': 'urlplaceholder/style_1_photo_number.jpg',
+    'avgReview': 4.3,
+    'features': [
+      {
+        'feature': 'Sole',
+        'value': 'Wood'
+      },
+      {
+        'feature': 'Color',
+        'value': 'White'
+      }
+    ]
+  }
+];
+
+afterEach(cleanup);
+
+describe('Related Products List', () => {
   test('it renders', () => {
-    render(<RelatedProducts />);
+    render(<RelatedList />);
     expect(screen.getByText('RELATED PRODUCTS')).toBeInTheDocument();
+  });
+
+  test('Each card will show information for single product', () => {
+    render(<RelatedList />);
+    var cards = document.getElementsByClassName('related_productCard');
+    expect(cards.length).toEqual(1);
   });
 });
 
-// Related Product Cards
-// The related product lists will consist of cards.  Each card will display the information for a single product.
 
-// The card itself will be clickable. Clicking the card will navigate to the detail page for that product.
+describe('Product card', () => {
+  test('It will render info for a single product', () => {
+    render(<ProductCard productInfo={products[0]}/>);
+    expect(screen.queryByText('Air Moonis 250')).not.toBeInTheDocument();
+  });
+
+  test('It will show the product name', () => {
+    render(<ProductCard productInfo={products[0]}/>);
+    expect(screen.getByText('Air Minis 250')).toBeInTheDocument();
+  });
+
+  test('It will show the price/sale price', () => {
+    render(<ProductCard productInfo={products[1]}/>);
+    expect(screen.getByText('$300')).toBeInTheDocument();
+    const salePrice = document.getElementsByClassName('related_sale');
+    expect(salePrice[0].innerHTML).toBe('$350');
+  });
+
+  test('It will show the category', () => {
+    render(<ProductCard productInfo={products[1]}/>);
+    expect(screen.getByText('Soccer Shoes')).toBeInTheDocument();
+  });
+
+  test('It will show display a preview image', () => {
+    render(<ProductCard productInfo={products[1]}/>);
+    const productImage = document.getElementsByClassName('related_productCardImage');
+    expect(productImage[0].src).toBe('http://localhost/urlplaceholder/style_1_photo_number.jpg');
+  });
+
+
+});
 
 // 1.4.1.1.  Product Information
 // The following information will appear on the card.  This information will all be read-only and will not have any interactivity associated.
