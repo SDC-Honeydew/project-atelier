@@ -51,6 +51,8 @@ class Overview extends React.Component {
           <ImageGallery
             photos={this.state.product.styles[this.state.currentStyleIndex].photos}
             i={this.state.currentStyleIndex}
+            key={this.state.currentStyleIndex}
+            setMainImg={this.setCurrentStyleIndex}
           />
           <div className='overview-right-col'>
             <ProductInformation
@@ -63,7 +65,10 @@ class Overview extends React.Component {
               currentStyleIndex={this.state.currentStyleIndex}
               setCurrentStyleIndex={this.setCurrentStyleIndex}
             />
-            <AddToCart data={this.state.product.styles}/>
+            <AddToCart
+              data={this.state.product.styles}
+              i={this.state.currentStyleIndex}
+              key={this.state.currentStyleIndex}/>
           </div>
         </div>
         <div className='overview-bottom-row'>

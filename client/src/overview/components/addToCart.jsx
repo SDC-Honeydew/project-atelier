@@ -62,7 +62,7 @@ class AddToCart extends React.Component {
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
           <Size
-            data={this.props.data[0].skus}
+            data={this.props.data[this.props.i].skus}
             setSize={this.setProduct}
             size={this.state.size}
             openSizeDropdown={this.state.openSizeDropdown}
