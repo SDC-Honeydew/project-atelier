@@ -77,15 +77,16 @@ class ImageGallery extends React.Component {
       //   ))}
       // </div>;
     } else if (!this.state.zoom) {
-      thumbnails = <div className='overview-thumbnails'>
-        {this.state.thumbnailImgs.slice(0, 6).map((img, key) => (
-          <img
-            onClick={(e) => this.setMainImg(e, key, img.url)}
-            className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-            src={'https://static.vecteezy.com/system/resources/thumbnails/000/581/851/small/icon0-vector-104-01.jpg'}>
-          </img>
-        ))}
-      </div>;
+      thumbnails = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg} expanded={true} />;
+      // thumbnails = <div className='overview-thumbnails'>
+      //   {this.state.thumbnailImgs.slice(0, 6).map((img, key) => (
+      //     <img
+      //       onClick={(e) => this.setMainImg(e, key, img.url)}
+      //       className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+      //       src={'https://static.vecteezy.com/system/resources/thumbnails/000/581/851/small/icon0-vector-104-01.jpg'}>
+      //     </img>
+      //   ))}
+      // </div>;
     }
 
 
