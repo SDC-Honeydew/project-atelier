@@ -46,14 +46,14 @@ class AddToCart extends React.Component {
     var openQuantityDropdown = !this.state.openQuantityDropdown;
     this.setState({
       quantity, openQuantityDropdown
-    }, console.log(this.state));
+    });
   }
 
   setSelectedQuantity(selectedQuantity) {
     var openQuantityDropdown = !this.state.openQuantityDropdown;
     this.setState({
       selectedQuantity, openQuantityDropdown
-    }, console.log(this.state))
+    });
   }
 
   render() {

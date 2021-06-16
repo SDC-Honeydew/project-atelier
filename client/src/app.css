@@ -88,6 +88,26 @@ Overview
   z-index: 1;
   top: 0px;
 }
+/********************
+
+Overview Product Info
+
+*********************/
+
+.overview-productInfo-sale-ogPrice {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.overview-productInfo-sale-salePrice {
+  font-style: bold;
+  color: red;
+}
+
+.overview-productInfo-priceContainer {
+  display: flex;
+  flex-direction: row;
+}
 
 
 /*Overview Image Gallery*/

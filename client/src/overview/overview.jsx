@@ -9,6 +9,7 @@ import ProductDescription from './components/productDescription.jsx';
 
 import sampleData from './sampleRelevantData.json';
 import caroselData from './caroselData.json';
+import sizeData from './sizeData.json';
 
 
 
@@ -16,7 +17,7 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: caroselData,
+      product: sizeData,
       currentStyleIndex: 0
     };
 
@@ -59,7 +60,7 @@ class Overview extends React.Component {
             <ProductInformation
               category={this.state.product.category}
               name={this.state.product.name}
-              price={this.state.product.styles[this.state.currentStyleIndex].original_price}
+              price={this.state.product.styles[this.state.currentStyleIndex]}
             />
             <StyleSelector
               styles={this.state.product.styles}
