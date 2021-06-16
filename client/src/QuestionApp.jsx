@@ -5,7 +5,8 @@ import Search from './Search.jsx';
 import MoreQuestions from './MoreQuestions.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import TOKEN from '../../config.js'
-import getQuestions from '../../serverHelper.js'
+import getQuestions from '../../APIrequests/getQuestions.js'
+import getAnswers from '../../APIrequests/getAnswers.js'
 
 
 class QuestionApp extends React.Component {
@@ -15,11 +16,19 @@ class QuestionApp extends React.Component {
     this.state = {
       questionList: [],
       page: 1,
-      count: 5
+      count: 5,
+      moreQuestions: false,
+      voteQ: 0,
+      voteA: 0,
+      reported: false
     }
+    this.getProductQuestions = this.getProductQuestions.bind(this)
+    this.getAnswersToQuestion = this.getAnswersToQuestion.bind(this)
+    this.handleMoreQuestions = this.handleMoreQuestions.bind(this)
+    this.onClickHelpful = this.onClickHelpful.bind(this)
   }
 
-  filter (term) {
+  filter(term) {
 
   }
 
@@ -28,19 +37,88 @@ class QuestionApp extends React.Component {
   }
 
   getProductQuestions() {
-    getQuestions(this.props.product_id, this.state.page, this.state.count, (result) => {
-      var sortedQuestions = result.results.sort((a,b) => {
-        return a.question_helpfulness - b.question_helpfulness
-      })
-      // var desc = (a,b) => {
-      //   return a.question_helpfulness - b.question_helpfulness
-      // }
+    console.log(this.props.product_id, 'prod id')
 
-      // var sortedQuestions = props.questionList.sort(desc)
+    return getQuestions(this.props.product_id, this.state.page, this.state.count)
+    .then(result => {
+      console.log('here')
+      console.log('in getQuestions.then')
+      return result.data.results.sort((a,b) => {
+        return b.question_helpfulness - a.question_helpfulness
+      })
+    })
+    .then(sortedQs => {
+      console.log('SQ', sortedQs[0].answers)
+      console.log('SQ', sortedQs[0])
+
+
+      return sortedQs.map(questionObj => {
+        var answerArr = Object.values(questionObj.answers)
+        var sortedAns = answerArr.sort((a,b) => {
+          return b.helpfulness - a.helpfulness
+        })
+        questionObj["answers"] = sortedAns
+
+        // var promise = this.getAnswersToQuestion(questionObj.question_id)
+        // Promise.all([promise]).then(answers => {
+        //   console.log('answers:', answers)
+        //   questionObj["answers"] = answers
+
+        // })
+        return questionObj
+      })
+
+
+    })
+    .then(quests => {
+      console.log("in quests")
+      return this.setState({
+        questionList: quests
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    console.log('here;', sortedQuestions)
+
+  }
+
+  getAnswersToQuestion(questionID) {
+    return getAnswers(questionID, this.state.page, this.state.count)
+    .then(result => {
+      return result.data.results.sort((a,b) => {
+        return b.helpfulness - a.helpfulness
+      })
+    }).then(result => {
+      console.log('done in getAnswers', result)
+      return result
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  handleMoreQuestions() {
+
       this.setState({
-        questionList: sortedQuestions
-      });
-    });
+        moreQuestions: true
+      })
+
+  }
+  onClickHelpful(q) {
+    var updateHelper = function(arr, quest) {
+      console.log('updateHelper:', arr, quest)
+      let foundEl = arr.find(element => element.question_body === quest.question_body)
+      foundEl.question_helpfulness = foundEl.question_helpfulness + 1
+      return arr
+    }
+    if(this.state.voteQ < 1) {
+      var retArr = updateHelper(this.state.questionList, q)
+    }
+
+    this.setState({
+      list: retArr,
+      voteQ: 1
+    })
   }
 
 
@@ -48,16 +126,16 @@ class QuestionApp extends React.Component {
     return (
       <div>
         <h1> QUESTIONS & ANSWERS </h1>
-        <nav className="navbar">
+        <nav className="qa-navbar">
           <div>
             <Search search={this.search}/>
           </div>
         </nav>
         <div>
-          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id}/>
+          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} onClickHelpful={this.onClickHelpful}/>
         </div>
         <div>
-          <MoreQuestions />
+          <MoreQuestions questionList={this.state.questionList} onClick={this.handleMoreQuestions}/>
         </div>
 
         <div>

@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./client/src/index.jsx",
+  entry: ['babel-polyfill', "./client/src/index.jsx"],
   mode: "development",
   output: {
     path: __dirname + "/client/dist",
@@ -10,8 +10,8 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {presets: ["@babel/preset-env", "@babel/preset-react"]}
+        loader: "babel-loader"
+        // options: {presets: ["@babel/preset-env", "@babel/preset-react"], plugins: ["@babel/plugin-transform-runtime"]}
       },
       {
         test: /\.css$/,
