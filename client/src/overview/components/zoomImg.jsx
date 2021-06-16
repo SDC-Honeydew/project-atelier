@@ -12,15 +12,13 @@ class ZoomImg extends React.Component {
     var clientX = e.clientX - e.target.offsetLeft;
     var clientY = e.clientY - e.target.offsetTop;
 
-    var mWidth = e.target.offsetWidth;
-    var mHeight = e.target.offsetHeight;
+    var mWidth = e.target.offsetWidth + 100;
+    var mHeight = e.target.offsetHeight + 100;
 
     clientX = clientX / mWidth * 100;
     clientY = clientY / mHeight * 100;
 
     zoomImg.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2.5)`;
-
-    //zoomImg.style.transform = 'translate(-50%, -50%) scale(2.5)'
   }
 
   render() {
@@ -34,17 +32,8 @@ class ZoomImg extends React.Component {
         </img>
       </figure>
 
-    )
+    );
   }
 }
-
-// const ZoomImg = (props) => (
-//   <figure className='overview-image-gallery-zoom-container'>
-//               <img
-//                 src={props.src}
-//                 className='overview-image-gallery-img-zoom'>
-//               </img>
-//             </figure>
-// )
 
 export default ZoomImg

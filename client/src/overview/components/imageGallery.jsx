@@ -84,12 +84,6 @@ class ImageGallery extends React.Component {
         }
         {this.state.zoom &&
         <ZoomImg src={this.state.mainImg} />
-            // <figure className='overview-image-gallery-zoom-container'>
-            //   <img
-            //     src={this.state.mainImg}
-            //     className='overview-image-gallery-img-zoom'>
-            //   </img>
-            // </figure>
         }
 
         {!this.state.zoom &&
