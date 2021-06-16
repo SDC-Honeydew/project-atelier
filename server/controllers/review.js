@@ -15,6 +15,6 @@ module.exports = {
       }
     })
       .then(reviews => res.send(reviews.data))
-      .catch(err => console.log(err));
+      .catch(err => console.log('err'));
   }
 };

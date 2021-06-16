@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ProductCard from './productCard.jsx';
 import axios from 'axios';
 
@@ -63,7 +62,7 @@ class RelatedList extends React.Component {
         <h6>RELATED PRODUCTS</h6>
         <div id='related_relatedList'>
           {products.map((product) =>
-            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick}/>
+            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} />
           )}
         </div>
       </div>

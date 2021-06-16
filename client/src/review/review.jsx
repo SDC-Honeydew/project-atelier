@@ -1,10 +1,10 @@
 import React from 'react';
 import ReviewList from './reviewList.jsx';
 import RatingBreakdown from './ratingBreakdown.jsx';
-import ReviewSort from './reviewSort.jsx';
 import reviewData from '../../../reviewSampleData.json';
 import ProductBreakdown from './productBreakdown.jsx';
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 class Review extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class Review extends React.Component {
     $.ajax({
       method: 'GET',
       url: '/review',
-      data: { id: 22122 },
+      data: { id: this.props.id },
       dataType: 'json',
       success: (data) => {
         this.setState({ data });
@@ -34,6 +34,8 @@ class Review extends React.Component {
           <div className='review-list-area'><ReviewList data={this.state.data} /></div>
           <div className='review-ratingbreakdown-area'><RatingBreakdown data={this.state.data} /></div>
           <div className='review-productbreakdown-area'><ProductBreakdown /></div>
+          <Link to='/?product=22122' >clicko</Link>
+
         </div>
       </div>
     );

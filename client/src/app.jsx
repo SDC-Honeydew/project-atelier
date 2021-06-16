@@ -1,8 +1,11 @@
 import React from 'react';
-import RelatedProducts from './related/relatedProducts.jsx';
-import Review from './review/review.jsx';
-import ProductOverview from './overview/overview.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
+<<<<<<< HEAD
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -31,4 +34,16 @@ class App extends React.Component {
 }
 
 export default App;
+=======
+import Home from './home.jsx';
+>>>>>>> c46236d9e0a223d1c26cd0c16e01b6da24c58440
 
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
+  );
+}
