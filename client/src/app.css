@@ -2,7 +2,66 @@
   color: blue;
 }
 
- .review-rating-text {
+/****************RELATED PRODUCTS WIDGET*****************/
+
+#related_relatedDiv {
+  background-color: rgb(0, 255, 157);
+}
+
+#related_relatedProducts{
+  background-color:cornflowerblue;
+  height: 300px;
+}
+
+#related_relatedList {
+  display: grid;
+  grid-template-areas:
+  'product product product product product';
+  grid-gap: 10px;
+  grid-template-rows: 300px;
+  padding: 10px;
+}
+
+.related_details{
+  margin: 0;
+}
+
+.related_productCard {
+  position: relative;
+  top: 0;
+  width: 175px;
+  height: 250px;
+  border: solid black;
+  float: left;
+}
+
+.related_productCardImage{
+  position: relative;
+  top: 0;
+  max-height: 120px;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+}
+
+.related_icon{
+  position: absolute;
+  top: 2px;
+  left: 135px;
+  width: 30px;
+  z-index: 10;
+}
+
+.related_sale{
+  color: red;
+  text-decoration: line-through;
+}
+
+/******************************************************/
+
+.review-rating-text {
   float: left;
   width: 4rem;
 
