@@ -11,12 +11,11 @@ const Question = (props) => {
       {console.log("inQ")}
       <div className="qa-question-body" >Q: {props.question.question_body}</div>
       <button onClick={() => props.onClickHelpful(props.question)}> Helpful? <u>Yes</u> ({props.question.question_helpfulness})</button>
-      <button> <u>Add Answer</u> </button>
+      <button> <u>Add Answer</u> </button><br></br>
+      <br></br>
     </div>
     <div className="qa-answer">
-      <div> A:
-        <AnswerList answers={props.question.answers}/>
-      </div>
+      <div>A: <AnswerList answers={props.question.answers} onClickHelpful={props.onClickHelpful}/></div>
     </div>
   </div>
   )

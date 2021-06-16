@@ -10,10 +10,10 @@ const AnswerList = (props) => {
   // if (!props.moreQuestions) {
   // else {
     return(
-    <div className="question-list">
+    <div className="qa-answer-list">
       {console.log('inLIST', props.answers)}
-        <Answer answer={props.answers[0]} />
-        <Answer answer={props.answers[1]} />
+      <Answer answer={props.answers[0]} onClickHelpful={props.onClickHelpful}/>
+      <Answer answer={props.answers[1]} onClickHelpful={props.onClickHelpful}/>
     </div>
   )
 

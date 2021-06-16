@@ -10,18 +10,13 @@ const Answer = (props) => {
   return(
 
   <div>
+    {props.answer.body}
     <div>
-      {console.log('in Answer:', props.answer)}
-      {props.answer.body}
-
+      by {props.answer.answerer_name}, {new Date(props.answer.date).toDateString()} {'|'} <button onClick={() => props.onClickHelpful(props.answer)}> Helpful? <u>Yes</u> ({props.answer.helpfulness})</button><br></br>
+      <br></br>
     </div>
-    <div>
-      by {props.answer.answerer_name}, {new Date(props.answer.date).toDateString()} {'|'} {'Helpful'}
-
-    </div>
-
   </div>
-)
-  }
+  )
+}
 
 export default Answer

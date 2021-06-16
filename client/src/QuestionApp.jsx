@@ -104,11 +104,16 @@ class QuestionApp extends React.Component {
       })
 
   }
-  onClickHelpful(q) {
-    var updateHelper = function(arr, quest) {
-      console.log('updateHelper:', arr, quest)
-      let foundEl = arr.find(element => element.question_body === quest.question_body)
-      foundEl.question_helpfulness = foundEl.question_helpfulness + 1
+  onClickHelpful(q, type) {
+    var updateHelper = function(arr, item) {
+      if(type === 'question') {
+        let foundEl = arr.find(element => element.question_body === item.question_body)
+        foundEl.question_helpfulness = foundEl.question_helpfulness + 1
+      }
+      if(type === 'answer') {
+        let foundEl = arr.answers.find(element => element.answers.body === item.body)
+        foundEl.question_helpfulness = foundEl.question_helpfulness + 1
+      }
       return arr
     }
     if(this.state.voteQ < 1) {
