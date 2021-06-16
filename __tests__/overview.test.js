@@ -45,7 +45,7 @@ describe('Overview Component', () => {
       let imageGallery = render(<ImageGallery photos={photos} i={0}/>);
 
       expect(imageGallery.getAllByRole('img').length).toEqual(photos.length + 1);
-      expect(imageGallery.getAllByRole('button').length).toEqual(3);
+      expect(imageGallery.getAllByRole('button').length).toEqual(2);
     });
 
   });
