@@ -1,5 +1,6 @@
 import React from 'react';
-import ZoomImg from './zoomImg.jsx'
+import ZoomImg from './zoomImg.jsx';
+import ThumbnailCarousel from './thumbnailCarousel.jsx'
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -18,10 +19,6 @@ class ImageGallery extends React.Component {
     this.setMainImg = this.setMainImg.bind(this);
     this.expandImg = this.expandImg.bind(this);
   }
-
-  // componentDidUpdate() {
-  //   //console.log('imagegallery',this.state)
-  // }
 
   setMainImg(e, i, imgUrl) {
     e.preventDefault();
@@ -43,7 +40,7 @@ class ImageGallery extends React.Component {
         zoom
       });
     } else if (this.state.expand) {
-      if(e.target.className.includes('button')) {
+      if (e.target.className.includes('button')) {
         var expand = !this.state.expand;
         this.setState({
           expand
@@ -64,29 +61,24 @@ class ImageGallery extends React.Component {
 
   }
 
-//need state for first and last picture
-//display right arrow on fist img
-//display left arrow on last img
-//display both other wise
-
-
   render() {
 
     let thumbnails;
 
     if (!this.state.zoom && !this.state.expand) {
-      thumbnails = <div className='overview-thumbnails'>
-        {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
-          <img
-            onClick={(e) => this.setMainImg(e, key)}
-            className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-            src={img.url}>
-          </img>
-        ))}
-      </div>;
+      thumbnails = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg}/>
+      // thumbnails = <div className='overview-thumbnails'>
+      //   {this.state.thumbnailImgs.slice(0, 6).map((img, key) => (
+      //     <img
+      //       onClick={(e) => this.setMainImg(e, key)}
+      //       className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+      //       src={img.url}>
+      //     </img>
+      //   ))}
+      // </div>;
     } else if (!this.state.zoom) {
       thumbnails = <div className='overview-thumbnails'>
-        {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
+        {this.state.thumbnailImgs.slice(0, 6).map((img, key) => (
           <img
             onClick={(e) => this.setMainImg(e, key, img.url)}
             className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
@@ -95,43 +87,26 @@ class ImageGallery extends React.Component {
         ))}
       </div>;
     }
+
+
     return (
-      <div
-        // style={{backgroundImage: `url(${this.state.mainImg})`}}
-        onClick={(e) => this.expandImg(e)}
-        className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
+      <div onClick={(e) => this.expandImg(e)} className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
         {!this.state.zoom &&
             <img
               src={this.state.mainImg}
               className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}>
             </img>
         }
-        {this.state.zoom &&
-        <ZoomImg src={this.state.mainImg} />
-        }
+        {this.state.zoom && <ZoomImg src={this.state.mainImg} />}
         {thumbnails}
-        {/* {!this.state.zoom &&
-          <div className='overview-thumbnails'>
-            {!this.state.expand && this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
-              <img
-                onClick={(e) => this.setMainImg(e, key)}
-                className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-                src={img.url}>
-              </img>
-            ))}
-          </div>
-        } */}
-        {!this.state.zoom &&
-          <button
-            onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className='overview-image-gallery-left-arrow'>L</button>
+        {!this.state.zoom && this.state.mainImg !== this.state.firstImg &&
+          <button onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className='overview-image-gallery-left-arrow'>L</button>
+        }
+        {!this.state.zoom && this.state.mainImg !== this.state.lastImg &&
+          <button onClick={(e) => this.setMainImg(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'>R</button>
         }
         {!this.state.zoom &&
-          <button
-            onClick={(e) => this.setMainImg(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'>R</button>
-        }
-        {!this.state.zoom &&
-          <button
-            onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>[]</button>
+          <button onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>[]</button>
         }
       </div>
     );

@@ -8,6 +8,7 @@ import ProductInformation from './components/productInfo.jsx';
 import ProductDescription from './components/productDescription.jsx';
 
 import sampleData from './sampleRelevantData.json';
+import caroselData from './caroselData.json'
 
 
 
@@ -15,11 +16,11 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: sampleData,
+      product: caroselData,
       currentStyleIndex: 0
     };
 
-    this.getOneProduct();
+    //this.getOneProduct();
 
     this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this)
   }
