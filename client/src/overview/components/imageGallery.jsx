@@ -23,9 +23,9 @@ class ImageGallery extends React.Component {
   //   //console.log('imagegallery',this.state)
   // }
 
-  setMainImg(e, i) {
+  setMainImg(e, i, imgUrl) {
     e.preventDefault();
-    var mainImg = e.target.src || this.props.photos[i].url;
+    var mainImg = imgUrl || e.target.src || this.props.photos[i].url;
     this.setState({
       mainImg,
       currentIndex: i
@@ -71,6 +71,30 @@ class ImageGallery extends React.Component {
 
 
   render() {
+
+    let thumbnails;
+
+    if (!this.state.zoom && !this.state.expand) {
+      thumbnails = <div className='overview-thumbnails'>
+        {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
+          <img
+            onClick={(e) => this.setMainImg(e, key)}
+            className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+            src={img.url}>
+          </img>
+        ))}
+      </div>;
+    } else if (!this.state.zoom) {
+      thumbnails = <div className='overview-thumbnails'>
+        {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
+          <img
+            onClick={(e) => this.setMainImg(e, key, img.url)}
+            className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
+            src={'https://static.vecteezy.com/system/resources/thumbnails/000/581/851/small/icon0-vector-104-01.jpg'}>
+          </img>
+        ))}
+      </div>;
+    }
     return (
       <div
         // style={{backgroundImage: `url(${this.state.mainImg})`}}
@@ -85,10 +109,10 @@ class ImageGallery extends React.Component {
         {this.state.zoom &&
         <ZoomImg src={this.state.mainImg} />
         }
-
-        {!this.state.zoom &&
+        {thumbnails}
+        {/* {!this.state.zoom &&
           <div className='overview-thumbnails'>
-            {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
+            {!this.state.expand && this.state.thumbnailImgs.slice(0, 7).map((img, key) => (
               <img
                 onClick={(e) => this.setMainImg(e, key)}
                 className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
@@ -96,7 +120,7 @@ class ImageGallery extends React.Component {
               </img>
             ))}
           </div>
-        }
+        } */}
         {!this.state.zoom &&
           <button
             onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className='overview-image-gallery-left-arrow'>L</button>
