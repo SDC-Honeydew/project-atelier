@@ -21,6 +21,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>Hello World!</h1>
         <ProductOverview />
         <RelatedProducts item={this.state.item} handleCardClick={this.handleCardClick}/>
         <Review />

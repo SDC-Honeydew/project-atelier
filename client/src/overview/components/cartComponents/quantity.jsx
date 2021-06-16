@@ -32,7 +32,9 @@ class Quantity extends React.Component {
             {<ul className='overview-quantity-ul'>
               {
                 Array.from(Array(this.props.quantity).slice(0, 15), (e, i) => (
-                  <li onClick={() => this.props.setSelectedQuantity(i + 1)}key={i}>{i + 1}</li>
+                  <li
+                    onClick={() => this.props.setSelectedQuantity(i + 1)}
+                    key={i}>{i + 1}</li>
                 ))
               }
             </ul>

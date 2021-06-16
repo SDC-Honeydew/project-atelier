@@ -107,7 +107,6 @@ Overview
 }
 
 .overview-image-gallery-img-expand {
-  border: 1px solid red;
   position: absolute;
   margin: auto;
   top: 0;
@@ -122,8 +121,27 @@ Overview
   cursor: crosshair;
 }
 
+.overview-image-gallery-zoom-container {
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  cursor: zoom-out;
+}
+
+.overview-image-gallery-img-zoom {
+  max-width: 100%;
+  min-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: zoom-out;
+  pointer-events: none;
+}
+
 .overview-image-gallery-expand {
-  border: 1px solid red;
   margin: 0 auto;
   width: 100%;
   height: 100%;

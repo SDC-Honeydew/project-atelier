@@ -1,4 +1,5 @@
 import React from 'react';
+import ZoomImg from './zoomImg.jsx'
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class ImageGallery extends React.Component {
       zoom: false
 
     };
-    console.log(this.state)
     this.setMainImg = this.setMainImg.bind(this);
     this.expandImg = this.expandImg.bind(this);
   }
@@ -76,7 +76,22 @@ class ImageGallery extends React.Component {
         // style={{backgroundImage: `url(${this.state.mainImg})`}}
         onClick={(e) => this.expandImg(e)}
         className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
-          <img src={this.state.mainImg} className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}></img>
+        {!this.state.zoom &&
+            <img
+              src={this.state.mainImg}
+              className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}>
+            </img>
+        }
+        {this.state.zoom &&
+        <ZoomImg src={this.state.mainImg} />
+            // <figure className='overview-image-gallery-zoom-container'>
+            //   <img
+            //     src={this.state.mainImg}
+            //     className='overview-image-gallery-img-zoom'>
+            //   </img>
+            // </figure>
+        }
+
         {!this.state.zoom &&
           <div className='overview-thumbnails'>
             {this.state.thumbnailImgs.slice(0, 7).map((img, key) => (

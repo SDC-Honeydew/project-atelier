@@ -20,8 +20,6 @@ class StyleSelector extends React.Component {
   render() {
     return (
       <div>
-        {console.log('props passed to style selector',this.props.currentStyleIndex)}
-        {console.log('style view state', this.state.currentStyleIndex)}
         <h3>{`Style > ${this.props.styles[this.props.currentStyleIndex].name}`}</h3>
         <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
           {this.props.styles.map((style, i) => {
