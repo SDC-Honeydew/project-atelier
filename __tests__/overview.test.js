@@ -4,7 +4,7 @@ import Overview from '../client/src/overview/overview.jsx';
 import StyleSelector from '../client/src/overview/components/styleSelect.jsx';
 import ImageGallery from '../client/src/overview/components/imageGallery.jsx';
 import ProductInformation from '../client/src/overview/components/productInfo.jsx';
-import ProductDescription from '../client/src/overview/components/ProductDescription.jsx';
+import ProductDescription from '../client/src/overview/components/productDescription.jsx';
 import AddToCart from '../client/src/overview/components/addToCart.jsx';
 
 import React from 'react';
