@@ -1,6 +1,6 @@
 import React from 'react';
 import ZoomImg from './zoomImg.jsx';
-import ThumbnailCarousel from './thumbnailCarousel.jsx'
+import ThumbnailCarousel from './thumbnailCarousel.jsx';
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class ImageGallery extends React.Component {
     }
     if (this.state.zoom) {
       var zoom = !this.state.zoom;
-      //var expand = !this.state.zoom;
       this.setState({
         zoom
       });
@@ -44,7 +43,7 @@ class ImageGallery extends React.Component {
         var expand = !this.state.expand;
         this.setState({
           expand
-        })
+        });
       } else {
         var zoom = !this.state.zoom;
         this.setState({
@@ -56,37 +55,17 @@ class ImageGallery extends React.Component {
       this.setState({
         expand
       });
-
     }
-
   }
 
   render() {
 
-    let thumbnails;
+    let thumbnailCarousel;
 
     if (!this.state.zoom && !this.state.expand) {
-      thumbnails = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg}/>
-      // thumbnails = <div className='overview-thumbnails'>
-      //   {this.state.thumbnailImgs.slice(0, 6).map((img, key) => (
-      //     <img
-      //       onClick={(e) => this.setMainImg(e, key)}
-      //       className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-      //       src={img.url}>
-      //     </img>
-      //   ))}
-      // </div>;
+      thumbnailCarousel = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg}/>;
     } else if (!this.state.zoom) {
-      thumbnails = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg} expanded={true} />;
-      // thumbnails = <div className='overview-thumbnails'>
-      //   {this.state.thumbnailImgs.slice(0, 6).map((img, key) => (
-      //     <img
-      //       onClick={(e) => this.setMainImg(e, key, img.url)}
-      //       className={`overview-thumbnails-img${this.state.mainImg === img.url ? ' highlight' : ''}`}
-      //       src={'https://static.vecteezy.com/system/resources/thumbnails/000/581/851/small/icon0-vector-104-01.jpg'}>
-      //     </img>
-      //   ))}
-      // </div>;
+      thumbnailCarousel = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg} expanded={true} />;
     }
 
 
@@ -99,7 +78,7 @@ class ImageGallery extends React.Component {
             </img>
         }
         {this.state.zoom && <ZoomImg src={this.state.mainImg} />}
-        {thumbnails}
+        {thumbnailCarousel}
         {!this.state.zoom && this.state.mainImg !== this.state.firstImg &&
           <button onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className='overview-image-gallery-left-arrow'>L</button>
         }

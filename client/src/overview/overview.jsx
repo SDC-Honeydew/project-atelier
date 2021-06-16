@@ -8,7 +8,7 @@ import ProductInformation from './components/productInfo.jsx';
 import ProductDescription from './components/productDescription.jsx';
 
 import sampleData from './sampleRelevantData.json';
-import caroselData from './caroselData.json'
+import caroselData from './caroselData.json';
 
 
 
@@ -22,7 +22,7 @@ class Overview extends React.Component {
 
     //this.getOneProduct();
 
-    this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this)
+    this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this);
   }
 
   getOneProduct() {
@@ -33,7 +33,7 @@ class Overview extends React.Component {
       .then(res => {
         this.setState({
           product: res.data
-        }, console.log('this',this.state.product));
+        });
       })
       .catch(err => console.log(err, 'whyyyyy'));
 
