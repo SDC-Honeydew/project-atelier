@@ -42,7 +42,7 @@ class Quantity extends React.Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 

@@ -4,7 +4,6 @@ const Models = require('../models');
 
 
 module.exports = {
-<<<<<<< HEAD
   getOneProduct: (req, res) => {
     Models.products.getOneProduct((product) => {
       if (product) {
@@ -36,21 +35,20 @@ module.exports = {
         console.log('could not send info');
       }
     });
-=======
-  getOnePage: (req, res) => {
-    console.log(req.query);
-    axios({
-      method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products',
-      headers: {
-        'Authorization': `${config.TOKEN}`
-      },
-      params: {
-        page: 1
-      }
-    })
-      .then(products => res.send(products.data))
-      .catch(err => console.log('err'));
->>>>>>> c46236d9e0a223d1c26cd0c16e01b6da24c58440
   }
+  // getOnePage: (req, res) => {
+  //   console.log(req.query);
+  //   axios({
+  //     method: 'get',
+  //     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products',
+  //     headers: {
+  //       'Authorization': `${config.TOKEN}`
+  //     },
+  //     params: {
+  //       page: 1
+  //     }
+  //   })
+  //     .then(products => res.send(products.data))
+  //     .catch(err => console.log('err'));
+  // }
 };
