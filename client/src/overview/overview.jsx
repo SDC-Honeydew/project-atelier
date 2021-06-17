@@ -26,7 +26,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    this.getOneProduct(this.props.id)
+    this.getOneProduct(this.props.id);
   }
 
   getOneProduct(id) {
