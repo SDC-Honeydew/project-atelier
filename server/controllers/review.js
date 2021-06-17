@@ -4,6 +4,7 @@ const config = require('../../config.js');
 
 module.exports = {
   getReviewsForOneProduct: (req, res) => {
+    console.log(req.query.id);
     var data = {};
     axios({
       method: 'get',
@@ -43,7 +44,9 @@ module.exports = {
     data.rating = Number(data.rating);
     data.product_id = Number(data.product_id);
     data.recommend = data.recommend === 'on';
-
+    if (data.photos === undefined) {
+      data.photos = [];
+    }
     console.log(data);
     axios({
       method: 'post',
@@ -51,12 +54,45 @@ module.exports = {
       headers: {
         'Authorization': `${config.TOKEN}`
       },
-      params: data
+      data: data
     }).
       then(response => {
         console.log(response);
         res.end();
       });
+  },
+  markReviewHelpful: (req, res) => {
+    const review_id = Number(req.body.review_id);
+    console.log(review_id);
+
+    axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/helpful`,
+      headers: {
+        'Authorization': `${config.TOKEN}`
+      }
+    }).
+      then(response => {
+        console.log(response);
+      })
+      .catch(err => { console.log('err'); });
+  },
+
+  reportReview: (req, res) => {
+    const review_id = Number(req.body.review_id);
+    console.log(review_id);
+
+    axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/report`,
+      headers: {
+        'Authorization': `${config.TOKEN}`
+      }
+    }).
+      then(response => {
+        console.log(response);
+      })
+      .catch(err => { console.log('err'); });
   }
 
 };

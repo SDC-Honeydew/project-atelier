@@ -18,6 +18,14 @@ const sortBy = (type, data) => {
     data.sort((a, b) => {
       return Date.parse(b.date) - Date.parse(a.date);
     });
+    data.map((item, index) => { item.weight = index; });
+    data.sort((a, b) => {
+      return b.helpfulness - a.helpfulness;
+    });
+    data.map((item, index) => { item.weight = index + item.weight; });
+    data.sort((a, b) => {
+      return a.weight - b.weight;
+    });
   }
   if (type === 'helpful') {
     data.sort((a, b) => {
@@ -66,7 +74,7 @@ const ReviewList = (props) => {
           })}
       </div>
       <button className='btn btn-primary m-3 ' onClick={props.addReview}>ADD A REVIEW</button>
-      { numOfReview < filterData.length && <button className='btn btn-primary m-3 ' onClick={moreReviews}>MORE REVIEWS</button>}
+      {numOfReview < filterData.length && <button className='btn btn-primary m-3 ' onClick={moreReviews}>MORE REVIEWS</button>}
     </div >
   );
 };

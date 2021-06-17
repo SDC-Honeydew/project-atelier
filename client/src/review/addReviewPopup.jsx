@@ -18,7 +18,7 @@ const CharacteristicsInput = (props) => (
       props.ratings.map((rating, index) =>
       (<div style={{ width: '150px', fontSize: '12px' }} >
         <label htmlFor={rating} >{rating}</label><br />
-        <input type="radio" name={'characteristics[' + props.id + ']'} value={index} onClick={props.onClick} required />
+        <input type="radio" name={'characteristics[' + props.id + ']'} value={index + 1} onClick={props.onClick} required />
       </div>)
       )
     }
@@ -36,7 +36,7 @@ const ReviewSummaryInput = (props) => (
 const ReviewBodyInput = (props) => (
   <div className="input-group mb-3">
     <span className="input-group-text">Comments</span>
-    <textarea className="form-control" name='body' aria-label="With textarea" required></textarea>
+    <textarea className="form-control" name='body' aria-label="With textarea" minLength='50' maxLength='1000' required></textarea>
   </div>
 );
 

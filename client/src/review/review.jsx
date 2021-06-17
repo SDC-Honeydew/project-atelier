@@ -5,7 +5,6 @@ import reviewData from '../../../reviewSampleData.json';
 import ProductBreakdown from './productBreakdown.jsx';
 import AddReviewPopup from './addReviewPopup.jsx';
 import $ from 'jquery';
-import { Link } from 'react-router-dom';
 class Review extends React.Component {
   constructor(props) {
     super(props);
@@ -13,10 +12,9 @@ class Review extends React.Component {
       data: reviewData,
       sort: 'relevance',
       filters: [],
-      id: 22161,
       popup: false,
     };
-    this.getReviewsData(this.state.id);
+    this.getReviewsData(props.id);
     this.addStarFilter = this.addStarFilter.bind(this);
     this.removeStarFilter = this.removeStarFilter.bind(this);
     this.updateSortType = this.updateSortType.bind(this);
@@ -52,7 +50,7 @@ class Review extends React.Component {
   getReviewsData(id) {
     $.ajax({
       method: 'GET',
-      url: '/review',
+      url: '/reviews',
       data: { id: this.props.id },
       dataType: 'json',
       success: (data) => {
@@ -81,7 +79,7 @@ class Review extends React.Component {
             <ProductBreakdown data={this.state.data.meta} />
           </div>
         </div>
-        <AddReviewPopup trigger={this.state.popup} close={this.togglePopup} id={this.state.id} />
+        <AddReviewPopup trigger={this.state.popup} close={this.togglePopup} id={this.props.id} />
       </div >
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarRating, StarRatingInput } from './starRating.jsx';
+import StarRating from './starRating.jsx';
 import ProgressBar from './progressBar.jsx';
 
 

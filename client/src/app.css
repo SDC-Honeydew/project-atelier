@@ -143,8 +143,8 @@
 
 
 
-.review-header-area { grid-area: header; margin-left: 200px; margin-right:200px}
-.review-list-area { grid-area: list;margin-right:200px}
+.review-header-area { grid-area: header; margin-left: 200px; margin-right:100px}
+.review-list-area { grid-area: list;margin-right:200px;}
 .review-ratingbreakdown-area {grid-area: rating;margin-left: 200px;margin-right:20px; }
 .review-productbreakdown-area {grid-area: product;margin-left: 200px;margin-right:20px;}
 
@@ -155,8 +155,8 @@
   'rating  list list list list'
   'product  list list list list';
   grid-gap: 10px;
-  grid-template-rows: 5% 35% 60%;
-  grid-template-columns: 30% 70% 0% 0% 0%;
+  grid-template-rows: 10px 300px 300px;
+  grid-template-columns: 600px 800px 0% 0% 0%;
   padding: 10px;
 }
 
@@ -226,4 +226,8 @@
 
 .review-char-input {
   text-align: center;
+}
+
+.review-hand {
+  cursor: pointer;
 }

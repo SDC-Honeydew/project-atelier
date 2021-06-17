@@ -35,7 +35,7 @@ const StarRatingInput = (props) => {
   const changeGradeIndex = (index) => {
     setGradeIndex(index);
     if (props.onClick) {
-      props.onClick(Number(index) + 1);
+      props.onClick(Number(index));
     }
   };
 
@@ -46,7 +46,7 @@ const StarRatingInput = (props) => {
         {
           GRADES.map((grade, index) => (
             <Star
-              index={index}
+              index={index + 1}
               changeGradeIndex={changeGradeIndex}
               style={gradeIndex >= index ? activeStar : { color: '#ccc' }}
             />
