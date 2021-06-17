@@ -14,10 +14,10 @@ const QuestionList = (props) => {
     <div className="question-list">
       {console.log('inLIST expecting:', props.questionList[0])}
       {console.log('inLIST', Object.values(props.questionList[0].answers))}
-        <Question question={props.questionList[0]} onClickHelpful={props.onClickHelpful}/>
-        <Question question={props.questionList[1]} onClickHelpful={props.onClickHelpful}/>
-        <Question question={props.questionList[2]} onClickHelpful={props.onClickHelpful}/>
-        <Question question={props.questionList[3]} onClickHelpful={props.onClickHelpful}/>
+        <Question question={props.questionList[0]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA}/>
+        <Question question={props.questionList[1]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA}/>
+        <Question question={props.questionList[2]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA}/>
+        <Question question={props.questionList[3]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA}/>
     </div>
     )
   }
@@ -27,7 +27,7 @@ const QuestionList = (props) => {
       <div className="question-list">
         {props.questionList.map(question => {
           {console.log('one')}
-          return <Question question={question} onClickHelpful={props.onClickHelpful}/>
+          return <Question question={question} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA}/>
           })}
       </div>
     )

@@ -1,18 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+import Home from './home.jsx';
 
-  render() {
-    return (
-      <h1 id='test'>Hello World!</h1>
-    )
-  }
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
+  );
 }
-
-export default App;
-
