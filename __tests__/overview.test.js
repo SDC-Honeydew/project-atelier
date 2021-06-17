@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Overview from '../client/src/overview/overview.jsx';
+import ProductOverview from '../client/src/overview/overview.jsx';
 import StyleSelector from '../client/src/overview/components/styleSelect.jsx';
 import ImageGallery from '../client/src/overview/components/imageGallery.jsx';
 import ProductInformation from '../client/src/overview/components/productInfo.jsx';
@@ -21,11 +21,11 @@ afterEach(cleanup);
 describe('Overview Component', () => {
   describe('Testing Main Component', () => {
     test('it renders', () => {
-      render(<Overview />);
+      render(<ProductOverview />);
       expect(screen.getByTestId('overview')).toBeInTheDocument();
     });
     test('Loads five sub components', () => {
-      render(<Overview />);
+      render(<ProductOverview />);
 
       expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
       expect(screen.getByTestId('image-gallery')).toBeInTheDocument();
