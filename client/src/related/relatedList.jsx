@@ -49,11 +49,6 @@ class RelatedList extends React.Component {
     this.refreshItemList();
   }
 
-  componentDidUpdate() {
-    this.refreshItemList();
-  }
-
-
   render() {
     console.log('current products:', this.state.products);
     const products = this.state.products;

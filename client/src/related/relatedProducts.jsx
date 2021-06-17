@@ -7,9 +7,6 @@ class RelatedProducts extends React.Component {
     this.state = {};
   }
 
-  getNewProduct() {
-    window.location.replace('/?product=22122');
-  }
 
   render() {
     console.log('current item in relatedProduct component', this.props.item);
@@ -17,7 +14,6 @@ class RelatedProducts extends React.Component {
       <div id="related_relatedDiv">
         <RelatedList item={this.props.item} handleCardClick={this.props.handleCardClick} />
         <OutfitList />
-        <button onClick={this.getNewProduct} >click</button>
       </div>
     );
   }

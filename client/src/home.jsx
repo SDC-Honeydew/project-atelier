@@ -10,11 +10,15 @@ class Home extends React.Component {
     this.state = { id };
   }
 
+  getNewProduct(id) {
+    window.location.replace(`/?product=${id}`);
+  }
+
   render() {
     return (
       <div>
         <ProductOverview />
-        <RelatedProducts />
+        <RelatedProducts item={this.state.id} handleCardClick={this.getNewProduct}/>
         <Review id={this.state.id} />
       </div>
     );
