@@ -28,7 +28,7 @@ class ProductOverview extends React.Component {
   getOneProduct(id) {
     axios({
       method: 'GET',
-      url: '/r-data',
+      url: '/overview',
       params: {id}
     })
       .then(res => {

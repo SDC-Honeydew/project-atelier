@@ -11,13 +11,15 @@ class AddToCart extends React.Component {
       quantity: null,
       selectedQuantity: null,
       openSizeDropdown: false,
-      openQuantityDropdown: false
+      openQuantityDropdown: false,
+      outOfStock: false
     };
     this.setProduct = this.setProduct.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
     this.closeQuantityDropdown = this.closeQuantityDropdown.bind(this);
     this.setSelectedQuantity = this.setSelectedQuantity.bind(this);
+    this.openSizeDropdown = this.openSizeDropdown.bind(this);
   }
 
   closeDropdown() {
@@ -25,6 +27,13 @@ class AddToCart extends React.Component {
     this.setState({
       openSizeDropdown
     });
+  }
+
+  openSizeDropdown() {
+    var openSizeDropdown = true;
+    this.setState({
+      openSizeDropdown
+    })
   }
 
   closeQuantityDropdown() {
@@ -57,6 +66,15 @@ class AddToCart extends React.Component {
   }
 
   render() {
+    var addToCartButton;
+    if (this.state.size === 'Select Size') {
+      addToCartButton =
+        <button
+          className='overview-addToCart-button'
+          onClick={() => this.openSizeDropdown()}>Add to Cart
+        </button>
+      ;
+    }
     return (
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
@@ -79,7 +97,8 @@ class AddToCart extends React.Component {
           />
         </div>
         <div className='overview-btns-row-2'>
-          <button className='overview-addToCart-button'>Add to Cart</button>
+          {addToCartButton}
+          {/* <button className='overview-addToCart-button'>Add to Cart</button> */}
           {/* <button>Star</button> */}
         </div>
       </div>
