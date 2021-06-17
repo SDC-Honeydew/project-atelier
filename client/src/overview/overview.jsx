@@ -17,16 +17,19 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: sizeData,
+      product: {},
       currentStyleIndex: 0
     };
-
-    //this.getOneProduct();
+    //this.getOneProduct(this.props.id)
 
     this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this);
   }
 
-  getOneProduct() {
+  componentDidMount() {
+    this.getOneProduct(this.props.id)
+  }
+
+  getOneProduct(id) {
     axios({
       method: 'GET',
       url: '/r-data',
@@ -47,7 +50,9 @@ class Overview extends React.Component {
   }
 
   render() {
-    return (
+    var productOverview;
+    if (this.state.product.styles) {
+      productOverview =
       <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
           <ImageGallery
@@ -81,6 +86,11 @@ class Overview extends React.Component {
         </div>
         <button onClick={() => this.getOneProduct()}>Button</button>
       </div>
+    } else {
+      productOverview = <div>Loading...</div>;
+    }
+    return (
+      productOverview
     );
   }
 }
