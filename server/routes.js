@@ -3,9 +3,12 @@ var router = require('express').Router();
 
 router.get('/overview', controllers.products.getRelevantInfo);
 
-router.get('/related', controllers.related.getRelatedProducts);
+router.get('/reviews', controllers.review.getReviewsForOneProduct);
 
-router.get('/review', controllers.review.getReviewsForOneProduct);
+router.post('/reviews', controllers.review.addReview);
 
+router.put('/reviews/helpful', controllers.review.markReviewHelpful);
+
+router.put('/reviews/report', controllers.review.reportReview);
 
 module.exports = router;
