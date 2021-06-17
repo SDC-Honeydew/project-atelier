@@ -79,7 +79,7 @@ class AddToCart extends React.Component {
           />
         </div>
         <div className='overview-btns-row-2'>
-          {(this.state.size && this.state.selectedQuantity) && (<button className='overview-addToCart-button'>Add to Cart</button>)}
+          <button className='overview-addToCart-button'>Add to Cart</button>
           {/* <button>Star</button> */}
         </div>
       </div>
