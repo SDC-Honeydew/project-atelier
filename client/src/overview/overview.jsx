@@ -13,23 +13,23 @@ import sizeData from './sizeData.json';
 
 
 
-class Overview extends React.Component {
+class ProductOverview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: sizeData,
+      product: sampleData,
       currentStyleIndex: 0
     };
-
-    //this.getOneProduct();
+    this.getOneProduct(this.props.id);
 
     this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this);
   }
 
-  getOneProduct() {
+  getOneProduct(id) {
     axios({
       method: 'GET',
       url: '/r-data',
+      params: {id}
     })
       .then(res => {
         this.setState({
@@ -79,10 +79,9 @@ class Overview extends React.Component {
             slogan = {this.state.product.slogan}
           />
         </div>
-        <button onClick={() => this.getOneProduct()}>Button</button>
       </div>
     );
   }
 }
 
-export default Overview;
+export default ProductOverview;
