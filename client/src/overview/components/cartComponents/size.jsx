@@ -12,23 +12,6 @@ class Size extends React.Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside);
-
-    var outOfStock = true;
-
-    Object.keys(this.props.data).map(sku => {
-      if (this.props.data[sku].quantity !== 0) {
-        outOfStock = false;
-        return;
-      }
-    });
-
-    this.setState({
-      outOfStock
-    });
-  }
-
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
@@ -42,15 +25,16 @@ class Size extends React.Component {
   render() {
     return (
       <div className='overview-size-container' data-testid='size-dropdown'ref={this.container}>
-        <button className='overview-size-button' onClick={() => this.props.setSize(`${this.props.size}`)}>{this.state.outOfStock ? 'OUT OF STOCK' : this.props.size}</button>
+        <button className='overview-size-button' onClick={() => this.props.setSize(`${this.props.size}`)}>{this.props.showCartButton ? this.props.size : 'OUT OF STOCK'}</button>
         {this.props.openSizeDropdown &&
           <div className='overview-size-dropdown'>
             <ul className='overview-size-ul'>
               {
                 Object.keys(this.props.data).map((sku, index) => {
                   if (this.props.data[sku].quantity !== 0) {
-                    return <li onClick={() => this.props.setSize(this.props.data[sku].size, this.props.data[sku].quantity, this.props.askForSizeSelection)}
-                    className='overview-image-gallery-dropdown-li'>{this.props.data[sku].size}</li>;
+                    return <li
+                      onClick={() => this.props.setSize(this.props.data[sku].size, this.props.data[sku].quantity, this.props.askForSizeSelection)}
+                      className='overview-image-gallery-dropdown-li'>{this.props.data[sku].size}</li>;
                   }
                 })
               }

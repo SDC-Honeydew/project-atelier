@@ -31,7 +31,6 @@ class AddToCart extends React.Component {
   }
 
   openSizeDropdown(e) {
-    console.log(e.target.className)
     var openSizeDropdown = true;
     var askForSizeSelection = false;
 
@@ -75,6 +74,16 @@ class AddToCart extends React.Component {
 
   render() {
     var addToCartButton;
+
+    var showCartButton = false;
+    //Determine where or not to show 'Add to Cart'
+    Object.keys(this.props.data[this.props.i].skus).map(sku => {
+      console.log(this.props.data[this.props.i].skus[sku].quantity)
+      if (this.props.data[this.props.i].skus[sku].quantity !== 0) {
+        return showCartButton = true;
+      }
+    });
+
     var selectSizeNotification =
       <p className='overview-image-gallery-askForSizeSelection'>Please select a size!</p>;
 
@@ -83,12 +92,10 @@ class AddToCart extends React.Component {
         <button
           className='overview-addToCart-button'
           onClick={(e) => this.openSizeDropdown(e)}>Add to Cart
-        </button>
-      ;
+        </button>;
     } else {
       addToCartButton =
-        <button
-          className='overview-addToCart-button'>Add to Cart</button>
+        <button className='overview-addToCart-button'>Add to Cart</button>;
     }
     return (
 
@@ -103,6 +110,7 @@ class AddToCart extends React.Component {
               openSizeDropdown={this.state.openSizeDropdown}
               closeSizeDropdown={this.closeDropdown}
               askForSizeSelection={this.state.askForSizeSelection}
+              showCartButton={showCartButton}
             />
           </div>
           <Quantity
@@ -116,9 +124,7 @@ class AddToCart extends React.Component {
           />
         </div>
         <div className='overview-btns-row-2'>
-          {addToCartButton}
-          {/* <button className='overview-addToCart-button'>Add to Cart</button> */}
-          {/* <button>Star</button> */}
+          {showCartButton && addToCartButton}
         </div>
       </div>
     );

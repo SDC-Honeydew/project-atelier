@@ -17,12 +17,15 @@ class ProductOverview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: sizeData,
+      product: {},
       currentStyleIndex: 0
     };
-    //this.getOneProduct(this.props.id);
 
     this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this);
+  }
+
+  componentDidMount() {
+    this.getOneProduct(id);
   }
 
   getOneProduct(id) {
