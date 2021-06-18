@@ -13,7 +13,7 @@ import sizeData from './sizeData.json';
 
 
 
-class Overview extends React.Component {
+class ProductOverview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,8 @@ class Overview extends React.Component {
   getOneProduct(id) {
     axios({
       method: 'GET',
-      url: '/r-data',
+      url: '/overview',
+      params: {id}
     })
       .then(res => {
         this.setState({
@@ -84,7 +85,6 @@ class Overview extends React.Component {
             slogan = {this.state.product.slogan}
           />
         </div>
-        <button onClick={() => this.getOneProduct()}>Button</button>
       </div>
     } else {
       productOverview = <div>Loading...</div>;
@@ -95,4 +95,4 @@ class Overview extends React.Component {
   }
 }
 
-export default Overview;
+export default ProductOverview;

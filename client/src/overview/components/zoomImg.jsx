@@ -36,4 +36,4 @@ class ZoomImg extends React.Component {
   }
 }
 
-export default ZoomImg
+export default ZoomImg;

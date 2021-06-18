@@ -12,7 +12,8 @@ class AddToCart extends React.Component {
       selectedQuantity: null,
       openSizeDropdown: false,
       openQuantityDropdown: false,
-      anyAvailableStock: true
+      askForSizeSelection: false,
+      outOfStock: false
     };
 
     //try updating inventory state here to pass to add to cart button
@@ -21,12 +22,25 @@ class AddToCart extends React.Component {
     this.setQuantity = this.setQuantity.bind(this);
     this.closeQuantityDropdown = this.closeQuantityDropdown.bind(this);
     this.setSelectedQuantity = this.setSelectedQuantity.bind(this);
+    this.openSizeDropdown = this.openSizeDropdown.bind(this);
   }
 
   closeDropdown() {
     var openSizeDropdown = false;
     this.setState({
       openSizeDropdown
+    });
+  }
+
+  openSizeDropdown(e) {
+    var openSizeDropdown = true;
+    var askForSizeSelection = false;
+
+    if (e.target.className.includes('button')) {
+      askForSizeSelection = true;
+    }
+    this.setState({
+      openSizeDropdown, askForSizeSelection
     });
   }
 
@@ -37,11 +51,12 @@ class AddToCart extends React.Component {
     });
   }
 
-  setProduct(size, quantity) {
+  setProduct(size, quantity, askForSizeSelection) {
     var openSizeDropdown = !this.state.openSizeDropdown;
+    var askForSizeSelection = false;
     var selectedQuantity = null;
     this.setState({
-      size, quantity, openSizeDropdown, selectedQuantity
+      size, quantity, openSizeDropdown, selectedQuantity, askForSizeSelection
     });
   }
 
@@ -61,31 +76,45 @@ class AddToCart extends React.Component {
 
   render() {
     var addToCartButton;
+
+    var showCartButton = false;
+    //Determine where or not to show 'Add to Cart'
+    Object.keys(this.props.data[this.props.i].skus).map(sku => {
+      console.log(this.props.data[this.props.i].skus[sku].quantity)
+      if (this.props.data[this.props.i].skus[sku].quantity !== 0) {
+        return showCartButton = true;
+      }
+    });
+
+    var selectSizeNotification =
+      <p className='overview-image-gallery-askForSizeSelection'>Please select a size!</p>;
+
     if (this.state.size === 'Select Size') {
       addToCartButton =
         <button
           className='overview-addToCart-button'
-          onClick={() => this.openSizeDropdown()}>Add to Cart
-        </button>
-      ;
+          onClick={(e) => this.openSizeDropdown(e)}>Add to Cart
+        </button>;
     } else {
       addToCartButton =
-        <button
-          className='overview-addToCart-button'
-          onClick={() => console.log('all good')}>Add to Cart
-        </button>
+        <button className='overview-addToCart-button'>Add to Cart</button>;
     }
     return (
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
-          <Size
-            data={this.props.data[this.props.i].skus}
-            setSize={this.setProduct}
-            size={this.state.size}
-            openSizeDropdown={this.state.openSizeDropdown}
-            closeSizeDropdown={this.closeDropdown}
-          />
+          <div className='overview-image-gallery-size-container'>
+            {this.state.askForSizeSelection && selectSizeNotification}
+            <Size
+              data={this.props.data[this.props.i].skus}
+              setSize={this.setProduct}
+              size={this.state.size}
+              openSizeDropdown={this.state.openSizeDropdown}
+              closeSizeDropdown={this.closeDropdown}
+              askForSizeSelection={this.state.askForSizeSelection}
+              showCartButton={showCartButton}
+            />
+          </div>
           <Quantity
             quantity={this.state.quantity}
             openQuantityDropdown={this.state.openQuantityDropdown}
@@ -97,8 +126,7 @@ class AddToCart extends React.Component {
           />
         </div>
         <div className='overview-btns-row-2'>
-          <button className='overview-addToCart-button'>Add to Cart</button>
-          {/* <button>Star</button> */}
+          {showCartButton && addToCartButton}
         </div>
       </div>
     );

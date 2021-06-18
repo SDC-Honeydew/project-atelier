@@ -59,7 +59,9 @@ Overview
 
 .overview-size-ul, .overview-quantity-ul {
   list-style: none;
-  background-color: white;
+  background-color: grey;
+  border: 1px solide black;
+  text-align: center;
 }
 
 .overview-size-dropdown, .overview-quantity-dropdown {
@@ -67,6 +69,11 @@ Overview
   top: 100%;
   left: 0;
   z-index: 2;
+}
+
+.overview-image-gallery-dropdown-li {
+  text-align: center;
+  border: 1px solid red;
 }
 
 .overview-styles-img {
@@ -140,6 +147,18 @@ Overview Product Info
   cursor: crosshair;
 }
 
+.overview-image-gallery-askForSizeSelection {
+  border: 1px solid black;
+  background-color: red;
+  z-index: 9000;
+  position: absolute;
+}
+
+.overview-image-gallery-size-container {
+  display: flex;
+  flex-direction: column;
+
+}
 .overview-image-gallery-zoom-container {
   width: 100%;
   height: 100%;
