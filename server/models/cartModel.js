@@ -10,9 +10,9 @@ module.exports = {
       method: 'POST',
       url: BASE_URL,
       headers: AUTH,
-      params: {sku_id}
+      data: {sku_id, count}
     })
-      .then(res => res.sendStatus(201))
+      .then(res => console.log(res.status))
       .catch(err => console.log('Error posting data: ', err))
   }
 }

@@ -18,6 +18,6 @@ module.exports = {
   addItemToCart: (req, res) => {
     var sku_id = Number(req.query.sku_id);
     var count = Number(req.query.count);
-    Models.cart.addItemToCart(sku_id);
+    Models.cart.addItemToCart(sku_id, count);
   }
 }

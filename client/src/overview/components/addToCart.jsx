@@ -41,11 +41,10 @@ class AddToCart extends React.Component {
   }
 
   addItemToCart(sku_id, count) {
-    console.log(sku_id, count)
     axios({
       method: 'POST',
       url: '/cart',
-      params: {sku_id}
+      params: {sku_id, count}
     })
       .then(res => console.log('posted'))
       .catch(err => console.log('ERROR', err))
