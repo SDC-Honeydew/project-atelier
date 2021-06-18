@@ -34,7 +34,8 @@ class Quantity extends React.Component {
                 Array.from(Array(this.props.quantity).slice(0, 15), (e, i) => (
                   <li
                     onClick={() => this.props.setSelectedQuantity(i + 1)}
-                    key={i}>{i + 1}</li>
+                    key={i}
+                    className='overview-image-gallery-dropdown-li'>{i + 1}</li>
                 ))
               }
             </ul>

@@ -12,6 +12,7 @@ class AddToCart extends React.Component {
       selectedQuantity: null,
       openSizeDropdown: false,
       openQuantityDropdown: false,
+      askForSizeSelection: false,
       outOfStock: false
     };
     this.setProduct = this.setProduct.bind(this);
@@ -29,11 +30,17 @@ class AddToCart extends React.Component {
     });
   }
 
-  openSizeDropdown() {
+  openSizeDropdown(e) {
+    console.log(e.target.className)
     var openSizeDropdown = true;
+    var askForSizeSelection = false;
+
+    if (e.target.className.includes('button')) {
+      askForSizeSelection = true;
+    }
     this.setState({
-      openSizeDropdown
-    })
+      openSizeDropdown, askForSizeSelection
+    });
   }
 
   closeQuantityDropdown() {
@@ -43,11 +50,12 @@ class AddToCart extends React.Component {
     });
   }
 
-  setProduct(size, quantity) {
+  setProduct(size, quantity, askForSizeSelection) {
     var openSizeDropdown = !this.state.openSizeDropdown;
+    var askForSizeSelection = false;
     var selectedQuantity = null;
     this.setState({
-      size, quantity, openSizeDropdown, selectedQuantity
+      size, quantity, openSizeDropdown, selectedQuantity, askForSizeSelection
     });
   }
 
@@ -67,25 +75,36 @@ class AddToCart extends React.Component {
 
   render() {
     var addToCartButton;
+    var selectSizeNotification =
+      <p className='overview-image-gallery-askForSizeSelection'>Please select a size!</p>;
+
     if (this.state.size === 'Select Size') {
       addToCartButton =
         <button
           className='overview-addToCart-button'
-          onClick={() => this.openSizeDropdown()}>Add to Cart
+          onClick={(e) => this.openSizeDropdown(e)}>Add to Cart
         </button>
       ;
+    } else {
+      addToCartButton =
+        <button
+          className='overview-addToCart-button'>Add to Cart</button>
     }
     return (
 
       <div data-testid='add-to-cart' className='overview-add-to-cart'>
         <div className='overview-btns-row-1'>
-          <Size
-            data={this.props.data[this.props.i].skus}
-            setSize={this.setProduct}
-            size={this.state.size}
-            openSizeDropdown={this.state.openSizeDropdown}
-            closeSizeDropdown={this.closeDropdown}
-          />
+          <div className='overview-image-gallery-size-container'>
+            {this.state.askForSizeSelection && selectSizeNotification}
+            <Size
+              data={this.props.data[this.props.i].skus}
+              setSize={this.setProduct}
+              size={this.state.size}
+              openSizeDropdown={this.state.openSizeDropdown}
+              closeSizeDropdown={this.closeDropdown}
+              askForSizeSelection={this.state.askForSizeSelection}
+            />
+          </div>
           <Quantity
             quantity={this.state.quantity}
             openQuantityDropdown={this.state.openQuantityDropdown}

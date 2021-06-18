@@ -17,10 +17,10 @@ class ProductOverview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: sampleData,
+      product: sizeData,
       currentStyleIndex: 0
     };
-    this.getOneProduct(this.props.id);
+    //this.getOneProduct(this.props.id);
 
     this.setCurrentStyleIndex = this.setCurrentStyleIndex.bind(this);
   }
