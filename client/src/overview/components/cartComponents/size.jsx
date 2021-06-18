@@ -33,7 +33,7 @@ class Size extends React.Component {
                 Object.keys(this.props.data).map((sku, index) => {
                   if (this.props.data[sku].quantity !== 0) {
                     return <li
-                      onClick={() => this.props.setSize(this.props.data[sku].size, this.props.data[sku].quantity, this.props.askForSizeSelection)}
+                      onClick={() => this.props.setSize(this.props.data[sku].size, this.props.data[sku].quantity, this.props.askForSizeSelection, sku)}
                       className='overview-image-gallery-dropdown-li'>{this.props.data[sku].size}</li>;
                   }
                 })
