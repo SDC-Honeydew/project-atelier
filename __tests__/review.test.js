@@ -2,14 +2,15 @@ import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from '../client/src/app.jsx';
 import React from 'react';
-import reviewData from '../reviewSampleData.json';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'regenerator-runtime';
 import '../client/src/app.css';
+import reviewData from '../reviewSampleData.json';
 
 import { StarRatingInput, StarRating } from '../client/src/review/starRating.jsx';
 import ReviewComp from '../client/src/review/reviewComp.jsx';
+import ReviewList from '../client/src/review/reviewList.jsx';
 configure({ adapter: new Adapter() });
 
 // Star Rating
@@ -149,3 +150,69 @@ describe('ReviewComp testing', () => {
     setTimeout(() => expect(yes.text()).toBe(`Yes(${testResult.helpfulness + 1})`));
   });
 });
+
+
+// Review List
+
+// The list can display all the reviews that have been submitted, check total number of reviews
+
+// The list should display 2 tiles at a time
+
+// If there are more reviews to display, the button should appear
+
+// If there are no more reviews to display, the button should no long appear
+
+// Click more reviews button should cause up to 2 additional reviews to appear.
+
+
+
+describe('ReviewList testing', () => {
+
+  test('The list can display all the reviews that have been submitted', () => {
+    let filters = [];
+    let wrapper = shallow(<ReviewList data={reviewData.reviews} filters={filters} />);
+    let moreReviewBtn = wrapper.find('.btn').at(1);
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('.btn').at(1);
+    moreReviewBtn.simulate('click');
+    const comps = wrapper.find('ReviewComp');
+    expect(comps).toHaveLength(5);
+  });
+
+  test('The list should display 2 tiles at a time', () => {
+    let filters = [];
+    let wrapper = shallow(<ReviewList data={reviewData.reviews} filters={filters} />);
+    let comps = wrapper.find('ReviewComp');
+    expect(comps).toHaveLength(2);
+    let moreReviewBtn = wrapper.find('.btn').at(1);
+    moreReviewBtn.simulate('click');
+    comps = wrapper.find('ReviewComp');
+    expect(comps).toHaveLength(4);
+  });
+
+  test('If there are more reviews to display, the button should appear, If there are no more reviews to display, the button should no long appear ', () => {
+    let filters = [];
+    let wrapper = shallow(<ReviewList data={reviewData.reviews} filters={filters} />);
+    let comps = wrapper.find('ReviewComp');
+    let moreReviewBtn = wrapper.find('.btn').at(1);
+    expect(moreReviewBtn.text()).toContain('MORE REVIEWS');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('.btn').at(1);
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('.btn').at(1);
+    expect(moreReviewBtn).toHaveLength(0);
+  });
+
+});
+
+// Sort options
+
+// Sort options should have Helpful, Newest, Relevance (done)
+
+// Can sort helpful properly (done)
+
+// Can sort Newest properly (done)
+
+// Can sort Relevance properly (done)
+
+// By default, the option should be in order of relevance (done)

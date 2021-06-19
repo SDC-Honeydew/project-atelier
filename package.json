@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --silent --coverage",
-    "test-dev": "jest --silent --coverage --watch",
+    "test-dev": "jest --silent --coverage --watchAll",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon server/index.js"
   },
