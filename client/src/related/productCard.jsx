@@ -4,14 +4,6 @@ import SalePrice from './salePrice.jsx';
 
 
 class ProductCard extends React.Component {
-  constructor(props) {
-    super(props);
-    //cardType
-    //productInfo
-    //onClick
-    this.state = {
-    };
-  }
 
   render() {
     var iconSrc, onIconClick;
@@ -21,16 +13,24 @@ class ProductCard extends React.Component {
       iconSrc = 'https://i.dlpng.com/static/png/6978437_preview.png';
     }
     return (
-      <div className="related_productCard" onClick={(event) => {
-        event.preventDefault();
-        this.props.handleCardClick(this.props.productInfo.id);
-      }}>
-        <img className='related_productCardImage' src={this.props.productInfo.image || 'https://static.thenounproject.com/png/1103191-200.png'}></img>
-        <img className='related_icon' src={iconSrc}></img>
-        <p className='related_details'>{this.props.productInfo.category}</p>
-        <p className='related_details'>{this.props.productInfo.name}</p>
-        <SalePrice original_price={this.props.productInfo.original_price} sale_price={this.props.productInfo.sale_price} />
-        <StarRating rating={this.props.productInfo.avgReview} />
+      <div className="related_productCard">
+        <img className='related_productCardImage' src={this.props.productInfo.image || 'https://static.thenounproject.com/png/1103191-200.png'} onClick={(event) => {
+          event.preventDefault();
+          this.props.handleCardClick(this.props.productInfo.id);
+        }}></img>
+        <img className='related_icon' src={iconSrc} onClick={(event) => {
+          event.preventDefault();
+          this.props.onStarClick();
+        }}></img>
+        <div className='related_details' onClick={(event) => {
+          event.preventDefault();
+          this.props.handleCardClick(this.props.productInfo.id);
+        }}>
+          <p>{this.props.productInfo.category}</p>
+          <p>{this.props.productInfo.name}</p>
+          <SalePrice original_price={this.props.productInfo.original_price} sale_price={this.props.productInfo.sale_price} />
+          <StarRating rating={this.props.productInfo.avgReview} />
+        </div>
       </div>
     );
   }

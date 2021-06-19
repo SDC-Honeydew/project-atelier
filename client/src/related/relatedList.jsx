@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
+import ComparisonModal from './comparisonModal.jsx';
 import axios from 'axios';
 
 class RelatedList extends React.Component {
@@ -25,14 +26,15 @@ class RelatedList extends React.Component {
             }
           ]
         }
-      ]
+      ],
+      showModal: false
     };
+    this.onStarClick = this.onStarClick.bind(this);
   }
 
   refreshItemList() {
     axios.get('/related', {
       params: {
-        // FIXME should pull item # based on current page
         item: this.props.item
       },
     }
@@ -49,6 +51,13 @@ class RelatedList extends React.Component {
     this.refreshItemList();
   }
 
+  onStarClick(event) {
+    console.log('you clicked a star');
+    this.setState({
+      showModal: true
+    });
+  }
+
   render() {
     console.log('current products:', this.state.products);
     const products = this.state.products;
@@ -57,8 +66,9 @@ class RelatedList extends React.Component {
         <h6>RELATED PRODUCTS</h6>
         <div id='related_relatedList'>
           {products.map((product) =>
-            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} />
+            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} onStarClick={this.onStarClick} />
           )}
+          <ComparisonModal showModal={this.state.showModal}/>
         </div>
       </div>
     );
