@@ -8,7 +8,13 @@ class ComparisonModal extends React.Component {
     if (!this.props.showModal) {
       return null;
     }
-    return <div>Hello Modal</div>;
+    return <div className='related_modal'>
+      <p>Hello Modal</p>
+      <p onClick={(event) => {
+        event.preventDefault();
+        this.props.closeModal();
+      }}>X</p>
+    </div>;
   }
 }
 

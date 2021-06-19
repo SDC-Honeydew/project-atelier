@@ -30,6 +30,7 @@ class RelatedList extends React.Component {
       showModal: false
     };
     this.onStarClick = this.onStarClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   refreshItemList() {
@@ -58,6 +59,13 @@ class RelatedList extends React.Component {
     });
   }
 
+  closeModal(event) {
+    console.log('you closed the modal');
+    this.setState({
+      showModal: false
+    });
+  }
+
   render() {
     console.log('current products:', this.state.products);
     const products = this.state.products;
@@ -66,9 +74,9 @@ class RelatedList extends React.Component {
         <h6>RELATED PRODUCTS</h6>
         <div id='related_relatedList'>
           {products.map((product) =>
-            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} onStarClick={this.onStarClick} />
+            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} onStarClick={this.onStarClick}/>
           )}
-          <ComparisonModal showModal={this.state.showModal}/>
+          <ComparisonModal showModal={this.state.showModal} closeModal={this.closeModal}/>
         </div>
       </div>
     );
