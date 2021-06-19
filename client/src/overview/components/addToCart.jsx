@@ -31,7 +31,6 @@ class AddToCart extends React.Component {
   }
 
   checkCart() {
-    console.log('button was clicked')
     axios({
       method: 'GET',
       url: '/cart'

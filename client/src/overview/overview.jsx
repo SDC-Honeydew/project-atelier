@@ -85,7 +85,7 @@ class ProductOverview extends React.Component {
             slogan = {this.state.product.slogan}
           />
         </div>
-      </div>
+      </div>;
     } else {
       productOverview = <div>Loading...</div>;
     }
