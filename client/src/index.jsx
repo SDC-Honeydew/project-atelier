@@ -8,11 +8,10 @@ import './app.css';
 
 
 
-// ReactDOM.render(<App />, document.getElementById('app'))
-
-
-ReactDOM.render(<QuestionApp product_id={'22122'}/>, document.getElementById('app'))
 
 
 
-// ReactDOM.render(<App />, document.getElementById('app'));
+
+
+
+ReactDOM.render(<App />, document.getElementById('app'));

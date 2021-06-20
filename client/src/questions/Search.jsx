@@ -4,34 +4,32 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: ''
+      searchTerm: ''
     }
     this.onChange = this.onChange.bind(this);
-    this.search = this.search.bind(this);
   }
 
   onChange (e) {
     this.setState({
-      term: e.target.value
+      searchTerm: e.target.value
     });
-    if(this.state.term.length > 2) {
-      this.props.filter(this.state.term)
+    if(this.state.searchTerm.length > 2) {
+      console.log('here in onChange')
+      this.props.searchFilter(this.state.searchTerm)
+    } else if(this.state.searchTerm.length < 2) {
+      this.props.searchFilter('clear')
     }
-  }
-
-  search() {
-    this.props.onSearch(this.state.term);
   }
 
   render() {
     return (
-    <div>
+    <div className="qa-search">
       <input
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={this.state.terms}
         onChange={this.onChange}/>
-      <button onClick={this.search}> Search </button>
+      <button className="qa-search-button" onClick={this.search}> Search </button>
     </div>)
   }
 }

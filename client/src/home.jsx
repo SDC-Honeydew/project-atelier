@@ -2,6 +2,8 @@ import React from 'react';
 import RelatedProducts from './related/relatedProducts.jsx';
 import Review from './review/review.jsx';
 import ProductOverview from './overview/overview.jsx';
+import QuestionApp from './questions/QuestionApp.jsx';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ class Home extends React.Component {
       <div>
         <ProductOverview />
         <RelatedProducts />
+        <QuestionApp product_id={this.state.id} name={'dress'}/>
         <Review id={this.state.id} />
       </div>
     );

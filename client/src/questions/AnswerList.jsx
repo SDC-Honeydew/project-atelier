@@ -11,11 +11,10 @@ const AnswerList = (props) => {
   // else {
     return(
     <div className="qa-answer-list">
-      {console.log('inLIST', props.answers)}
-      <Answer answer={props.answers[0]} onClickHelpfulA={props.onClickHelpfulA}/>
-      <Answer answer={props.answers[1]} onClickHelpfulA={props.onClickHelpfulA}/>
+      <Answer header={'A:'} answer={props.answers[0]} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported}/>
+      <Answer answer={props.answers[1]} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported}/>
     </div>
-  )
+    )
 
 }
 
