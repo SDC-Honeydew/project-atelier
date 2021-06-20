@@ -57,7 +57,7 @@ module.exports = {
         var currentProdStyles = responses[i].data.results;
         for (var style = 0; style < currentProdStyles.length; style++) {
           if (currentProdStyles[style]['default?'] === true) {
-            console.log('DEFAULT STYLE DATA FROM API //////////', currentProdStyles[style]);
+            // console.log('DEFAULT STYLE DATA FROM API //////////', currentProdStyles[style]);
             relatedProductData[i]['original_price'] = currentProdStyles[style]['original_price'];
             relatedProductData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
             relatedProductData[i].image = currentProdStyles[style].photos[0].url;
@@ -98,7 +98,7 @@ module.exports = {
           relatedProductData[i].avgReview = total / count;
         }
       }
-      console.log('related products after adding reviews', relatedProductData);
+      // console.log('related products after adding reviews', relatedProductData);
       res.send(relatedProductData);
 
     })).catch((err) => {
@@ -108,5 +108,24 @@ module.exports = {
 
     // do a request to reviews
     // add the average rating for that item to the object
+  },
+
+  getFeatures: (req, res) => {
+    console.log('item for features request:', req.query.item);
+    axios({
+      method: 'get',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.item}`,
+      headers: {
+        'Authorization': `${config.TOKEN}`
+      }
+    }).then((response) => {
+      // console.log('attempt to retrieve features', data);
+      res.send({
+        name: response.data.name,
+        features: response.data.features});
+    }).catch((err) => {
+      console.log('err retrieving current prod features from API', err);
+      res.sendStatus(502);
+    });
   }
 };

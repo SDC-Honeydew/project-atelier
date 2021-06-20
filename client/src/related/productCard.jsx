@@ -19,8 +19,12 @@ class ProductCard extends React.Component {
           this.props.handleCardClick(this.props.productInfo.id);
         }}></img>
         <img className='related_icon' src={iconSrc} onClick={(event) => {
+          var comparisonProd = {
+            name: this.props.productInfo.name,
+            features: this.props.productInfo.features
+          };
+          this.props.onStarClick(comparisonProd);
           event.preventDefault();
-          this.props.onStarClick();
         }}></img>
         <div className='related_details' onClick={(event) => {
           event.preventDefault();

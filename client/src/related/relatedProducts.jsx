@@ -4,12 +4,14 @@ import OutfitList from './outfitList.jsx';
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentProd: {}
+    };
   }
 
 
   render() {
-    console.log('current item in relatedProduct component', this.props.item);
+    // console.log('current item in relatedProduct component', this.props.item);
     return (
       <div id="related_relatedDiv">
         <RelatedList item={this.props.item} handleCardClick={this.props.handleCardClick} />

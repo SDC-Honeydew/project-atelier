@@ -54,6 +54,7 @@ describe('Related Products List', () => {
     expect(screen.getByText('RELATED PRODUCTS')).toBeInTheDocument();
   });
 
+  //consider refactoring to have products in related list component
   test('Each card will show information for single product', () => {
     render(<RelatedList />);
     var cards = document.getElementsByClassName('related_productCard');
