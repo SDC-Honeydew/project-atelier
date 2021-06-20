@@ -6,7 +6,8 @@ import ImageGallery from '../client/src/overview/components/imageGallery.jsx';
 import ProductInformation from '../client/src/overview/components/productInfo.jsx';
 import ProductDescription from '../client/src/overview/components/productDescription.jsx';
 import AddToCart from '../client/src/overview/components/addToCart.jsx';
-import ProductStyle from '../client/src/overview/components/productStyle.jsx'
+import ProductStyle from '../client/src/overview/components/productStyle.jsx';
+import ThumbnailCarousel from '../client/src/overview/components/thumbnailCarousel.jsx';
 
 import React from 'react';
 import sampleData from '../client/src/overview/sampleRelevantData.json';
@@ -20,7 +21,7 @@ configure({ adapter: new Adapter() });
 afterEach(cleanup);
 
 describe('Overview Component with Sample Data', () => {
-  describe('Image Gallery Component', () => {
+  describe('Image Gallery Component-normalData', () => {
     const wrapper = shallow(
       <ImageGallery
         photos={sampleData.styles[0].photos}
@@ -38,10 +39,23 @@ describe('Overview Component with Sample Data', () => {
     });
     test('Renders Thumbnail images', () => {
       const test = thumbnails.getElements();
-      expect(test[0].props.imgs.length).toEqual(sampleData.styles[0].photos.length)
+      expect(test[0].props.imgs.length).toEqual(sampleData.styles[0].photos.length);
     });
+    describe('Thumbnail Carousel Component-more than 7 thumbnail images', () => {
+      const wrapper = shallow(
+        <ThumbnailCarousel
+          imgs={carouselData.styles[0].photos}
+          mainImg={carouselData.styles[0].photos[0].url}
+        />
+      );
+      test('Renders no more than seven at a time', () => {
+        const renderedThumbnails = wrapper.find('.overview-thumbnails-img');
+        const availableThumbnails = carouselData.styles[0].photos.length;
 
-
+        expect(renderedThumbnails.length).toBeLessThanOrEqual(7);
+        expect(renderedThumbnails.length).toBeLessThan(availableThumbnails);
+      });
+    });
   });
 
   describe('Product Information Component', () => {
@@ -87,7 +101,7 @@ describe('Overview Component with Sample Data', () => {
         />
       );
       expect(productWrapper.find('p').length).toEqual(1);
-    })
+    });
   });
   describe('Add to Cart Component', () => {
     describe('Renderds using sampleData', () => {
@@ -131,7 +145,7 @@ describe('Overview Component with Sample Data', () => {
       const description = wrapper.find('.overview-productDescription-description');
 
       expect(slogan.text()).toBe(sampleData.slogan);
-      expect(description.text()).toBe(sampleData.description)
+      expect(description.text()).toBe(sampleData.description);
     });
   });
 });
