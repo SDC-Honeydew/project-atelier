@@ -30,10 +30,10 @@ const ReviewComp = (props) => {
       method: 'put',
       success: () => {
         console.log('success');
+        setMarkedHelpful(true);
+        props.result.helpfulness++;
       }
     });
-    setMarkedHelpful(true);
-    props.result.helpfulness++;
   };
 
   const reportReview = () => {
@@ -60,11 +60,13 @@ const ReviewComp = (props) => {
       <div className='review-card-rating-area'><StarRating rating={props.result.rating} /></div>
       <div className='review-card-user-area'>{props.result.reviewer_name + ', ' + props.result.date.split('T')[0]}</div>
       <div className='review-card-title-area'>
-        <h6 className="card-subtitle mb-2 text-muted">{props.result.summary}</h6>
+        <h6 className="card-subtitle mb-2 text-muted" maxLength={60}>{props.result.summary.substring(0, 60)}</h6>
       </div>
       <div className='review-card-body-area'>
         <div className="card-text">
-          {props.result.body.length > 250 && hidden ? props.result.body.substr(0, 250) + '...' : props.result.body}
+          <div className='review-body'>
+            {props.result.body.length > 250 && hidden ? props.result.body.substr(0, 250) + '...' : props.result.body}
+          </div>
           <br />
           {props.result.body.length > 250 && hidden ? <a className="card-link review-hand" onClick={showAllBody}>show more...</a> : ''}
           <br />
@@ -79,7 +81,7 @@ const ReviewComp = (props) => {
         Helpful?<a className="card-link review-hand" onClick={markReviewHelpful}> {props.result.helpfulness > 0 ? 'Yes(' + props.result.helpfulness + ')' : 'Yes'}</a>
         <a className="card-link review-hand" onClick={reportReview}>Report</a>
       </div>
-    </div>
+    </div >
   );
 };
 
