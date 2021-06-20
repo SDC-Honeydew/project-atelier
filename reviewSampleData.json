@@ -6,7 +6,7 @@
     "results": [
       {
         "review_id": 1,
-        "rating": 3.55,
+        "rating": 3,
         "summary": "I'm enjoying wearing these shades",
         "recommend": false,
         "response": null,
@@ -31,10 +31,22 @@
         "summary": "I am liking these glasses",
         "recommend": false,
         "response": "Glad you're enjoying the product!",
-        "body": "They are very dark. But that's good because I'm in very sunny spots",
+        "body": "Tad you're enjo",
+        "date": "2017-06-23T00:00:00.000Z",
+        "reviewer_name": "bigbrotherbenjamin",
+        "helpfulness": 10,
+        "photos": []
+      },
+      {
+        "review_id": 3,
+        "rating": 5,
+        "summary": "I am liking these glasses",
+        "recommend": false,
+        "response": "Glad you're enjoying the product!",
+        "body": "They are vethat's good because I'm in very sunny spots",
         "date": "2019-06-23T00:00:00.000Z",
         "reviewer_name": "bigbrotherbenjamin",
-        "helpfulness": 5,
+        "helpfulness": 2,
         "photos": []
       },
       {
@@ -43,22 +55,10 @@
         "summary": "I am liking these glasses",
         "recommend": false,
         "response": "Glad you're enjoying the product!",
-        "body": "They are very dark. But that's good because I'm in very sunny spots",
+        "body": "sdfasdfasdfasdefc",
         "date": "2019-06-23T00:00:00.000Z",
         "reviewer_name": "bigbrotherbenjamin",
-        "helpfulness": 5,
-        "photos": []
-      },
-      {
-        "review_id": 4,
-        "rating": 4,
-        "summary": "I am liking these glasses",
-        "recommend": false,
-        "response": "Glad you're enjoying the product!",
-        "body": "They are very dark. But that's good because I'm in very sunny spots",
-        "date": "2019-06-23T00:00:00.000Z",
-        "reviewer_name": "bigbrotherbenjamin",
-        "helpfulness": 5,
+        "helpfulness": 1,
         "photos": []
       },
       {
@@ -67,10 +67,10 @@
         "summary": "I am liking these glasses",
         "recommend": false,
         "response": "Glad you're enjoying the product!",
-        "body": "They are very dark. But that's good because I'm in very sunny spots",
-        "date": "2019-06-23T00:00:00.000Z",
+        "body": "They afdfdsafasfasdfasdfasfsadfasdffdsare very dark. But that's good fdsafbecause I'm in very sunny spots",
+        "date": "2018-06-23T00:00:00.000Z",
         "reviewer_name": "bigbrotherbenjamin",
-        "helpfulness": 5,
+        "helpfulness": 9,
         "photos": []
       }
     ]
@@ -78,9 +78,9 @@
   "meta": {
     "product_id": "2",
     "ratings": {
-      "2": 1,
+      "5": 1,
       "3": 1,
-      "4": 2
+      "4": 3
     },
     "recommended": {
       "0": 5

@@ -2,8 +2,8 @@ import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from '../client/src/app.jsx';
 import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import 'regenerator-runtime';
 import '../client/src/app.css';
 import reviewData from '../reviewSampleData.json';
@@ -11,6 +11,9 @@ import reviewData from '../reviewSampleData.json';
 import { StarRatingInput, StarRating } from '../client/src/review/starRating.jsx';
 import ReviewComp from '../client/src/review/reviewComp.jsx';
 import ReviewList from '../client/src/review/reviewList.jsx';
+import ReviewSort from '../client/src/review/reviewSort.jsx';
+import Review from '../client/src/review/review.jsx';
+import RatingBreakdown from '../client/src/review/ratingBreakdown.jsx';
 configure({ adapter: new Adapter() });
 
 // Star Rating
@@ -207,7 +210,7 @@ describe('ReviewList testing', () => {
 
 // Sort options
 
-// Sort options should have Helpful, Newest, Relevance (done)
+// Sort options should have Helpful, latest, Relevance (done)
 
 // Can sort helpful properly (done)
 
@@ -216,3 +219,236 @@ describe('ReviewList testing', () => {
 // Can sort Relevance properly (done)
 
 // By default, the option should be in order of relevance (done)
+
+describe('Sort options testings', () => {
+  test('Sort options should have Helpful, latest, Relevance, By default, the option should be in order of relevance', () => {
+    let filters = [];
+    let wrapper = shallow(<ReviewSort onChange={() => { }} />);
+    let reviewSort = wrapper.find('option');
+    expect(reviewSort).toHaveLength(3);
+    expect(reviewSort.at(0).text()).toBe('relevance');
+    expect(reviewSort.at(1).text()).toBe('helpful');
+    expect(reviewSort.at(2).text()).toBe('latest');
+  });
+
+  test('Sort options should have Helpful, latest, Relevance, By default, the option should be in order of relevance', () => {
+    let filters = [];
+    let wrapper = shallow(<ReviewSort onChange={() => { }} />);
+    let select = wrapper.find('select');
+    expect(select.find('option').at(0).text()).toBe('relevance');
+    expect(select.find('option').at(0).props().selected).toBe('selected');
+  });
+
+  test('Can sort helpful properly', () => {
+    let filters = [];
+    const wrapper = mount(<Review data={reviewData} />);
+    let sortedReviews = reviewData.reviews.results.slice();
+    sortedReviews.sort((a, b) => {
+      return b.helpfulness - a.helpfulness;
+    });
+    let select = wrapper.find('#review-sort-select');
+    select.find('option').at(0).instance().selected = false;
+    select.find('option').at(1).instance().selected = true;
+    select.find('option').at(2).instance().selected = false;
+    select.simulate('change');
+    let moreReviewBtn = wrapper.find('#review-morereview-btn');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    let reviewBodies = wrapper.find('.review-body');
+    expect(reviewBodies.at(0).text()).toBe(sortedReviews[0].body);
+    expect(reviewBodies.at(1).text()).toBe(sortedReviews[1].body);
+    expect(reviewBodies.at(2).text()).toBe(sortedReviews[2].body);
+    expect(reviewBodies.at(3).text()).toBe(sortedReviews[3].body);
+    expect(reviewBodies.at(4).text()).toBe(sortedReviews[4].body);
+  });
+
+
+  test('Can sort latest properly', () => {
+    let filters = [];
+    const wrapper = mount(<Review data={reviewData} />);
+    let sortedReviews = reviewData.reviews.results.slice();
+    sortedReviews.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date);
+    });
+    let select = wrapper.find('#review-sort-select');
+    select.find('option').at(0).instance().selected = false;
+    select.find('option').at(1).instance().selected = false;
+    select.find('option').at(2).instance().selected = true;
+    select.simulate('change');
+    let moreReviewBtn = wrapper.find('#review-morereview-btn');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    let reviewBodies = wrapper.find('.review-body');
+    expect(reviewBodies.at(0).text()).toBe(sortedReviews[0].body);
+    expect(reviewBodies.at(1).text()).toBe(sortedReviews[1].body);
+    expect(reviewBodies.at(2).text()).toBe(sortedReviews[2].body);
+    expect(reviewBodies.at(3).text()).toBe(sortedReviews[3].body);
+    expect(reviewBodies.at(4).text()).toBe(sortedReviews[4].body);
+  });
+
+  test('Can sort latest properly', () => {
+    let filters = [];
+    const wrapper = mount(<Review data={reviewData} />);
+    let sortedReviews = reviewData.reviews.results.slice();
+    sortedReviews.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date);
+    });
+    sortedReviews.map((item, index) => { item.weight = index; });
+    sortedReviews.sort((a, b) => {
+      return b.helpfulness - a.helpfulness;
+    });
+    sortedReviews.map((item, index) => { item.weight = index + item.weight; });
+    sortedReviews.sort((a, b) => {
+      return a.weight - b.weight;
+    });
+    let select = wrapper.find('#review-sort-select');
+    select.find('option').at(0).instance().selected = true;
+    select.find('option').at(1).instance().selected = false;
+    select.find('option').at(2).instance().selected = false;
+    select.simulate('change');
+    let moreReviewBtn = wrapper.find('#review-morereview-btn');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    moreReviewBtn.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    let reviewBodies = wrapper.find('.review-body');
+    expect(reviewBodies.at(0).text()).toBe(sortedReviews[0].body);
+    expect(reviewBodies.at(1).text()).toBe(sortedReviews[1].body);
+    expect(reviewBodies.at(2).text()).toBe(sortedReviews[2].body);
+    expect(reviewBodies.at(3).text()).toBe(sortedReviews[3].body);
+    expect(reviewBodies.at(4).text()).toBe(sortedReviews[4].body);
+  });
+
+});
+
+// ratingbreakdown
+
+// The average rating of the product should displayed
+
+// Breakdown is displayed properly for the product
+
+// Clicking on the breakdown for a star count will filterthe reviews list so that only reviewsof that rating display
+
+//The filters will be additive.
+
+//The filters will be toggled on and off with each click
+
+// Percentage of reviews that recommend the product is displayed properly
+
+
+describe('rating breakdown testing', () => {
+  let sortedReviews = reviewData.reviews.results.slice();
+  sortedReviews.sort((a, b) => {
+    return Date.parse(b.date) - Date.parse(a.date);
+  });
+  sortedReviews.map((item, index) => { item.weight = index; });
+  sortedReviews.sort((a, b) => {
+    return b.helpfulness - a.helpfulness;
+  });
+  sortedReviews.map((item, index) => { item.weight = index + item.weight; });
+  sortedReviews.sort((a, b) => {
+    return a.weight - b.weight;
+  });
+
+  let avgRating = reviewData.reviews.results.reduce((acc, review) => {
+    return acc + review.rating;
+  }, 0) / reviewData.reviews.count;
+  test('The average rating of the product should displayed', () => {
+    let wrapper = mount(<Review data={reviewData} />);
+    let avgRatingRender = wrapper.find('.review-rating-digit-area');
+    expect(avgRatingRender.text()).toBe(avgRating + '');
+  });
+
+  test('Clicking on the breakdown for a star count will filterthe reviews list so that only reviewsof that rating display---5 star', () => {
+    let wrapper = mount(<Review data={reviewData} />);
+    let reviewBodyFiveStar = sortedReviews.filter(review => review.rating === 5);
+    const fiveStar = wrapper.find('.review-rating-text').find('a').at(0);
+    fiveStar.simulate('click');
+    let reviewComps = wrapper.find('.review-body');
+    expect(reviewComps.length).toBe(reviewBodyFiveStar.length);
+    reviewBodyFiveStar.map((review, index) => {
+      expect(reviewComps.at(index).text()).toBe(review.body);
+    });
+  });
+
+  test('Clicking on the breakdown for a star count will filterthe reviews list so that only reviewsof that rating display and the filters will be additive.---4 star, 4 and 5 stars', () => {
+    let wrapper = mount(<Review data={reviewData} />);
+    let reviewBodyFourStar = sortedReviews.filter(review => review.rating === 4);
+    const fourStar = wrapper.find('.review-rating-text').find('a').at(1);
+    fourStar.simulate('click');
+    let moreReviewBtn = wrapper.find('#review-morereview-btn');
+    while (moreReviewBtn.get(0)) {
+      moreReviewBtn.simulate('click');
+      moreReviewBtn = wrapper.find('#review-morereview-btn');
+    }
+    let reviewComps = wrapper.find('.review-body');
+    expect(reviewComps.length).toBe(reviewBodyFourStar.length);
+    reviewBodyFourStar.map((review, index) => {
+      expect(reviewComps.at(index).text()).toBe(review.body);
+    });
+    const fiveStar = wrapper.find('.review-rating-text').find('a').at(0);
+    fiveStar.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    while (moreReviewBtn.get(0)) {
+      moreReviewBtn.simulate('click');
+      moreReviewBtn = wrapper.find('#review-morereview-btn');
+    }
+    reviewComps = wrapper.find('.review-body');
+    let reviewBodyFourFiveStars = sortedReviews.filter(review => review.rating === 4 || review.rating === 5);
+    expect(reviewComps.length).toBe(reviewBodyFourFiveStars.length);
+    reviewBodyFourFiveStars.map((review, index) => {
+      expect(reviewComps.at(index).text()).toBe(review.body);
+    });
+  });
+
+  test('The filters will be toggled on and off with each click', () => {
+    // filter by 4 star
+    let wrapper = mount(<Review data={reviewData} />);
+    let reviewBodyFourStar = sortedReviews.filter(review => review.rating === 4);
+    const fourStar = wrapper.find('.review-rating-text').find('a').at(1);
+    fourStar.simulate('click');
+    let moreReviewBtn = wrapper.find('#review-morereview-btn');
+    while (moreReviewBtn.get(0)) {
+      moreReviewBtn.simulate('click');
+      moreReviewBtn = wrapper.find('#review-morereview-btn');
+    }
+    let reviewComps = wrapper.find('.review-body');
+    expect(reviewComps.length).toBe(reviewBodyFourStar.length);
+    reviewBodyFourStar.map((review, index) => {
+      expect(reviewComps.at(index).text()).toBe(review.body);
+    });
+    // remove 4 star filter by click four star again
+    fourStar.simulate('click');
+    moreReviewBtn = wrapper.find('#review-morereview-btn');
+    while (moreReviewBtn.get(0)) {
+      moreReviewBtn.simulate('click');
+      moreReviewBtn = wrapper.find('#review-morereview-btn');
+    }
+    reviewComps = wrapper.find('.review-body');
+    expect(reviewComps.length).toBe(sortedReviews.length);
+    sortedReviews.map((review, index) => {
+      expect(reviewComps.at(index).text()).toBe(review.body);
+    });
+  });
+
+  test('Percentage of reviews that recommend the product is displayed properly', () => {
+    const ratingDistribution = sortedReviews.reduce((acc, curr) => {
+
+      let rating = Math.round(curr.rating);
+      if (rating > 5) { rating = 5; }
+      if (rating < 0) { rating = 0; }
+      acc[rating - 1] = acc[rating - 1] + 1;
+      return acc;
+    }, new Array(5).fill(0));
+    let percentages = ratingDistribution.map(rating => rating / sortedReviews.length * 100);
+    let wrapper = mount(<Review data={reviewData} />);
+    let ratingPercentages = wrapper.find('.review-rating-percentage');
+    percentages.map((percentage, index) => {
+      expect(ratingPercentages.at(percentages.length - index - 1).text()).toBe(percentage + '%');
+    });
+  });
+});
