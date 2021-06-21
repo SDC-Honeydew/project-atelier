@@ -31,7 +31,7 @@
   top: 0;
   width: 175px;
   height: 250px;
-  border: solid black;
+  border: solid black 1px;
   float: left;
   z-index: 0;
 }
@@ -61,7 +61,7 @@
 }
 
 .related_modal{
-  width: 300px;
+  width: 450px;
   background: white;
   visibility: visible;
   position: absolute;
@@ -69,6 +69,32 @@
   margin-left: 30%;
   margin-right: 30%;
   z-index: 15;
+  padding: 10px;
+  border: black solid 1px;
+  font-size: 12px;
+}
+
+.related_closeModal{
+  text-align: right;
+}
+
+.related_comparisonTable{
+  width: 100%;
+}
+
+.related_comparisonCurrent{
+  text-align: left;
+  width: 40%;
+}
+
+.related_comparisonFeature{
+  text-align: center;
+  width: 20%;
+}
+
+.related_comparisonCompare{
+  text-align: right;
+  width: 40%;
 }
 
 /******************************************************/
