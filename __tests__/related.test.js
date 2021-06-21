@@ -5,6 +5,7 @@ import React from 'react';
 import RelatedProducts from '../client/src/related/relatedProducts.jsx';
 import RelatedList from '../client/src/related/relatedList.jsx';
 import ProductCard from '../client/src/related/productCard.jsx';
+import ComparisonModal from '../client/src/related/comparisonModal.jsx';
 
 var products = [
   {
@@ -92,9 +93,37 @@ describe('Product card', () => {
     expect(productImage[0].src).toBe('http://localhost/urlplaceholder/style_1_photo_number.jpg');
   });
 
-
 });
 
+describe('Comparison Modal', () => {
+  test('The modal should be titled “Comparing”.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    expect(screen.getByText('COMPARING')).toBeInTheDocument();
+  });
+
+  test('All characteristics for both products will be combined and reconciled against one another.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+  });
+
+  test('If the characteristic has a specific value it should display.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+  });
+
+  test('If the characteristic is a fact such that it is ‘true’ for the given product, then the value should display as a checkmark.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+  });
+
+  test(' For any characteristics that do not apply to the product, the value should simply be left blank.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+  });
+
+
+
+});
 // 1.4.1.1.  Product Information
 // The following information will appear on the card.  This information will all be read-only and will not have any interactivity associated.
 // Product Category
