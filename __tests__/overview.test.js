@@ -1,5 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import renderer from 'react-test-renderer';
+
 import ProductOverview from '../client/src/overview/overview.jsx';
 import StyleSelector from '../client/src/overview/components/styleSelect.jsx';
 import ImageGallery from '../client/src/overview/components/imageGallery.jsx';
@@ -77,6 +79,8 @@ describe('Overview Component with Sample Data', () => {
       expect(price.length).toBe(1);
     });
   });
+
+
   describe('Style Selector Component', () => {
     const wrapper = shallow(
       <StyleSelector
@@ -147,5 +151,13 @@ describe('Overview Component with Sample Data', () => {
       expect(slogan.text()).toBe(sampleData.slogan);
       expect(description.text()).toBe(sampleData.description);
     });
+    test('Matches snapshot', () => {
+      const tree = renderer
+        .create(<ProductDescription description={sampleData.description} slogan ={sampleData.slogan}/>)
+        .toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
+
   });
 });
