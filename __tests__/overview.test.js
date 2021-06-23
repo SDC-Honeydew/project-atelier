@@ -151,13 +151,13 @@ describe('Overview Component with Sample Data', () => {
       expect(slogan.text()).toBe(sampleData.slogan);
       expect(description.text()).toBe(sampleData.description);
     });
-    test('Matches snapshot', () => {
-      const tree = renderer
-        .create(<ProductDescription description={sampleData.description} slogan ={sampleData.slogan}/>)
-        .toJSON();
+    // test('Matches snapshot', () => {
+    //   const tree = renderer
+    //     .create(<ProductDescription description={sampleData.description} slogan ={sampleData.slogan}/>)
+    //     .toJSON();
 
-      expect(tree).toMatchSnapshot();
-    });
+    //   expect(tree).toMatchSnapshot();
+    // });
 
   });
 });

@@ -20,7 +20,9 @@ class StyleSelector extends React.Component {
   render() {
     return (
       <div>
-        <h3>{`Style > ${this.props.styles[this.props.currentStyleIndex].name}`}</h3>
+        <div className='overview-styleSelector-style'>
+          <p className='overview-style'>Style ></p><p className='overview-style-title'> {   this.props.styles[this.props.currentStyleIndex].name}</p>
+        </div>
         <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
           {this.props.styles.map((style, i) => {
             return (
