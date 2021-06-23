@@ -11,6 +11,9 @@ class Size extends React.Component {
     this.container = React.createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
