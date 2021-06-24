@@ -36,9 +36,9 @@ class ThumbnailCarousel extends React.Component {
     } else {
       imgs = this.props.imgs.slice(this.state.start, this.state.start + 7).map((img, key) => (
         <img
-          onClick={(e) => this.props.setMainImg(e, key)}
+          onClick={(e) => this.props.setMainImg(e, key, img.url)}
           className={`overview-thumbnails-img${this.props.mainImg === img.url ? ' highlight' : ''}`}
-          src={img.url}>
+          src={img.thumbnail_url}>
         </img>
       ));
     }

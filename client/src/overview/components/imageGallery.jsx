@@ -73,6 +73,7 @@ class ImageGallery extends React.Component {
       <div onClick={(e) => this.expandImg(e)} className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
         {!this.state.zoom &&
             <img
+              rel='preload'
               src={this.state.mainImg}
               className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}>
             </img>
