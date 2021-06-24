@@ -110,7 +110,9 @@ class AddToCart extends React.Component {
     });
 
     var selectSizeNotification =
-      <p className='overview-image-gallery-askForSizeSelection'>Please select a size!</p>;
+    <div className='overview-image-gallery-popup-container'>
+      <span className='overview-image-gallery-askForSizeSelection'>Please select a size!</span>
+    </div>
 
     if (this.state.size === 'Select Size') {
       addToCartButton =

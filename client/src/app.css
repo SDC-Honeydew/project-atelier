@@ -190,11 +190,24 @@ Overview Image Gallery
   cursor: crosshair;
 }
 
+.overview-image-gallery-popup-container {
+  position: relative;
+  display: inline-block;
+}
+
 .overview-image-gallery-askForSizeSelection {
-  border: 1px solid black;
-  background-color: red;
-  z-index: 9000;
+  /* visibility: hidden; */
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
   position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
 }
 
 .overview-image-gallery-size-container {
@@ -258,6 +271,7 @@ Overview Image Gallery
   width: 60px;
   height: 60px;
 }
+
 .highlight {
   border-bottom: 3px solid black;
 }
