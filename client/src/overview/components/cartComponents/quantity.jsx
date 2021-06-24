@@ -24,9 +24,19 @@ class Quantity extends React.Component {
   }
 
   render() {
+    var quantityDownArrow;
+
+    if (this.props.size !== 'Select Size') {
+      quantityDownArrow = <span>&#8744;</span>;
+    } else {
+      quantityDownArrow = <span></span>;
+    }
     return (
       <div className='overview-quantity-container' data-testid='quantity-dropdown' ref={this.container}>
-        <button className='overview-quantity-button' onClick={() => this.props.setQuantity(this.props.quantity)}>{this.props.size === 'Select Size' ? '-' : this.props.size !== 'Select Size' && this.props.selectedQuantity ? this.props.selectedQuantity : '1'}</button>
+        <div className='overview-quantity-button' onClick={() => this.props.setQuantity(this.props.quantity)}>
+          <span className='overview-image-gallery-size-span'>{this.props.size === 'Select Size' ? '-' : this.props.size !== 'Select Size' && this.props.selectedQuantity ? this.props.selectedQuantity : '1'}</span>
+          {quantityDownArrow}
+        </div>
         {(this.props.openQuantityDropdown && this.props.size !== 'Select Size') && (
           <div className='overview-quantity-dropdown'>
             {<ul className='overview-quantity-ul'>
