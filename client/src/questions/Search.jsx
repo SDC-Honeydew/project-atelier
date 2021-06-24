@@ -28,7 +28,8 @@ class Search extends React.Component {
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         value={this.state.terms}
-        onChange={this.onChange}/>
+        onChange={this.onChange}
+        className="qa-search-input"/>
       <button className="qa-search-button" onClick={this.search}> Search </button>
     </div>)
   }

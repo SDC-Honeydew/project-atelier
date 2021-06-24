@@ -11,6 +11,7 @@ import getAnswers from '../../../APIrequests/getAnswers.js'
 import markQuestionHelpful from '../../../APIrequests/markQuestionHelpful.js'
 import markAnswerHelpful from '../../../APIrequests/markAnswerHelpful.js'
 import postQuestion from '../../../APIrequests/postQuestion.js'
+import postAnswer from '../../../APIrequests/postAnswer.js'
 
 class QuestionApp extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class QuestionApp extends React.Component {
       addAModalShow: false,
       productName: this.props.name,
       numQuestionsDisplayed: 2,
-      questionListLength: 0
+      questionListLength: 0,
+      displayedQuestionList: []
     }
     this.getProductQuestions = this.getProductQuestions.bind(this)
     this.handleMoreQuestions = this.handleMoreQuestions.bind(this)
@@ -39,6 +41,7 @@ class QuestionApp extends React.Component {
     this.addQuestion = this.addQuestion.bind(this)
     this.addAnswer = this.addAnswer.bind(this)
     this.setAddAModalShow = this.setAddAModalShow.bind(this)
+    this.reportAnswer = this.reportAnswer.bind(this)
   }
 
   searchFilter(searchTerm) {
@@ -49,7 +52,6 @@ class QuestionApp extends React.Component {
       return question.question_body.toLowerCase().includes(searchTerm.toLowerCase())
     })
     this.setState({questionList: filtered})
-
   }
 
   componentDidMount() {
@@ -84,17 +86,21 @@ class QuestionApp extends React.Component {
     .catch(err => {
       console.log(err)
     })
-
   }
-
   handleMoreQuestions() {
+      var questNum = this.state.numQuestionsDisplayed + 2
       this.setState({
-        moreQuestions: true
+        moreQuestions: true,
+        numQuestionsDisplayed: questNum
+      })
+      var slicedQList = this.state.questionList.slice(0, this.state.numQuestionsDisplayed)
+      this.setState({
+        displayedQuestionList: slicedQList
       })
   }
-  addQuestion(body, name, email) {
-    var data = {body: body, name: name, email: email, product_id: parseInt(this.props.product_id)}
-    return postQuestion(data)
+  addQuestion(body, name, email, photos, questionID) {
+    var data = {body: body, name: name, email: email, photos: photos}
+    return postAnswer(data, questionID)
     .then(result => {
       this.getProductQuestions()
     })
@@ -104,14 +110,14 @@ class QuestionApp extends React.Component {
   }
 
   addAnswer(body, name, email) {
-    // var data = {body: body, name: name, email: email, product_id: parseInt(this.props.product_id)}
-    // return postQuestion(data)
-    // .then(result => {
-    //   this.getProductQuestions()
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
+    var data = {body: body, name: name, email: email, product_id: parseInt(this.props.product_id)}
+    return postQuestion(data)
+    .then(result => {
+      this.getProductQuestions()
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
   onClickHelpful(q) {
     let foundQ = this.state.voteQ.find(element => element === q.question_id)
@@ -137,15 +143,16 @@ class QuestionApp extends React.Component {
         this.setState({ voteA: joined })
       })
   }
-  // onClickReported(answer) {
-  //   let foundA = this.state.voteA.find(element => element === a.id)
-  //   if(!foundA)
-  //     return answerReported(answer.id)
-  //     .then(result => {
-  //       var joined = this.state.voteA.concat(a.id);
-  //       this.setState({ : joined })
-  //     })
-  // }
+  reportAnswer(answer) {
+    console.log('in REPORTED', answer)
+    // let foundA = this.state.voteA.find(element => element === a.id)
+    // if(!foundA)
+    //   return answerReported(answer.id)
+    //   .then(result => {
+    //     var joined = this.state.voteA.concat(a.id);
+    //     // this.setState({ : joined })
+    //   })
+  }
   setAddQModalShow (boolean) {
     this.setState({
       addQModalShow: boolean
@@ -161,19 +168,15 @@ class QuestionApp extends React.Component {
       <div>
         <h1 className="qa-header"> QUESTIONS & ANSWERS </h1>
         <nav className="qa-navbar">
-          <div>
-            <Search searchFilter={this.searchFilter}/>
-          </div>
+          <Search searchFilter={this.searchFilter}/>
         </nav>
         <div>
-          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} onClickHelpful={this.onClickHelpful} onClickHelpfulA={this.onClickHelpfulA} reported={this.state.reported} setAddAModalShow={this.setAddAModalShow} show={this.state.addAModalShow} addAnswer={this.addAnswer}/>
+          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} displayedQuestions={this.state.displayedQuestionList} onClickHelpful={this.onClickHelpful} onClickHelpfulA={this.onClickHelpfulA} reported={this.state.reported} setAddAModalShow={this.setAddAModalShow} show={this.state.addAModalShow} addAnswer={this.addAnswer} reportAnswer={this.reportAnswer}/>
         </div>
         <div className="qa-footer">
-
             <MoreQuestions questionList={this.state.questionList} onClick={this.handleMoreQuestions} displayedQuestions={this.state.numQuestionsDisplayed} length={this.state.questionListLength}/>
-            <div class="qa-divider"/>
+            <div className="qa-divider"/>
             <AddQuestion setAddQModalShow={this.setAddQModalShow} show={this.state.addQModalShow} addQuestion={this.addQuestion}/>
-
         </div>
         <AddQuestionModal show={this.state.addQModalShow} onClose={() => this.setAddQModalShow(false)} addQuestion={this.addQuestion} name={this.state.productName}/>
       </div>

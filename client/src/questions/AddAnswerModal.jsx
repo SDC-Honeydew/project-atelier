@@ -24,10 +24,11 @@ class AddAnswerModal extends React.Component {
   }
   handleSubmitAnswer() {
     event.preventDefault()
+    console.log('in submit answer', this.props.q)
     if((this.state.qaanswer.length < 1) || (this.state.qanickname.length < 1) || (this.state.qaemail.length < 1) || (!this.state.qaemail.includes("@"))) {
       window.alert('You must enter all mandatory fields')
     } else {
-      this.props.addAnswer(this.state.qaanswer, this.state.qanickname, this.state.qaemail)
+      this.props.addAnswer(this.state.qaanswer, this.state.qanickname, this.state.qaemail, this.props.q.question_id)
       .then(result => {
         this.props.onClose();
       })
@@ -38,6 +39,7 @@ class AddAnswerModal extends React.Component {
     if(!this.props.show) {
       return null
     }
+
     return (
     <div className="qa-modal" onClick={this.props.onClose}>
       <div className="qa-modal-content" onClick={e => e.stopPropagation()}>
@@ -47,7 +49,7 @@ class AddAnswerModal extends React.Component {
         </div>
         <div className="qa-modal-body">
           <label>
-            <span>Your Question: *   </span>
+            <span>Your Answer: *   </span>
             <textarea maxLength="1000" name="qaanswer" placeholder="Example: Why did you like the product or not?" rows="4" cols="50" value={this.state.qaanswer} onChange={this.handleInputChange}/>
           </label>
           <label>
@@ -65,7 +67,7 @@ class AddAnswerModal extends React.Component {
         </div>
         <div className="qa-modal-footer">
           <button className="qa-button" onClick={this.props.onClose}>Close</button>
-          <button className="qa-button" onClick={this.handleSubmitQuestion}>Submit Question </button>
+          <button className="qa-button" onClick={this.handleSubmitAnswer}>Submit Answer </button>
         </div>
       </div>
     </div>

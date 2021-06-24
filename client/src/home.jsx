@@ -15,10 +15,10 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <ProductOverview />
-        <RelatedProducts />
+        {/* <ProductOverview />
+        <RelatedProducts /> */}
         <QuestionApp product_id={this.state.id} name={'dress'}/>
-        <Review id={this.state.id} />
+        {/* <Review id={this.state.id} /> */}
       </div>
     );
   }
