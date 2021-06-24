@@ -13,21 +13,35 @@ class ComparisonModal extends React.Component {
       //create an object containing all features present in either product
       var allFeatures = {};
       current.features.forEach((feature) => {
+        var featureValue;
+        if (feature.value === true) {
+          featureValue = '✓';
+        } else {
+          featureValue = feature.value;
+        }
+
         allFeatures[feature.feature] =
         {
           feature: feature.feature,
-          current: feature.value
+          current: featureValue
         };
       });
 
       comparison.features.forEach((feature) => {
+        var featureValue;
+        if (feature.value === true) {
+          featureValue = '✓';
+        } else {
+          featureValue = feature.value;
+        }
+
         if (allFeatures[feature.feature]) {
           allFeatures[feature.feature].comparison = feature.value;
         } else {
           allFeatures[feature.feature] =
           {
             feature: feature.feature,
-            comparison: feature.value
+            comparison: featureValue
           };
         }
       });
@@ -38,11 +52,12 @@ class ComparisonModal extends React.Component {
       var featureRows = [];
 
       for (var key in allFeatures) {
+        var compareClass = `related_comparisonCompare related_test_${allFeatures[key].feature}`;
         featureRows.push(
-          <tr>
+          <tr className='related_featureRow'>
             <td className='related_comparisonCurrent'>{allFeatures[key].current || null}</td>
             <td className='related_comparisonFeature'>{allFeatures[key].feature}</td>
-            <td className='related_comparisonCompare'>{allFeatures[key].comparison || null}</td>
+            <td className={compareClass}>{allFeatures[key].comparison || null}</td>
           </tr>
         );
       }

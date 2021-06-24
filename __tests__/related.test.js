@@ -44,7 +44,25 @@ var products = [
         'value': 'White'
       }
     ]
-  }
+  },
+  {
+    'id': 14,
+    'name': 'Truthy Trainers',
+    'category': 'Running Shoes',
+    'original_price': '0',
+    'image': 'urlplaceholder/style_1_photo_number.jpg',
+    'avgReview': 4.3,
+    'features': [
+      {
+        'feature': 'Sole',
+        'value': 'Pure'
+      },
+      {
+        'feature': 'Waterproof',
+        'value': true
+      }
+    ]
+  },
 ];
 
 afterEach(cleanup);
@@ -103,22 +121,25 @@ describe('Comparison Modal', () => {
 
   test('All characteristics for both products will be combined and reconciled against one another.', () => {
     render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
-    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+    var featureRows = document.getElementsByClassName('related_featureRow');
+    expect(featureRows.length).toEqual(3);
   });
 
   test('If the characteristic has a specific value it should display.', () => {
     render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
-    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+    var soleValue = document.getElementsByClassName('related_test_Sole')[0].innerHTML;
+    expect(soleValue).toEqual('Wood');
   });
 
   test('If the characteristic is a fact such that it is ‘true’ for the given product, then the value should display as a checkmark.', () => {
-    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
-    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[2]} showModal={true}/>);
+    expect(screen.getByText('✓')).toBeInTheDocument();
   });
 
   test(' For any characteristics that do not apply to the product, the value should simply be left blank.', () => {
     render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
-    // expect(screen.getByText('COMPARING')).toBeInTheDocument();
+    var materialValue = document.getElementsByClassName('related_test_Material')[0].innerHTML;
+    expect(materialValue).toEqual('');
   });
 
 
