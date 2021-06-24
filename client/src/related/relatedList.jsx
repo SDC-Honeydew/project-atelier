@@ -38,7 +38,7 @@ class RelatedList extends React.Component {
       console.log('ERROR from req to get /related in relatedList.jsx:', error);
     });
 
-    axios.get('/related_features', {
+    axios.get('/related/features', {
       params: {
         item: this.props.item
       },

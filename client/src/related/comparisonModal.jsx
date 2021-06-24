@@ -46,9 +46,6 @@ class ComparisonModal extends React.Component {
         }
       });
 
-      console.log('/////features to display,');
-      console.log(allFeatures);
-
       var featureRows = [];
 
       for (var key in allFeatures) {
