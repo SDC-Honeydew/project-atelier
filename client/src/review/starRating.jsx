@@ -33,7 +33,7 @@ const StarRatingInput = (props) => {
   };
 
   const changeGradeIndex = (index) => {
-    setGradeIndex(index);
+    setGradeIndex(index - 1);
     if (props.onClick) {
       props.onClick(Number(index));
     }

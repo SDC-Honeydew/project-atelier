@@ -75,7 +75,7 @@ class Review extends React.Component {
             <ProductBreakdown data={this.state.data.meta} />
           </div>
         </div>
-        <AddReviewPopup trigger={this.state.popup} close={this.togglePopup} id={this.props.id} />
+        <AddReviewPopup trigger={this.state.popup || true} close={this.togglePopup} id={this.props.id} />
       </div >
     );
   }

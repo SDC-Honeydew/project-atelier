@@ -216,6 +216,14 @@
   right: 20px;
 }
 
+.review-recommend-input {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  text-align:center;
+  margin-bottom: 20px;
+}
+
 .review-char-inputs {
   display: flex;
   justify-content: center;

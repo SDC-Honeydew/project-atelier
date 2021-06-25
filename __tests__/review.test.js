@@ -6,14 +6,16 @@ import { configure, shallow, mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import 'regenerator-runtime';
 import '../client/src/app.css';
+import $ from 'jquery';
 import reviewData from '../reviewSampleData.json';
-
+import TestUtils from 'react-dom/test-utils';
 import { StarRatingInput, StarRating } from '../client/src/review/starRating.jsx';
 import ReviewComp from '../client/src/review/reviewComp.jsx';
 import ReviewList from '../client/src/review/reviewList.jsx';
 import ReviewSort from '../client/src/review/reviewSort.jsx';
 import Review from '../client/src/review/review.jsx';
 import RatingBreakdown from '../client/src/review/ratingBreakdown.jsx';
+import AddReviewPopup from '../client/src/review/addReviewPopup.jsx';
 configure({ adapter: new Adapter() });
 
 // Star Rating
@@ -451,4 +453,64 @@ describe('rating breakdown testing', () => {
       expect(ratingPercentages.at(percentages.length - index - 1).text()).toBe(percentage + '%');
     });
   });
+});
+
+// Add new review
+
+// starRatingInput is working properly (text and rating star can render properly)
+
+describe('AddReviewPopup testing', () => {
+  let addReviewData = JSON.parse('{"product_id":22122,"rating":3,"recommend":true,"characteristics":{"74286":3,"74287":3,"74288":4,"74289":4},"summary":"this is awesome","body":"lorem fdsaijc fjdksfaoic  fjdksai;vcxz pcfxzoivm,mrewapzcxv;zk;lvkzx[-fdsaf","photos":["https://images.unsplash.com/photo-1621570168205-c93ccd501004?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60","https://images.unsplash.com/photo-1624167476077-6866e452519f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"],"name":"testReview","email":"testemail@123.com"}');
+  test('StarRatingInput can render the text properly', () => {
+    let wrapper = mount(<StarRatingInput />);
+    let reviewRadioInput = wrapper.find('.review-stars_radio-input');
+    let reviewStarInput = wrapper.find('.review-star-input');
+    let grades = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
+    let colors = ['#ccc', '#ccc', '#ccc', '#ccc', '#ccc'];
+    grades.map((grade, index) => {
+      colors[index] = '#f8ce0b';
+      reviewRadioInput.at(index).simulate('click');
+      let result = wrapper.find('.review-star-result');
+      reviewStarInput = wrapper.find('.review-star-input');
+      expect(result.text()).toBe(grade);
+      colors.map((color, index2) => {
+        expect(reviewStarInput.at(index2).props().style.color).toBe(color);
+      });
+    });
+  });
+
+  test('Can add a review properly', async () => {
+    let togglePopup = () => { };
+    let wrapper = mount(<AddReviewPopup trigger={true} close={togglePopup} id={addReviewData.product_id} />);
+    let ajaxSpy = jest.spyOn($, 'ajax');
+    let reviewRadioInput = wrapper.find('.review-stars_radio-input');
+    reviewRadioInput.at(addReviewData.rating - 1).simulate('click');
+    let recommendInput = wrapper.find('#review-recommend-checkbox');
+    recommendInput.simulate('change', { target: { checked: 'true' } });
+    let charIds = [74288, 74289, 74287, 74286];
+    charIds.map(id => {
+      let charInput = wrapper.find({ name: 'characteristics[' + id + ']', value: addReviewData.characteristics[id] });
+      charInput.simulate('click');
+    });
+    let reviewSummary = wrapper.find({ name: 'summary' });
+    reviewSummary.instance().value = addReviewData.summary;
+    let reviewBody = wrapper.find({ name: 'body' });
+    reviewBody.instance().value = addReviewData.body;
+    let addPhotoBtn = wrapper.find('#review-add-photo-btn');
+    addPhotoBtn.simulate('click');
+    addPhotoBtn = wrapper.find('#review-add-photo-btn');
+    addPhotoBtn.simulate('click');
+    let reviewPhotos = wrapper.find({ name: 'photos[]' });
+    reviewPhotos.at(0).simulate('change', { target: { value: 'urltext' } });
+    reviewPhotos.at(0).instance().value = addReviewData.photos[0];
+    reviewPhotos.at(1).instance().value = addReviewData.photos[1];
+    let userName = wrapper.find({ name: 'name' });
+    userName.instance().value = addReviewData.name;
+    let userEmail = wrapper.find({ name: 'email' });
+    userEmail.instance().value = addReviewData.email;
+    let form = wrapper.find('#review-add-review-form');
+    form.simulate('submit');
+    expect(ajaxSpy).toBeCalledTimes(1);
+  });
+
 });

@@ -13,7 +13,8 @@ module.exports = {
         'Authorization': `${config.TOKEN}`
       },
       params: {
-        'product_id': `${req.query.id}`
+        'product_id': `${req.query.id}`,
+        'count': 40
       }
     })
       .then(reviews => {
@@ -58,7 +59,7 @@ module.exports = {
     }).
       then(response => {
         console.log(response);
-        res.end();
+        res.send(response);
       });
   },
   markReviewHelpful: (req, res) => {
