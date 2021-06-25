@@ -15,6 +15,7 @@ import ReviewList from '../client/src/review/reviewList.jsx';
 import ReviewSort from '../client/src/review/reviewSort.jsx';
 import Review from '../client/src/review/review.jsx';
 import RatingBreakdown from '../client/src/review/ratingBreakdown.jsx';
+import ProductBreakdown from '../client/src/review/productBreakdown.jsx';
 import AddReviewPopup from '../client/src/review/addReviewPopup.jsx';
 configure({ adapter: new Adapter() });
 
@@ -514,3 +515,19 @@ describe('AddReviewPopup testing', () => {
   });
 
 });
+
+//productBreakdown testings
+// display characteristics properly
+
+describe('productBreakdown testings', () => {
+  test('can render all the characteristics properly', () => {
+    let wrapper = mount(<ProductBreakdown data={reviewData.meta} />);
+    let charBars = wrapper.find('.review-productbreakdown-charbar');
+    let charPointers = wrapper.find('.review-productbreakdown-pointer');
+    expect(charBars).toHaveLength(Object.keys(reviewData.meta.characteristics).length);
+    Object.keys(reviewData.meta.characteristics).map((key, index) => {
+      expect(charPointers.at(index).props().style.left).toBe(reviewData.meta.characteristics[key].value / 5 * 100 + '%');
+    });
+  });
+});
+

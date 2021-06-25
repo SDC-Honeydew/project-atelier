@@ -88,15 +88,15 @@
     "characteristics": {
       "Size": {
         "id": 14,
-        "value": "4.0000"
+        "value": 4.0000
       },
       "Width": {
         "id": 15,
-        "value": "3.5000"
+        "value": 3.5000
       },
       "Comfort": {
         "id": 16,
-        "value": "4.0000"
+        "value": 4.0000
       }
     }
   }
