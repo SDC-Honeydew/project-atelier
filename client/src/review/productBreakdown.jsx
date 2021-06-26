@@ -31,9 +31,6 @@ const CharBar = (props) => (
   <div className="review-productbreakdown-charbar">
     <div style={{ width: '250px', marginLeft: '50px' }}>
       <h5>{props.charName}</h5>
-      <div className="review-productbreakdown-text-container">
-        {charRatings[props.charName].map(rating => <label>{rating}</label>)}
-      </div>
       <div className="review-productbreakdown-input">
         <div className="review-productbreakdown-text-container">
           <div className="review-productbreakdown-bar" />
@@ -41,6 +38,9 @@ const CharBar = (props) => (
           <div className="review-productbreakdown-bar" />
         </div>
         <div className="review-productbreakdown-pointer" style={{ left: props.charData.value / 5 * 100 + '%' }}>♦</div>
+      </div>
+      <div className="review-productbreakdown-text-container">
+        {charRatings[props.charName].map(rating => <label>{rating}</label>)}
       </div>
     </div>
   </div>

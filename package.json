@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest  --silent --coverage",
+    "test-review": "jest --coverage --collectCoverageFrom=client/src/review/*.{js,jsx} --silent --colors",
     "test-dev": "jest --silent --coverage --watch",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon server/index.js",
