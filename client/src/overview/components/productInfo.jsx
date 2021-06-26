@@ -15,10 +15,10 @@ class ProductInformation extends React.Component {
         <div className='overview-productInfo-priceContainer'>
           <h2 className='overview-productInfo-sale-ogPrice'>{`$${this.props.price.original_price}`}</h2>
           <h2 className='overview-productInfo-sale-salePrice'>{`$${this.props.price.sale_price}`}</h2>
-        </div>
+        </div>;
     } else {
       price =
-        <h2 className='overview-productInfo-ogPrice'>{`$${this.props.price.original_price}`}</h2>
+        <h2 className='overview-productInfo-ogPrice'>{`$${this.props.price.original_price}`}</h2>;
     }
     return (
       <div data-testid='product-info'>

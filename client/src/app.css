@@ -100,12 +100,12 @@ Overview
   padding: 0;
 }
 
-.overview-image-gallery-dropdown-li {
+.overview-addToCart-dropdown-li {
   border-bottom: 1px solid lightgrey;
   text-align: center;
 }
 
-.overview-image-gallery-dropdown-li:hover {
+.overview-addToCart-dropdown-li:hover {
   background-color: lightgrey;
 }
 

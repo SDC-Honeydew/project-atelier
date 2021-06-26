@@ -36,7 +36,7 @@ class AddToCart extends React.Component {
       url: '/cart'
     })
       .then(res => console.log(res.data))
-      .catch(err => console.log('ERROR', err))
+      .catch(err => console.log('ERROR', err));
   }
 
   addItemToCart(sku_id, count) {
@@ -46,7 +46,7 @@ class AddToCart extends React.Component {
       params: {sku_id, count}
     })
       .then(res => console.log('posted'))
-      .catch(err => console.log('ERROR', err))
+      .catch(err => console.log('ERROR', err));
   }
 
   closeDropdown() {
@@ -112,7 +112,7 @@ class AddToCart extends React.Component {
     var selectSizeNotification =
     <div className='overview-image-gallery-popup-container'>
       <span className='overview-image-gallery-askForSizeSelection'>Please select a size!</span>
-    </div>
+    </div>;
 
     if (this.state.size === 'Select Size') {
       addToCartButton =

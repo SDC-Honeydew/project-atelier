@@ -1,5 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
+
 import renderer from 'react-test-renderer';
 
 import ProductOverview from '../client/src/overview/overview.jsx';
@@ -16,8 +17,8 @@ import sampleData from '../client/src/overview/sampleRelevantData.json';
 import carouselData from '../client/src/overview/caroselData.json';
 import sizeData from '../client/src/overview/sizeData.json';
 
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 configure({ adapter: new Adapter() });
 
 afterEach(cleanup);
@@ -32,8 +33,9 @@ describe('Overview Component with Sample Data', () => {
       />
     );
     const thumbnails = wrapper.find('ThumbnailCarousel');
+    const mainImage = wrapper.find('.overview-image-gallery-img');
     test('Renders Main Image', () => {
-      const mainImage = wrapper.find('.overview-image-gallery-img');
+
       expect(mainImage.length).toBe(1);
     });
     test('Renders Thumbnails', () => {
@@ -57,6 +59,10 @@ describe('Overview Component with Sample Data', () => {
         expect(renderedThumbnails.length).toBeLessThanOrEqual(7);
         expect(renderedThumbnails.length).toBeLessThan(availableThumbnails);
       });
+      test('Renders down arrow to filter through images', () => {
+        const downArrow = wrapper.find('.thumbnails-down');
+        expect(downArrow.length).toBe(1);
+      });
     });
   });
 
@@ -68,61 +74,97 @@ describe('Overview Component with Sample Data', () => {
         price={sampleData.styles[0]}
       />
     );
-
     test('Renders category, name, and price', () => {
       const category = wrapper.find('.overview-productInfo-category');
       const name = wrapper.find('.overview-productInfo-name');
       const price = wrapper.find('.overview-productInfo-ogPrice');
-
-      expect(category.length).toBe(1);
-      expect(name.length).toBe(1);
-      expect(price.length).toBe(1);
+      expect(category.text()).toBe(sampleData.category);
+      expect(name.text()).toBe(sampleData.name);
+      expect(price.text()).toBe(`$${sampleData.styles[0].original_price}`);
+    });
+    test('Renders sale price if it exists', () => {
+      const wrapper = shallow(
+        <ProductInformation
+          category={sampleData.category}
+          name={sampleData.name}
+          price={sampleData.styles[2]}
+        />
+      );
+      const price = wrapper.find('.overview-productInfo-sale-salePrice');
+      expect(price.text()).toBe(`$${sampleData.styles[2].sale_price}`);
     });
   });
 
-
   describe('Style Selector Component', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <StyleSelector
         styles={sampleData.styles}
         currentStyleIndex={0}
       />
     );
-
     test('Renders all styles as images', () => {
       var styles = wrapper.find('ProductStyle');
       expect(styles.length).toBe(sampleData.styles.length);
     });
-
     test('Renders checkbox on main image style', () => {
-      const productWrapper = shallow(
-        <ProductStyle
-          key={0}
-          i={0}
-          style={sampleData.styles[0]}
-          currentStyle={sampleData.styles[0].name}
-          showCheck={sampleData.styles[0].name === sampleData.styles[0].name}
-        />
-      );
-      expect(productWrapper.find('p').length).toEqual(1);
+      console.log(wrapper.find('ProductStyle').at(0));
+      expect(wrapper.find('ProductStyle').at(0).find('p').length).toEqual(1);
+      expect(wrapper.find('ProductStyle').at(1).find('p').length).toEqual(0);
     });
+
   });
   describe('Add to Cart Component', () => {
     describe('Renderds using sampleData', () => {
-      const wrapper = shallow(
+      const wrapper = mount(
         <AddToCart
           data={sampleData.styles}
           i={0}
           key={0}
         />);
-      test('Renders Buttons', () => {
-        var sizeBtn = wrapper.find('Size');
-        var quantityBtn = wrapper.find('Quantity');
-        var addToCartBtn = wrapper.find('.overview-addToCart-button');
+      var sizeComponent = wrapper.find('Size');
+      var quantityComponent = wrapper.find('Quantity');
+      var addToCartComponent = wrapper.find('.overview-addToCart-button');
 
-        expect(sizeBtn.length).toBe(1);
-        expect(quantityBtn.length).toBe(1);
-        expect(addToCartBtn.length).toBe(1);
+      var sizeBtn = wrapper.find('.overview-size-button');
+      var quantityBtn = wrapper.find('.overview-quantity-button');
+      var addToCartBtn = wrapper.find('.overview-addToCart-button');
+      test('Renders Buttons', () => {
+        expect(sizeComponent.length).toBe(1);
+        expect(quantityComponent.length).toBe(1);
+        expect(addToCartComponent.length).toBe(1);
+      });
+      test('Does not show quantity if size has not been selected', () => {
+        quantityBtn.simulate('click');
+        let quantityDropdown = wrapper.find('.overview-quantity-dropdown');
+        expect(quantityDropdown.length).toBe(0);
+      });
+      //how to modify state????
+      test('Shows dropdown on size click and renders sizes', () => {
+        sizeBtn.simulate('click');
+        let sizeDropdown = wrapper.find('.overview-size-dropdown');
+        expect(sizeDropdown.length).toBe(1);
+
+        let sizeList = sizeDropdown.find('.overview-addToCart-dropdown-li');
+
+        expect(sizeList.at(0).text()).toBe('XS');
+        expect(sizeList.at(1).text()).toBe('S');
+        expect(sizeList.at(2).text()).toBe('M');
+        expect(sizeList.at(3).text()).toBe('L');
+        expect(sizeList.at(4).text()).toBe('XL');
+      });
+      // test('Shows quantity dropdown if size has been selected', () => {
+
+      //   wrapper.setState({openQuantityDropdown: true});
+      //   console.log(wrapper.html())
+      //   let quantityDropdown = wrapper.find('.overview-quantity-dropdown');
+
+      //   expect(quantityDropdown.length).toBe(1)
+      // })
+      test('Click add to cart shows popup to select size', () => {
+        addToCartBtn.simulate('click');
+        let popup = wrapper.find('.overview-image-gallery-popup-container');
+
+        expect(popup.length).toBe(1);
       });
     });
 
@@ -151,13 +193,25 @@ describe('Overview Component with Sample Data', () => {
       expect(slogan.text()).toBe(sampleData.slogan);
       expect(description.text()).toBe(sampleData.description);
     });
-    // test('Matches snapshot', () => {
-    //   const tree = renderer
-    //     .create(<ProductDescription description={sampleData.description} slogan ={sampleData.slogan}/>)
-    //     .toJSON();
+  });
 
-    //   expect(tree).toMatchSnapshot();
-    // });
+  describe('Mock Functions', () => {
+    let wrapper;
 
+    const props = {
+      product: sampleData,
+      currentStyleIndex: 0
+    };
+
+    beforeEach(() => {
+      wrapper = shallow(<ProductOverview {...props}/>);
+    });
+
+    test('should check `componentDidMount()`', () => {
+      const instance = wrapper.instance();
+      jest.spyOn(instance, 'getOneProduct');
+      instance.componentDidMount();
+      expect(instance.getOneProduct).toHaveBeenCalledTimes(1);
+    });
   });
 });
