@@ -8,7 +8,7 @@ const FilterCard = (props) => (
   <div className='border m-1' style={{ display: 'inline-block' }}>
     <div style={{ display: 'inline-block', marginRight: '10px' }}>{props.name + ' Stars'}</div>
     <div style={{ display: 'inline-block', width: '10px' }}>
-      <button type="button" class="btn-close" aria-label="Close" name={props.name} onClick={props.onClick} style={{ width: '2px', height: '2px', position: 'relative', top: '-10px' }}></button>
+      <button type="button" class="review-filter-card-remove btn-close" aria-label="Close" name={props.name} onClick={props.onClick} style={{ width: '2px', height: '2px', position: 'relative', top: '-10px' }}></button>
     </div>
   </div>
 );
@@ -73,8 +73,8 @@ const ReviewList = (props) => {
             }
           })}
       </div>
-      <button className='btn btn-primary m-3 ' onClick={props.addReview}>ADD A REVIEW</button>
-      {numOfReview < filterData.length && <button className='btn btn-primary m-3 ' onClick={moreReviews}>MORE REVIEWS</button>}
+      <button className='btn btn-primary m-3 ' id="review-addreview-btn" onClick={props.addReview}>ADD A REVIEW</button>
+      {numOfReview < filterData.length && <button className='btn btn-primary m-3 ' id='review-morereview-btn' onClick={moreReviews}>MORE REVIEWS</button>}
     </div >
   );
 };
