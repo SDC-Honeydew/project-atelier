@@ -14,7 +14,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className='site-wrap'>
-        <ProductOverview id={this.state.id}/>
+        <ProductOverview id={22126}/>
         <RelatedProducts />
         <Review id={this.state.id} />
       </div>

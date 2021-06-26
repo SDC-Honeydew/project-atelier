@@ -70,30 +70,30 @@ class ImageGallery extends React.Component {
 
 
     return (
-      <div className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'>
+      <div onClick={(e) => this.expandImg(e)} className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'
+      >
         {!this.state.zoom &&
-        <div className='test'>
+        <div className={`overview-image-gallery-container${this.state.expand ? '-expand' : ''}`}>
           {!this.state.zoom && this.state.mainImg !== this.state.firstImg &&
-          <button onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className='overview-image-gallery-left-arrow'>&#10140;</button>
-        }
+          <button onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className={`overview-image-gallery-left-arrow${this.state.expand ? '-expand' : ''}`}>&#10140;</button>
+          }
           <img
             rel='preload'
             src={this.state.mainImg}
-            className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}
-            onClick={(e) => this.expandImg(e)}>
+            className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}>
           </img>
           {!this.state.zoom && this.state.mainImg !== this.state.lastImg &&
-          <button onClick={(e) => this.setMainImg(e, this.state.currentIndex + 1)} className='overview-image-gallery-right-arrow'>&#10140;</button>
-        }
+          <button onClick={(e) => this.setMainImg(e, this.state.currentIndex + 1)} className={`overview-image-gallery-right-arrow${this.state.expand ? '-expand' : ''}`}>&#10140;</button>
+          }
+          {!this.state.zoom &&
+          <button onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>&#9744;</button>
+          }
         </div>
         }
         {this.state.zoom && <ZoomImg src={this.state.mainImg} />}
         {thumbnailCarousel}
 
 
-        {!this.state.zoom &&
-          <button onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>&#9744;</button>
-        }
       </div>
     );
   }
