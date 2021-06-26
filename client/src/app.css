@@ -304,6 +304,12 @@ Overview Image Gallery
   height: 60px;
 }
 
+.overview-thumbnails-small-img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
 .highlight {
   border-bottom: 3px solid black;
 }
@@ -324,8 +330,14 @@ Overview Image Gallery
   border: none;
   position: absolute;
   z-index: 2;
-  right: 20px;
+  right: 10px;
   top: 0px;
+  background-color: transparent;
+}
+.overview-enlarge-img {
+  color: grey;
+  width: 20px;
+  height: 20px;
 }
 /*
 

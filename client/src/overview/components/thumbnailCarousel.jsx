@@ -27,11 +27,12 @@ class ThumbnailCarousel extends React.Component {
 
     if (this.props.expanded) {
       imgs = this.props.imgs.slice(this.state.start, this.state.start + 7).map((img, key) => (
-        <div
+        <img
           onClick={(e) => this.props.setMainImg(e, key, img.url)}
-          className={`overview-thumbnails-img${this.props.mainImg === img.url ? ' highlight' : ''}`}
-          >
-        &#9642;</div>
+          className={`overview-thumbnails-small-img${this.props.mainImg === img.url ? ' highlight' : ''}`}
+          src={'https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-12.jpg'}
+          alt='style image'>
+        </img>
       ));
     } else {
       imgs = this.props.imgs.slice(this.state.start, this.state.start + 7).map((img, key) => (

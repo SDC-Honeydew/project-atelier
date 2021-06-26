@@ -86,7 +86,7 @@ class ImageGallery extends React.Component {
           <button onClick={(e) => this.setMainImg(e, this.state.currentIndex + 1)} className={`overview-image-gallery-right-arrow${this.state.expand ? '-expand' : ''}`}>&#10140;</button>
           }
           {!this.state.zoom &&
-          <button onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>&#9744;</button>
+          <button onClick={(e) => this.expandImg(e)} className='overview-image-gallery-enlarge-button'>[]</button>
           }
         </div>
         }
