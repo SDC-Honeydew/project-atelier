@@ -12,6 +12,7 @@ import markQuestionHelpful from '../../../APIrequests/markQuestionHelpful.js'
 import markAnswerHelpful from '../../../APIrequests/markAnswerHelpful.js'
 import postQuestion from '../../../APIrequests/postQuestion.js'
 import postAnswer from '../../../APIrequests/postAnswer.js'
+import answerReported from '../../../APIrequests/reportAnswer.js'
 
 class QuestionApp extends React.Component {
   constructor(props) {
@@ -145,13 +146,14 @@ class QuestionApp extends React.Component {
   }
   reportAnswer(answer) {
     console.log('in REPORTED', answer)
-    // let foundA = this.state.voteA.find(element => element === a.id)
-    // if(!foundA)
-    //   return answerReported(answer.id)
-    //   .then(result => {
-    //     var joined = this.state.voteA.concat(a.id);
-    //     // this.setState({ : joined })
-    //   })
+    let foundReportedAnswer = this.state.reported.find(element => element === answer.id)
+    if(!foundReportedAnswer){
+      return answerReported(answer.id)
+      .then(result => {
+        var joined = this.state.reported.concat(answer.id);
+        this.setState({ reported : joined })
+      })
+    }
   }
   setAddQModalShow (boolean) {
     this.setState({

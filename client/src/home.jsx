@@ -8,7 +8,8 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     const params = new URLSearchParams(this.props.location.search);
-    const id = params.get('product');
+    let id = params.get('product');
+    id = id === null ? 22122 : id;
     this.state = { id };
   }
 

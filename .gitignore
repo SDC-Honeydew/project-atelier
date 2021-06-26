@@ -4,6 +4,7 @@ dist/
 
 #Token ignore
 config.js
+projAtelier-qa.pem
 
-
-coverage
+coverage/
+package-lock.json

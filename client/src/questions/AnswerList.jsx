@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Answer from './Answer.jsx';
 
 const AnswerList = (props) => {
-  console.log("in Answer List", props.reportAnswer)
+  console.log("in Answer List", props.answers)
   if(props.answers.length < 1) {
     return(null)
   }
