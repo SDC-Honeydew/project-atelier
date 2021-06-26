@@ -36,11 +36,11 @@ const RatingBreakdown = (props) => {
         </div>
       </div>
       <p>{recommend * 100}% recommend this product</p>
-      <ProgressBar text='5 Star' percentage={ratingDistribution[4] / count * 100} onClick={props.addStarFilter} />
-      <ProgressBar text='4 Star' percentage={ratingDistribution[3] / count * 100} onClick={props.addStarFilter} />
-      <ProgressBar text='3 Star' percentage={ratingDistribution[2] / count * 100} onClick={props.addStarFilter} />
-      <ProgressBar text='2 Star' percentage={ratingDistribution[1] / count * 100} onClick={props.addStarFilter} />
-      <ProgressBar text='1 Star' percentage={ratingDistribution[0] / count * 100} onClick={props.addStarFilter} />
+      <ProgressBar text='5 Star' percentage={ratingDistribution[4] / count * 100} onClick={props.toggleStarFilter} />
+      <ProgressBar text='4 Star' percentage={ratingDistribution[3] / count * 100} onClick={props.toggleStarFilter} />
+      <ProgressBar text='3 Star' percentage={ratingDistribution[2] / count * 100} onClick={props.toggleStarFilter} />
+      <ProgressBar text='2 Star' percentage={ratingDistribution[1] / count * 100} onClick={props.toggleStarFilter} />
+      <ProgressBar text='1 Star' percentage={ratingDistribution[0] / count * 100} onClick={props.toggleStarFilter} />
     </div>
   );
 };

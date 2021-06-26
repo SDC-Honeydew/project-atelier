@@ -7,7 +7,8 @@
     "test": "jest  --silent --coverage",
     "test-dev": "jest --silent --coverage --watch",
     "react-dev": "webpack --mode development --watch",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^5.2.6",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.27.0",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-react": "^7.24.0",

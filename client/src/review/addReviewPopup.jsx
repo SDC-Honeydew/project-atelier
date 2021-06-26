@@ -3,8 +3,8 @@ import { StarRatingInput } from './starRating.jsx';
 import $ from 'jquery';
 
 const RecommendInput = (props) => (
-  <div className='form-check review-char-inputs'>
-    <input className="form-check-input" type="checkbox" name='recommend' onChange={props.onChange} required />
+  <div className='form-check review-recommend-input'>
+    <input className="form-check-input" id='review-recommend-checkbox' type="checkbox" name='recommend' onChange={props.onChange} defaultChecked={false} required />
     <label className="form-check-label" >I recommend this product</label>
   </div>
 );
@@ -29,7 +29,7 @@ const CharacteristicsInput = (props) => (
 const ReviewSummaryInput = (props) => (
   <div className="input-group mb-3">
     <span className="input-group-text">Summary </span>
-    <textarea className="form-control" name='summary' aria-label="With textarea" maxLength='60'></textarea>
+    <textarea className="form-control" name='summary' aria-label="With textarea" maxLength='60'>default value</textarea>
   </div>
 );
 
@@ -116,43 +116,61 @@ const AddReviewPopup = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     var data = $('#review-add-review-form');
-    console.log(data);
+    if (props.jestcall) {
+      props.jestcall({ data: data.serialize() });
+    }
     $.ajax({
       url: '/reviews',
       type: 'POST',
       data: data.serialize(),
       dataType: 'json',
-      success: () => {
-        alert('works');
+      success: (res) => {
+        if (props.submitCallback !== undefined) {
+          props.submitCallback(res);
+        }
+        setSubmit(true);
+      },
+      error: (err) => {
+        if (props.errorCallback !== undefined) {
+          props.errorCallback(err);
+        }
       }
     });
-    setSubmit(true);
     return false;
   };
 
   return (props.trigger) ? (
     <div className='review-popup'>
       <div className='review-popup-inner overflow-auto' style={{ maxHeight: '800px', width: '1000px' }}>
-        {!submitted && <form id='review-add-review-form' method='post' onSubmit={onSubmit}>
-          <input type='hidden' name='product_id' value={props.id} />
-          <StarRatingInput />
-          <RecommendInput />
-          {charTypes.map((charType, index) => <CharacteristicsInput type={charType} ratings={charRatings[charType]} id={charIds[index]} />)}
-          <ReviewSummaryInput />
-          <ReviewBodyInput />
-          <button type='button' className='btn btn-secondary' onClick={addPhoto} >Add a photo</button>
-          {numOfPhoto > 0 && <button type='button' className='btn btn-secondary m-3' onClick={removePhoto} >Remove a photo</button>}
-          {numOfPhoto > 0 && <UploadPhoto />}
-          {numOfPhoto > 1 && <UploadPhoto />}
-          {numOfPhoto > 2 && <UploadPhoto />}
-          {numOfPhoto > 3 && <UploadPhoto />}
-          {numOfPhoto > 4 && <UploadPhoto />}
-          <UserInfoInput />
+        {
+          !submitted &&
+          <form id='review-add-review-form' method='post' onSubmit={onSubmit}>
+            <input type='hidden' name='product_id' value={props.id} />
+            <StarRatingInput />
+            <RecommendInput />
+            {charTypes.map((charType, index) => <CharacteristicsInput type={charType} ratings={charRatings[charType]} id={charIds[index]} />)}
+            <ReviewSummaryInput />
+            <ReviewBodyInput />
+            <button type='button' id='review-add-photo-btn' className='btn btn-secondary' onClick={addPhoto} >Add a photo</button>
+            {numOfPhoto > 0 && <button type='button' className='btn btn-secondary m-3' onClick={removePhoto} >Remove a photo</button>}
+            {numOfPhoto > 0 && <UploadPhoto />}
+            {numOfPhoto > 1 && <UploadPhoto />}
+            {numOfPhoto > 2 && <UploadPhoto />}
+            {numOfPhoto > 3 && <UploadPhoto />}
+            {numOfPhoto > 4 && <UploadPhoto />}
+            <UserInfoInput />
+            <div style={{ textAlign: 'center' }}>
+              <button type='submit' id='review-add-review-submit' className='btn btn-primary'>Submit</button>
+            </div>
+          </form>
+        }
+        {
+          submitted &&
           <div style={{ textAlign: 'center' }}>
-            <button type='submit' className='btn btn-primary'>Submit</button>
+            <h2>Thanks for your review!</h2>
+            <button className='btn btn-primary m-3' onClick={closeForm}>OK</button>
           </div>
-        </form>}
-        {submitted && <div style={{ textAlign: 'center' }}><h2>Thanks for your review!</h2><button className='btn btn-primary m-3' onClick={closeForm}>OK</button></div>}
+        }
         <button className='btn-close' aria-label='Close' onClick={closeForm}></button>
       </div>
     </div>
