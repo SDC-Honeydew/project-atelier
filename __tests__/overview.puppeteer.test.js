@@ -38,5 +38,5 @@ configure({ adapter: new Adapter() });
 // });
 
 test('placeholder', () => {
-  expect(true).toBe(true)
-})
+  expect(true).toBe(true);
+});

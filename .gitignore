@@ -9,3 +9,7 @@ config.js
 coverage/
 
 __snapshots__/
+
+test.png
+
+__tests__/overview/puppeteer.test.js
