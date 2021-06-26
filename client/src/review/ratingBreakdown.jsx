@@ -5,17 +5,17 @@ import ProgressBar from './progressBar.jsx';
 
 
 const RatingBreakdown = (props) => {
-  const count = props.data.count;
-  const recommend = props.data.results.reduce((acc, curr) => {
+  const count = props.data.results.length;
+  const recommend = Math.round(props.data.results.reduce((acc, curr) => {
     if (curr.recommend) {
       acc++;
     }
     return acc;
-  }, 0) / count;
+  }, 0) / count * 100);
 
-  const avgRating = props.data.results.reduce((acc, curr) => {
+  const avgRating = Math.round(props.data.results.reduce((acc, curr) => {
     return acc + curr.rating;
-  }, 0) / count;
+  }, 0) / count * 10) / 10.0;
 
   const ratingDistribution = props.data.results.reduce((acc, curr) => {
     let rating = Math.round(curr.rating);
@@ -35,12 +35,12 @@ const RatingBreakdown = (props) => {
           <StarRating rating={avgRating} />
         </div>
       </div>
-      <p>{recommend * 100}% recommend this product</p>
-      <ProgressBar text='5 Star' percentage={ratingDistribution[4] / count * 100} onClick={props.toggleStarFilter} />
-      <ProgressBar text='4 Star' percentage={ratingDistribution[3] / count * 100} onClick={props.toggleStarFilter} />
-      <ProgressBar text='3 Star' percentage={ratingDistribution[2] / count * 100} onClick={props.toggleStarFilter} />
-      <ProgressBar text='2 Star' percentage={ratingDistribution[1] / count * 100} onClick={props.toggleStarFilter} />
-      <ProgressBar text='1 Star' percentage={ratingDistribution[0] / count * 100} onClick={props.toggleStarFilter} />
+      <p>{recommend}% recommend this product</p>
+      <ProgressBar text='5 Star' percentage={Math.round(ratingDistribution[4] / count * 100)} onClick={props.toggleStarFilter} />
+      <ProgressBar text='4 Star' percentage={Math.round(ratingDistribution[3] / count * 100)} onClick={props.toggleStarFilter} />
+      <ProgressBar text='3 Star' percentage={Math.round(ratingDistribution[2] / count * 100)} onClick={props.toggleStarFilter} />
+      <ProgressBar text='2 Star' percentage={Math.round(ratingDistribution[1] / count * 100)} onClick={props.toggleStarFilter} />
+      <ProgressBar text='1 Star' percentage={Math.round(ratingDistribution[0] / count * 100)} onClick={props.toggleStarFilter} />
     </div>
   );
 };

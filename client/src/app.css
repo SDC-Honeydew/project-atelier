@@ -1,3 +1,55 @@
+/* color theme */
+
+:root {
+  --background-color: #fff;
+  --font-color: #000;
+  --border-color: rgb(231, 230, 230);
+  --primary-color: #5E81AC;
+  --primary-color-hover: #81A1C1;
+}
+
+body {
+  margin-left: 200px; margin-right:200px;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  border-color: var(--border-color);
+}
+
+
+/* customize the color of some general classes*/
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--primary-color-hover);
+}
+
+.progress-bar {
+  background-color: var(--primary-color);
+}
+
+.form-check-input:checked{
+  background-color:#5E81AC;
+}
+
+.btn  {
+  background-color: var(--primary-color);
+  border-color: var(--border-color);
+}
+
+.btn:hover {
+  background-color: var(--primary-color-hover);
+  border-color: var(--border-color);
+}
+
+.card {
+  background:var(--background-color);
+  border-color:var(--border-color);
+}
+
+
 /*
 
 Overview
@@ -276,6 +328,10 @@ Review CSS
 
 /******************************************************/
 
+
+
+
+
 .review-rating-text {
   float: left;
   width: 4rem;
@@ -356,12 +412,10 @@ Review CSS
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-
-
-.review-header-area { grid-area: header; margin-left: 200px; margin-right:100px}
-.review-list-area { grid-area: list;margin-right:200px;}
-.review-ratingbreakdown-area {grid-area: rating;margin-left: 200px;margin-right:20px; }
-.review-productbreakdown-area {grid-area: product;margin-left: 200px;margin-right:20px;}
+.review-header-area { grid-area: header; }
+.review-list-area { grid-area: list;}
+.review-ratingbreakdown-area {grid-area: rating; }
+.review-productbreakdown-area {grid-area: product;}
 
 .review-grid-container {
   display: grid;
@@ -370,8 +424,8 @@ Review CSS
   'rating  list list list list'
   'product  list list list list';
   grid-gap: 10px;
-  grid-template-rows: 10px 300px 300px;
-  grid-template-columns: 600px 800px 0% 0% 0%;
+  grid-template-rows: 30px 300px 300px;
+  grid-template-columns: 400px 200px 200px 200px 200px;
   padding: 10px;
 }
 
@@ -422,7 +476,7 @@ Review CSS
   padding: 32px;
   width: 100%;
   max-width: 1000px;
-  background-color: #fff;
+  background-color: var(--background-color);
 }
 
 .review-popup-inner .btn-close {
@@ -470,7 +524,6 @@ Review CSS
 
 .review-productbreakdown-input {
   position: relative;
-  margin-bottom: 20px;
 }
 
 .review-productbreakdown-pointer {
@@ -478,7 +531,8 @@ Review CSS
   top: -20px;
   margin-top:0;
   margin-bottom: 0;
-  color: #0d6efd;
+  color: var(--primary-color);
   font-size:40px;
 }
+
 

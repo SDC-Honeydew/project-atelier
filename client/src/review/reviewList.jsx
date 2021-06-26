@@ -40,7 +40,7 @@ const sortBy = (type, data) => {
 };
 
 const ReviewList = (props) => {
-  const count = props.data.count;
+  const count = props.data.results.length;
 
   const [numOfReview, setNumOfReview] = useState(2);
 
