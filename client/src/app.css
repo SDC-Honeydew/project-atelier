@@ -455,24 +455,6 @@ Review CSS
   cursor: pointer;
 }
 
-
-/* .review-header-area { grid-area: header; margin-left: 200px; margin-right:100px}
-.review-list-area { grid-area: list;margin-right:200px;}
-.review-ratingbreakdown-area {grid-area: rating;margin-left: 200px;margin-right:20px; }
-.review-productbreakdown-area {grid-area: product;margin-left: 200px;margin-right:20px;}
-
-.review-grid-container {
-  display: grid;
-  grid-template-areas:
-  'header header header header header  '
-  'rating  list list list list'
-  'product  list list list list';
-  grid-gap: 10px;
-  grid-template-rows: 10px 300px 300px;
-  grid-template-columns: 600px 800px 0% 0% 0%;
-  padding: 10px;
-} */
-
 .review-productbreakdown-text-container {
   display: grid;
   grid-template-columns: 30% 40% 30%;

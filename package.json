@@ -7,7 +7,8 @@
     "test": "jest  --silent --coverage",
     "test-dev": "jest --silent --coverage --watch",
     "react-dev": "webpack --mode development --watch",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
