@@ -15,6 +15,9 @@ body {
   border-color: var(--border-color);
 }
 
+
+/* customize the color of some general classes*/
+
 a {
   color: var(--primary-color);
 }
@@ -40,6 +43,12 @@ a:hover {
   background-color: var(--primary-color-hover);
   border-color: var(--border-color);
 }
+
+.card {
+  background:var(--background-color);
+  border-color:var(--border-color);
+}
+
 
 /*
 
@@ -526,8 +535,4 @@ Review CSS
   font-size:40px;
 }
 
-.card {
-  background:var(--background-color);
-  border-color:var(--border-color);
-}
 
