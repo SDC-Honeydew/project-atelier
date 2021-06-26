@@ -1,7 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import renderer from 'react-test-renderer';
 
 import ProductOverview from '../client/src/overview/overview.jsx';
 import StyleSelector from '../client/src/overview/components/styleSelect.jsx';
