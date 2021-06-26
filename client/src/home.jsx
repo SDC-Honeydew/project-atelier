@@ -13,7 +13,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='site-wrap'>
         <ProductOverview id={this.state.id}/>
         <RelatedProducts />
         <Review id={this.state.id} />

@@ -47,9 +47,10 @@ class ThumbnailCarousel extends React.Component {
 
     return (
       <div className='overview-thumbnails'>
-        {this.state.start !== 0 && <button onClick={(e) => this.rotateImgs(e)}className={'thumbnails-up'}>Up Arrow</button>}
+        {this.state.start !== 0 && <div onClick={(e) => this.rotateImgs(e)}className={'thumbnails-up'}>
+&#5169;</div>}
         {imgs}
-        {this.state.start + 7 < this.state.end && <button className='thumbnails-down' onClick={(e) => this.rotateImgs(e)}>Down Arrow</button> }
+        {this.state.start + 7 < this.state.end && <div className='thumbnails-down' onClick={(e) => this.rotateImgs(e)}>&#5167;</div> }
       </div>
     );
   }

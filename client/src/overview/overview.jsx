@@ -56,12 +56,14 @@ class ProductOverview extends React.Component {
       productOverview =
       <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
-          <ImageGallery
-            photos={this.state.product.styles[this.state.currentStyleIndex].photos}
-            i={this.state.currentStyleIndex}
-            key={this.state.currentStyleIndex}
-            setMainImg={this.setCurrentStyleIndex}
-          />
+          <div className='overview-left-col'>
+            <ImageGallery
+              photos={this.state.product.styles[this.state.currentStyleIndex].photos}
+              i={this.state.currentStyleIndex}
+              key={this.state.currentStyleIndex}
+              setMainImg={this.setCurrentStyleIndex}
+            />
+          </div>
           <div className='overview-right-col'>
             <ProductInformation
               category={this.state.product.category}
