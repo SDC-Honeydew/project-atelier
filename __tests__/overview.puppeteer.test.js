@@ -1,7 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import 'regenerator-runtime/runtime';
-import renderer from 'react-test-renderer';
 import puppeteer from 'puppeteer';
 
 
@@ -20,8 +19,7 @@ import carouselData from '../client/src/overview/caroselData.json';
 import sizeData from '../client/src/overview/sizeData.json';
 
 import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
+
 
 // describe('End 2 End Testing', () => {
 //   test('Loads page', async () => {
