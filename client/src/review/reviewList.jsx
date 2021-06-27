@@ -65,7 +65,7 @@ const ReviewList = (props) => {
     <div className='review-list'>
       <ReviewSort count={count} onChange={props.updateSortType} />
       {props.filters.length > 0 && <div>Filtered by: {props.filters.map(filter => <FilterCard name={filter} onClick={props.removeStarFilter} />)}</div>}
-      <div className='overflow-auto' style={{ maxHeight: '800px', width: '1000px' }}>
+      <div className='overflow-auto review-list-comps' style={{ maxHeight: '800px' }}>
         {filterData
           .map((result, index) => {
             if (index < numOfReview) {

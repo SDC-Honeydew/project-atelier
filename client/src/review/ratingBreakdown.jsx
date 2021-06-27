@@ -26,7 +26,7 @@ const RatingBreakdown = (props) => {
   }, new Array(5).fill(0));
 
   return (
-    <div style={{ width: '400px', marginLeft: '50px' }}>
+    <div style={{ minWidth: '350px', marginLeft: '50px' }}>
       <div className='review-grid-rating-container'>
         <div className='review-rating-digit-area'>
           <h1>{avgRating}</h1>

@@ -412,20 +412,32 @@ Review CSS
   clip: rect(1px, 1px, 1px, 1px);
 }
 
+
+.review-list {
+  width: 100%;
+}
+
+.review-list-comps {
+  border-color: var(--border-color);
+  border-style: solid;
+  border-radius: 5px;
+}
+
 .review-header-area { grid-area: header; }
 .review-list-area { grid-area: list;}
-.review-ratingbreakdown-area {grid-area: rating; }
-.review-productbreakdown-area {grid-area: product;}
+.review-ratingbreakdown-area {grid-area: rating;}
+.review-productbreakdown-area {grid-area: product; }
 
 .review-grid-container {
   display: grid;
   grid-template-areas:
-  'header header header header header  '
-  'rating  list list list list'
-  'product  list list list list';
-  grid-gap: 10px;
-  grid-template-rows: 30px 300px 300px;
-  grid-template-columns: 400px 200px 200px 200px 200px;
+  'header header   '
+  'rating  list '
+  'product  list ';
+
+  grid-template-columns: 350px minmax(400px,100%);
+  grid-template-rows: 30px 280px minmax(400px, 100%);
+  grid-gap: 30px;
   padding: 10px;
 }
 
@@ -520,6 +532,7 @@ Review CSS
   margin-top: 10px;
   margin-left: 2px;
   margin-right: 2px;
+  border-radius: 3px;
 }
 
 .review-productbreakdown-input {
@@ -535,4 +548,9 @@ Review CSS
   font-size:40px;
 }
 
+#review-sort-select {
+  border-radius: 3px;
+  background-color:var(--background-color);
+  color: var(--font-color);
+}
 
