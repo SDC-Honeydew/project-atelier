@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest  --silent --coverage",
+    "test-review": "jest --coverage --collectCoverageFrom=client/src/review/*.{js,jsx} --silent --colors",
     "test-dev": "jest --silent --coverage --watch",
     "react-dev": "webpack --mode development --watch",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +26,8 @@
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.27.0",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-react": "^7.24.0",
