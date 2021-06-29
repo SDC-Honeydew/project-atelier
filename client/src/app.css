@@ -89,11 +89,13 @@ Overview
  .overview-left-col {
   display: flex;
   align-items: center;
+  min-width: 800px;
  }
 
 .overview-right-col {
   display: flex;
   flex-direction: column;
+  min-width: 300px;
 }
 .overview-bottom-row {
   margin-top: 20px;
@@ -268,7 +270,7 @@ Overview Image Gallery
 
 .overview-image-gallery-img {
   max-width: 600px;
-  max-height: 600px;
+  max-height: 475px;
 
 }
 .overview-image-gallery-container {
