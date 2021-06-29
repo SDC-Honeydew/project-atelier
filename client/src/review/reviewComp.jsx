@@ -60,7 +60,7 @@ const ReviewComp = (props) => {
       <div className='review-card-rating-area'><StarRating rating={props.result.rating} /></div>
       <div className='review-card-user-area'>{props.result.reviewer_name + ', ' + props.result.date.split('T')[0]}</div>
       <div className='review-card-title-area'>
-        <h6 className="card-subtitle mb-2 text-muted" maxLength={60}>{props.result.summary.substring(0, 60)}</h6>
+        <h6 className="mb-2" maxLength={60}>{props.result.summary.substring(0, 60)}</h6>
       </div>
       <div className='review-card-body-area'>
         <div className="card-text">
