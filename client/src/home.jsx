@@ -36,17 +36,12 @@ class Home extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className='site-wrap'>
-        <ProductOverview id={this.state.id}/>
-=======
       <div>
         <div className="form-check form-switch">
           <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.toggleTheme} />
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{this.state.colorTheme}</label>
         </div>
-        <ProductOverview />
->>>>>>> 0273a6af29c5e1e9513d5b8805e9c6aba28da933
+        <ProductOverview id={this.state.id}/>
         <RelatedProducts />
         <Review id={this.state.id} />
       </div>
