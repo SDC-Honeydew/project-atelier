@@ -85,6 +85,7 @@ class ProductOverview extends React.Component {
           <ProductDescription
             description={this.state.product.description}
             slogan = {this.state.product.slogan}
+            features = {this.state.product.features}
           />
         </div>
       </div>;
