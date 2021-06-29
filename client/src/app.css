@@ -1,5 +1,7 @@
 /* color theme */
-
+* {
+  border: 1px solid red
+}
 :root {
   --background-color: #fff;
   --font-color: #000;
@@ -84,7 +86,8 @@ Overview
  }
 
  .overview-left-col {
-
+  display: flex;
+  align-items: center;
  }
 
 .overview-right-col {
@@ -93,6 +96,7 @@ Overview
 }
 .overview-bottom-row {
   margin-top: 20px;
+  border-top: 3px solid black;
 }
 
 .overview-styles-thumbnails-container {
@@ -227,6 +231,13 @@ Overview Product Info
   font-size: 16px;
 }
 
+.fa {
+  padding: 5px;
+  padding-right: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
 /*********************
 
 Overview Image Gallery
@@ -236,8 +247,8 @@ Overview Image Gallery
   position: relative;
   margin: 0px 50px;
   background-repeat: no-repeat;
-  width: 800px;
-  height: 600px;
+  width: 600px;
+  height: 475px;
   background-color: lightgrey;
   display: flex;
   justify-content: center;
@@ -256,8 +267,8 @@ Overview Image Gallery
 }
 
 .overview-image-gallery-img {
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 450px;
+  max-height: 450px;
 
 }
 .overview-image-gallery-container {
@@ -373,7 +384,7 @@ Overview Image Gallery
   background-color: transparent;
   color: grey;
 }
-.overview-image-gallery-enlarge-button {
+.overview-image-gallery-expand-button {
   border: none;
   position: absolute;
   z-index: 2;

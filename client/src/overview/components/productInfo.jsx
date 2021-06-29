@@ -26,6 +26,11 @@ class ProductInformation extends React.Component {
         <h3 className='overview-productInfo-category'>{this.props.category}</h3>
         <h1 className='overview-productInfo-name'>{this.props.name}</h1>
         {price}
+        <div className='overview-social-media'>
+          <a href='#' className='fa fa-facebook'></a>
+          <a href='#' className='fa fa-twitter'></a>
+          <a href='#' className='fa fa-pinterest'></a>
+        </div>
       </div>
     );
   }
