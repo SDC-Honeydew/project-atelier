@@ -57,14 +57,12 @@ module.exports = {
         var currentProdStyles = responses[i].data.results;
         for (var style = 0; style < currentProdStyles.length; style++) {
           if (currentProdStyles[style]['default?'] === true) {
-            // console.log('DEFAULT STYLE DATA FROM API //////////', currentProdStyles[style]);
             relatedProductData[i]['original_price'] = currentProdStyles[style]['original_price'];
             relatedProductData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
             relatedProductData[i].image = currentProdStyles[style].photos[0].url;
           }
         }
       }
-      // console.log('related products after adding style', relatedProductData);
 
     })).then(() => {
       // request to the reviews API for each product
@@ -79,11 +77,10 @@ module.exports = {
       ));
     }).then(axios.spread((...responses) => {
 
-      /// ad the average review to each product object
+      /// add the average review to each product object
 
       for (var i = 0; i < responses.length; i++) {
         var currentProdRatings = responses[i].data.ratings;
-        // console.log('RATINGS FOR THE CURRENT PRODUCT /////', currentProdRatings);
 
         var count = 0;
         var total = 0;
@@ -98,7 +95,6 @@ module.exports = {
           relatedProductData[i].avgReview = total / count;
         }
       }
-      // console.log('related products after adding reviews', relatedProductData);
       res.send(relatedProductData);
 
     })).catch((err) => {
@@ -111,7 +107,6 @@ module.exports = {
   },
 
   getFeatures: (req, res) => {
-    console.log('item for features request:', req.query.item);
     axios({
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.item}`,
@@ -119,7 +114,6 @@ module.exports = {
         'Authorization': `${config.TOKEN}`
       }
     }).then((response) => {
-      // console.log('attempt to retrieve features', data);
       res.send({
         name: response.data.name,
         features: response.data.features});
@@ -168,7 +162,6 @@ module.exports = {
         var currentProdStyles = responses[i].data.results;
         for (var style = 0; style < currentProdStyles.length; style++) {
           if (currentProdStyles[style]['default?'] === true) {
-            // console.log('DEFAULT STYLE DATA FROM API //////////', currentProdStyles[style]);
             outfitData[i]['original_price'] = currentProdStyles[style]['original_price'];
             outfitData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
             outfitData[i].image = currentProdStyles[style].photos[0].url;
@@ -193,7 +186,6 @@ module.exports = {
 
       for (var i = 0; i < responses.length; i++) {
         var currentProdRatings = responses[i].data.ratings;
-        // console.log('RATINGS FOR THE CURRENT PRODUCT /////', currentProdRatings);
 
         var count = 0;
         var total = 0;
@@ -208,7 +200,6 @@ module.exports = {
           outfitData[i].avgReview = total / count;
         }
       }
-      // console.log('related products after adding reviews', relatedProductData);
       res.send(outfitData);
 
     })).catch((err) => {

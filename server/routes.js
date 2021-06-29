@@ -7,7 +7,6 @@ router.get('/product-info', controllers.products.getProductInfo);
 router.get('/r-data', controllers.products.getRelevantInfo);
 
 ///// ROUTERS FOR RELATED PRODUCT WIDGET
-
 router.get('/related', controllers.related.getRelatedProducts);
 router.get('/related/features', controllers.related.getFeatures);
 router.get('/related/outfit', controllers.related.getOutfit);

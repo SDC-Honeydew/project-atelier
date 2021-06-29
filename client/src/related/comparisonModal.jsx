@@ -59,9 +59,6 @@ class ComparisonModal extends React.Component {
         );
       }
 
-      // console.log('//// FEATURE ROWS OBJECT');
-      // console.log(featureRows);
-
       return (<div className='related_modal'>
         <div className='related_closeModal' onClick={(event) => {
           event.preventDefault();
