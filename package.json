@@ -4,7 +4,7 @@
   "description": "This is where we will create thorough setup instructions.",
   "main": "index.js",
   "scripts": {
-    "test": "jest  --silent --coverage",
+    "test": "jest --silent --coverage",
     "test-review": "jest --coverage --collectCoverageFrom=client/src/review/*.{js,jsx} --silent --colors",
     "test-dev": "jest --silent --coverage --watch",
     "react-dev": "webpack --mode development --watch",
@@ -46,9 +46,11 @@
     "install": "^0.13.0",
     "jquery": "^3.6.0",
     "npm": "^7.19.0",
+    "puppeteer": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "jest": {
     "moduleDirectories": [

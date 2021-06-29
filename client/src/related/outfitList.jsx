@@ -62,8 +62,6 @@ class OutfitList extends React.Component {
         <div className='related_productList'>
           <div className="related_productCard related_addToOutfit" id='add
           toOutfit' onClick={this.onPlusClick}><p>+</p><p>Add to Outfit</p></div>
-          {/* special card for adding item
-            onPlusClick={this.onPlusClick} */}
           {outfit.map((product) =>
             <ProductCard productInfo={product} cardType={'outfit'} key={`outfit_${product.id}`} handleCardClick={this.props.handleCardClick} onIconClick={this.onXClick}/>
           )}

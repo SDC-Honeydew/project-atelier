@@ -1,10 +1,11 @@
 var controllers = require('./controllers');
 var router = require('express').Router();
 
-router.get('/product', controllers.products.getOneProduct);
-router.get('/product-styles', controllers.products.getStyles);
-router.get('/product-info', controllers.products.getProductInfo);
-router.get('/r-data', controllers.products.getRelevantInfo);
+router.get('/overview', controllers.products.getRelevantInfo);
+
+router.get('/cart', controllers.cart.getCart);
+
+router.post('/cart', controllers.cart.addItemToCart);
 
 ///// ROUTERS FOR RELATED PRODUCT WIDGET
 router.get('/related', controllers.related.getRelatedProducts);
