@@ -13,6 +13,7 @@ class Review extends React.Component {
       sort: 'relevance',
       filters: [],
       popup: false,
+      userData: []
     };
     if (props.data !== undefined) {
       this.setState({ data: props.data });
@@ -23,10 +24,20 @@ class Review extends React.Component {
     this.toggleStarFilter = this.toggleStarFilter.bind(this);
     this.updateSortType = this.updateSortType.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
+    this.userDataCollect = this.userDataCollect.bind(this);
 
   }
 
+
+  userDataCollect(e) {
+    let name = e.target.name;
+    let time = Date.now();
+    let module = 'review';
+    console.log('name:', name, 'time:', time, 'module:', module);
+  }
+
   toggleStarFilter(e) {
+    this.userDataCollect(e);
     let filters = this.state.filters;
     let newFilter = e.target.name.split(' ')[0];
     if (!filters.includes(newFilter)) {

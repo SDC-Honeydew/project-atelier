@@ -16,11 +16,12 @@ const CharacteristicsInput = (props) => (
     </div>
     {
       props.ratings.map((rating, index) =>
-      (<div style={{ width: '150px', fontSize: '12px' }} >
-        <label htmlFor={rating} >{rating}</label><br />
-        <input type="radio" name={'characteristics[' + props.id + ']'} value={index + 1} onClick={props.onClick} required />
-      </div>)
-      )
+      (
+        <div style={{ width: '150px', fontSize: '12px' }} >
+          <label htmlFor={rating} >{rating}</label><br />
+          <input type="radio" name={'characteristics[' + props.id + ']'} value={index + 1} onClick={props.onClick} required />
+        </div>
+      ))
     }
     <br />
   </div>
