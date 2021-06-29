@@ -41,7 +41,7 @@ class Home extends React.Component {
           <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.toggleTheme} />
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{this.state.colorTheme}</label>
         </div>
-        <ProductOverview id={this.state.id}/>
+        <ProductOverview id={22126}/>
         <RelatedProducts />
         <Review id={this.state.id} />
       </div>
