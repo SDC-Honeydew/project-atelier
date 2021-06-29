@@ -42,7 +42,19 @@ describe('Overview Component with Sample Data', () => {
     });
     test('Renders Thumbnail images', () => {
       const test = thumbnails.getElements();
+      console.log('imgs',test[0].props.imgs[0].url);
+      console.log('sampledata', sampleData.styles[0].photos[0].url);
+
       expect(test[0].props.imgs.length).toEqual(sampleData.styles[0].photos.length);
+
+      var renderedImgs = test[0].props.imgs;
+
+      renderedImgs.forEach((img, i) => {
+        var renderedUrl = img.url;
+        var dataUrl = sampleData.styles[0].photos[i].url;
+
+        expect(img.url).toEqual(dataUrl);
+      });
     });
     describe('Thumbnail Carousel Component-more than 7 thumbnail images', () => {
       const wrapper = shallow(
