@@ -7,65 +7,10 @@ class OutfitList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      outfit: [
-        {
-          'id': 11,
-          'name': 'Air Minis 250',
-          'category': 'Basketball Shoes',
-          'original_price': '0',
-          'image': 'urlplaceholder/style_1_photo_number.jpg',
-          'avgReview': 4.3,
-          'features': [
-            {
-              'feature': 'Sole',
-              'value': 'Rubber'
-            },
-            {
-              'feature': 'Material',
-              'value': 'FullControlSkin'
-            }
-          ]
-        },
-        {
-          'id': 14,
-          'name': 'Air Moonis 250',
-          'category': 'Soccer Shoes',
-          'original_price': '350',
-          'sale_price': '300',
-          'image': 'urlplaceholder/style_1_photo_number.jpg',
-          'avgReview': 4.3,
-          'features': [
-            {
-              'feature': 'Sole',
-              'value': 'Wood'
-            },
-            {
-              'feature': 'Color',
-              'value': 'White'
-            }
-          ]
-        },
-        {
-          'id': 15,
-          'name': 'Truthy Trainers',
-          'category': 'Running Shoes',
-          'original_price': '0',
-          'image': 'urlplaceholder/style_1_photo_number.jpg',
-          'avgReview': 4.3,
-          'features': [
-            {
-              'feature': 'Sole',
-              'value': 'Pure'
-            },
-            {
-              'feature': 'Waterproof',
-              'value': true
-            }
-          ]
-        },
-      ],
+      outfit: [],
     };
     this.onPlusClick = this.onPlusClick.bind(this);
+    this.onXClick = this.onXClick.bind(this);
   }
 
   componentDidMount() {
@@ -85,8 +30,17 @@ class OutfitList extends React.Component {
     });
   }
 
-  onXClick() {
-    // make put request to /related/outfit
+  onXClick(productClicked) {
+    axios.put('/related/outfit', {
+      params: {
+        item: productClicked.id
+      },
+      withCredentials: true
+    }).then(() => {
+      this.refreshOutfit();
+    }).catch((error) => {
+      console.log('ERROR removing item from outfit in outfitList.jsx:', error);
+    });
   }
 
   refreshOutfit() {

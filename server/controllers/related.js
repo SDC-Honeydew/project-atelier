@@ -228,9 +228,6 @@ module.exports = {
       res.clearCookie('outfit');
     }
 
-    console.log('cookies found:', req.cookies);
-    console.log(req.headers.cookie);
-
     var item = req.body.params.item;
 
     if (cookieJar.indexOf(item) === -1) {
@@ -240,6 +237,12 @@ module.exports = {
   },
 
   removeFromOutfit: (req, res) => {
+    var cookieJar = req.cookies.outfit;
+    res.clearCookie('outfit');
+    var item = req.body.params.item;
+    var itemIndex = cookieJar.indexOf(item);
+    cookieJar.splice(itemIndex, 1);
+    res.cookie('outfit', cookieJar).send('cookie set');
   }
 
 };
