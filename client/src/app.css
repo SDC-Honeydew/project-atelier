@@ -435,7 +435,7 @@ Review CSS
   'rating  list '
   'product  list ';
 
-  grid-template-columns: 350px minmax(400px,100%);
+  grid-template-columns: minmax(350px, 400px) minmax(400px,100%);
   grid-template-rows: 30px 280px minmax(400px, 100%);
   grid-gap: 30px;
   padding: 10px;
@@ -452,10 +452,10 @@ Review CSS
 .review-grid-card-container {
   display: grid;
   grid-template-areas:
-  'rating rating rating user user user'
-  'title title title title title title'
-  'body body body body body body'
-  'response response response response response response';
+  'rating  user '
+  'title title '
+  'body body '
+  'response response';
   grid-gap: 10px;
   padding: 10px;
 }
@@ -554,3 +554,6 @@ Review CSS
   color: var(--font-color);
 }
 
+.review-body {
+  word-wrap: break-word;
+}
