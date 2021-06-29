@@ -271,7 +271,7 @@ Overview Product Info
   height: 300px;
 }
 
-#related_relatedList {
+.related_productList {
   display: grid;
   grid-template-areas:
   'product product product product product product product';
@@ -303,6 +303,11 @@ Overview Product Info
   margin-left: auto;
   margin-right: auto;
   z-index: 5;
+}
+
+.related_addToOutfit {
+  text-align: center;
+  font-size: 100px;
 }
 
 .related_icon{

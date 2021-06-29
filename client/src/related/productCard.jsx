@@ -10,7 +10,7 @@ class ProductCard extends React.Component {
     if (this.props.cardType === 'related') {
       iconSrc = 'https://cdn3.iconfinder.com/data/icons/sympletts-free-sampler/128/star-512.png';
     } else {
-      iconSrc = 'https://i.dlpng.com/static/png/6978437_preview.png';
+      iconSrc = 'https://static.vecteezy.com/system/resources/thumbnails/001/200/173/small/x.png';
     }
     return (
       <div className="related_productCard">
@@ -18,13 +18,13 @@ class ProductCard extends React.Component {
           event.preventDefault();
           this.props.handleCardClick(this.props.productInfo.id);
         }}></img>
-        <img className='related_icon' src={iconSrc} onClick={(event) => {
-          var comparisonProd = {
+        <img className='related_icon' src={iconSrc} onClick={() => {
+          var productClicked = {
             name: this.props.productInfo.name,
+            id: this.props.productInfo.id,
             features: this.props.productInfo.features
           };
-          this.props.onStarClick(comparisonProd);
-          event.preventDefault();
+          this.props.onIconClick(productClicked);
         }}></img>
         <div className='related_details' onClick={(event) => {
           event.preventDefault();

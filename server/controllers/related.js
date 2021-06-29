@@ -127,5 +127,22 @@ module.exports = {
       console.log('err retrieving current prod features from API', err);
       res.sendStatus(502);
     });
+  },
+
+  getOutfit: (req, res) => {
+
+  },
+
+  addToOutfit: (req, res) => {
+    console.log('cookies found:', req.cookies);
+    console.log(req.headers.cookie);
+    var item = req.body.params.item;
+    console.log(item);
+    res.cookie('outfit', item).send('cookie set');
+  },
+
+  removeFromOutfit: (req, res) => {
+
   }
+
 };

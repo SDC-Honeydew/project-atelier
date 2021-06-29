@@ -18,7 +18,7 @@ class RelatedProducts extends React.Component {
     return (
       <div id="related_relatedDiv">
         <RelatedList item={this.props.item} handleCardClick={this.getNewProduct} />
-        <OutfitList />
+        <OutfitList item={this.props.item} handleCardClick={this.getNewProduct}/>
       </div>
     );
   }

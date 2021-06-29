@@ -70,9 +70,9 @@ class RelatedList extends React.Component {
     return (
       <div id='related_relatedProducts'>
         <h6>RELATED PRODUCTS</h6>
-        <div id='related_relatedList'>
+        <div class='related_productList'>
           {products.map((product) =>
-            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} onStarClick={this.onStarClick}/>
+            <ProductCard productInfo={product} cardType={'related'} key={product.id} handleCardClick={this.props.handleCardClick} onIconClick={this.onStarClick}/>
           )}
           <ComparisonModal currentProd={this.state.currentProd} comparisonProd={this.state.comparisonProd} showModal={this.state.showModal} closeModal={this.closeModal}/>
         </div>
