@@ -3,7 +3,7 @@ import React from 'react';
 const ProductDescription = (props) => {
   var features;
 
-  if (props.features.length > 0) {
+  if (props.features) {
     features = props.features.map(feature => {
       return <span>{`${feature.feature}: ${feature.value}`}</span>;
     });
