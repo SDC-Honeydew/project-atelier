@@ -69,6 +69,7 @@ class OutfitList extends React.Component {
   }
 
   componentDidMount() {
+    this.refreshOutfit();
   }
 
   onPlusClick() {
@@ -77,8 +78,8 @@ class OutfitList extends React.Component {
         item: this.props.item
       },
       withCredentials: true
-    }).then((response) => {
-      console.log('success adding item to cookies', response);
+    }).then(() => {
+      this.refreshOutfit();
     }).catch((error) => {
       console.log('ERROR adding item to outfit in outfitList.jsx:', error);
     });
@@ -89,7 +90,13 @@ class OutfitList extends React.Component {
   }
 
   refreshOutfit() {
-
+    axios.get('/related/outfit', {
+      withCredentials: true
+    }).then((response) => {
+      this.setState({outfit: response.data});
+    }).catch((error) => {
+      console.log('ERROR adding item to outfit in outfitList.jsx:', error);
+    });
   }
 
   render() {
