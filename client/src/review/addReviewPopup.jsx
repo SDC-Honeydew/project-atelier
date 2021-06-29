@@ -29,7 +29,7 @@ const CharacteristicsInput = (props) => (
 const ReviewSummaryInput = (props) => (
   <div className="input-group mb-3">
     <span className="input-group-text">Summary </span>
-    <textarea className="form-control" name='summary' aria-label="With textarea" maxLength='60'>default value</textarea>
+    <textarea className="form-control" name='summary' aria-label="With textarea" maxLength='60'></textarea>
   </div>
 );
 

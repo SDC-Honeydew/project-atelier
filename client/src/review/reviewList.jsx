@@ -5,7 +5,7 @@ import ReviewSort from './reviewSort.jsx';
 
 
 const FilterCard = (props) => (
-  <div className='border m-1' style={{ display: 'inline-block' }}>
+  <div className='border m-1' style={{ display: 'inline-block', borderRadius: '3px', borderColor: 'var(--border-color)' }}>
     <div style={{ display: 'inline-block', marginRight: '10px' }}>{props.name + ' Stars'}</div>
     <div style={{ display: 'inline-block', width: '10px' }}>
       <button type="button" class="review-filter-card-remove btn-close" aria-label="Close" name={props.name} onClick={props.onClick} style={{ width: '2px', height: '2px', position: 'relative', top: '-10px' }}></button>
