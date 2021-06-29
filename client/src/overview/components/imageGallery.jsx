@@ -30,7 +30,6 @@ class ImageGallery extends React.Component {
   }
 
   expandImg(e) {
-    console.log('clicked')
     if (e.target.className.includes('right') || e.target.className.includes('left') || e.target.className.includes('thumbnails')) {
       return;
     }

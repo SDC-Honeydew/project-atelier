@@ -9,7 +9,6 @@ const ProductDescription = (props) => {
     });
   }
 
-  console.log(features)
   return (
     <div className='overview-product-description-container'>
       <div className='overview-descriptions'>
