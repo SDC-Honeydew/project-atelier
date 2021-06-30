@@ -11,7 +11,6 @@ const Answer = (props) => {
       return;
     }
     const answer_id = props.answer.id
-    console.log(answer_id)
     $.ajax({
       url: '/qa/answers/report',
       data: { answer_id },
@@ -24,7 +23,6 @@ const Answer = (props) => {
     setReported(true);
   };
 
-  console.log(props.onReportAnswer, 'ANSWER PROPS')
   if(props.answer === undefined) {
     return null;
   }

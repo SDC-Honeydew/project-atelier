@@ -8,3 +8,4 @@ const AddQuestion = (props) => (
 
 export default AddQuestion;
 
+// onClick={() => props.setAddQModalShow(true)}

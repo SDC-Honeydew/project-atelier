@@ -13,7 +13,6 @@ class AddAnswerModal extends React.Component {
     this.handleSubmitAnswer=this.handleSubmitAnswer.bind(this)
   }
   handleInputChange(event) {
-    console.log(event.target)
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -24,15 +23,12 @@ class AddAnswerModal extends React.Component {
   }
   handleSubmitAnswer() {
     event.preventDefault()
-    console.log('in submit answer', this.props.q)
     if((this.state.qaanswer.length < 1) || (this.state.qanickname.length < 1) || (this.state.qaemail.length < 1) || (!this.state.qaemail.includes("@"))) {
       window.alert('You must enter all mandatory fields')
     } else {
       this.props.addAnswer(this.state.qaanswer, this.state.qanickname, this.state.qaemail, this.props.modalQ.question_id, () =>{
         this.props.onClose();
       })
-      // .then(result => {
-      // })
     }
 
   }

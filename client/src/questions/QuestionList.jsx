@@ -4,8 +4,6 @@ import Question from './Question.jsx';
 import Search from './Search.jsx';
 
 const QuestionList = (props) => {
-  console.log('inLISTTOP', props.questionList[0], props.questionList[1])
-  console.log('props in QL', props.reportAnswer)
   if(props.questionList.length < 1) {
     return(null)
   }
@@ -18,8 +16,6 @@ const QuestionList = (props) => {
     )
   }
   if(props.moreQuestions) {
-    console.log('more = true')
-
     return(
       <div className="question-list">
         {props.questionList.map((question, key) => {

@@ -14,7 +14,6 @@ class Search extends React.Component {
       searchTerm: e.target.value
     });
     if(this.state.searchTerm.length > 2) {
-      console.log('here in onChange')
       this.props.searchFilter(this.state.searchTerm)
     } else if(this.state.searchTerm.length < 2) {
       this.props.searchFilter('clear')

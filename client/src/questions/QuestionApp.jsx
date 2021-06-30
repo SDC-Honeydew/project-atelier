@@ -6,13 +6,7 @@ import MoreQuestions from './MoreQuestions.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import AddQuestionModal from './AddQuestionModal.jsx'
 import $ from 'jquery';
-// import getQuestions from '../../../server/qa-APIrequests/getQuestions.js'
-// import getAnswers from '../../../server/qa-APIrequests/getAnswers.js'
-// import markQuestionHelpful from '../../../server/qa-APIrequests/markQuestionHelpful.js'
-// import markAnswerHelpful from '../../../server/qa-APIrequests/markAnswerHelpful.js'
-// import postQuestion from '../../../server/qa-APIrequests/postQuestion.js'
-// import postAnswer from '../../../server/qa-APIrequests/postAnswer.js'
-// import answerReported from '../../../server/qa-APIrequests/reportAnswer.js'
+import trackClicks from '../tracking/trackClicks.jsx'
 
 class QuestionApp extends React.Component {
   constructor(props) {
@@ -142,7 +136,7 @@ class QuestionApp extends React.Component {
 
   onClickHelpful(q) {
     let foundQ = this.state.voteQ.find(element => element === q.question_id)
-    console.log(foundQ, 'FOUNDQ')
+
     if(!foundQ) {
       $.ajax({
         method: 'PUT',
@@ -169,7 +163,6 @@ class QuestionApp extends React.Component {
       dataType: 'json'
     })
       .then(result => {
-        console.log('result in answer helpful', result )
         return this.getProductQuestions()
       })
       .then(result => {
@@ -178,7 +171,6 @@ class QuestionApp extends React.Component {
       })
   }}
   onReportAnswer(answer) {
-    console.log('in REPORTED', answer)
     let foundReportedAnswer = this.state.reported.find(element => element === answer.id)
     if(!foundReportedAnswer){
       return answerReported(answer.id)
@@ -198,11 +190,11 @@ class QuestionApp extends React.Component {
       addAModalShow: boo,
       answerModalQuestion: q
     })
-    console.log('QQQQQ', q)
   }
+
   render () {
     return (
-      <div>
+      <div onClick={(e) => this.props.logged(e)}>
         <h1 className="qa-header"> QUESTIONS & ANSWERS </h1>
         <nav className="qa-navbar">
           <Search searchFilter={this.searchFilter}/>
@@ -221,4 +213,4 @@ class QuestionApp extends React.Component {
   }
 }
 
-export default QuestionApp;
+export default trackClicks(QuestionApp);

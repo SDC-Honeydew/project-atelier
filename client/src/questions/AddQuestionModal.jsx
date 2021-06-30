@@ -13,7 +13,6 @@ class AddQuestionModal extends React.Component {
     this.handleSubmitQuestion=this.handleSubmitQuestion.bind(this)
   }
   handleInputChange(event) {
-    console.log(event.target)
     const target = event.target;
     const value = target.value;
     const name = target.name;
