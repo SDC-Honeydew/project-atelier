@@ -5,7 +5,7 @@ import ReviewSort from './reviewSort.jsx';
 
 
 const FilterCard = (props) => (
-  <div className='border m-1' style={{ display: 'inline-block' }}>
+  <div className='border m-1' style={{ display: 'inline-block', borderRadius: '3px', borderColor: 'var(--border-color)' }}>
     <div style={{ display: 'inline-block', marginRight: '10px' }}>{props.name + ' Stars'}</div>
     <div style={{ display: 'inline-block', width: '10px' }}>
       <button type="button" class="review-filter-card-remove btn-close" aria-label="Close" name={props.name} onClick={props.onClick} style={{ width: '2px', height: '2px', position: 'relative', top: '-10px' }}></button>
@@ -65,7 +65,7 @@ const ReviewList = (props) => {
     <div className='review-list'>
       <ReviewSort count={count} onChange={props.updateSortType} />
       {props.filters.length > 0 && <div>Filtered by: {props.filters.map(filter => <FilterCard name={filter} onClick={props.removeStarFilter} />)}</div>}
-      <div className='overflow-auto' style={{ maxHeight: '800px', width: '1000px' }}>
+      <div className='overflow-auto review-list-comps' style={{ maxHeight: '800px' }}>
         {filterData
           .map((result, index) => {
             if (index < numOfReview) {
