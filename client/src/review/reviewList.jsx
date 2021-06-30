@@ -66,12 +66,12 @@ const ReviewList = (props) => {
       <ReviewSort count={count} onChange={props.updateSortType} />
       {props.filters.length > 0 && <div>Filtered by: {props.filters.map(filter => <FilterCard name={filter} onClick={props.removeStarFilter} />)}</div>}
       <div className='overflow-auto review-list-comps' style={{ maxHeight: '800px' }}>
-        {filterData
+        {filterData.length > 0 ? filterData
           .map((result, index) => {
             if (index < numOfReview) {
-              return (<ReviewComp result={result} key={`result_${result.review_id}`}/>);
+              return (<ReviewComp result={result} key={`result_${result.review_id}`} />);
             }
-          })}
+          }) : <h5>  No review yet, add a review?✍  </h5>}
       </div>
       <button className='btn btn-primary m-3 ' id="review-addreview-btn" onClick={props.addReview}>ADD A REVIEW</button>
       {numOfReview < filterData.length && <button className='btn btn-primary m-3 ' id='review-morereview-btn' onClick={moreReviews}>MORE REVIEWS</button>}
