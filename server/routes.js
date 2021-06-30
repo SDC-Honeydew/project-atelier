@@ -23,6 +23,14 @@ router.put('/reviews/helpful', controllers.review.markReviewHelpful);
 
 router.put('/reviews/report', controllers.review.reportReview);
 
+///
+router.get('/qa/questions', controllers.questions.getAllQuestions);
+router.put('/qa/answers/helpful', controllers.questions.markAnswerHelpful);
+router.put('/qa/questions/helpful', controllers.questions.markQuestionHelpful);
+router.post('/qa/questions/answers', controllers.questions.postAnswer);
+router.post('/qa/questions', controllers.questions.postQuestion);
+router.put('/qa/answers/report', controllers.questions.reportAnswer);
 
+router.post('/interactions', controllers.tracking.postInteraction);
 
 module.exports = router;

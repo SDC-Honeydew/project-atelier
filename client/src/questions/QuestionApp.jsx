@@ -5,14 +5,14 @@ import Search from './Search.jsx';
 import MoreQuestions from './MoreQuestions.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import AddQuestionModal from './AddQuestionModal.jsx'
-// import TOKEN from '../../../config.js'
-import getQuestions from '../../../server/qa-APIrequests/getQuestions.js'
-import getAnswers from '../../../server/qa-APIrequests/getAnswers.js'
-import markQuestionHelpful from '../../../server/qa-APIrequests/markQuestionHelpful.js'
-import markAnswerHelpful from '../../../server/qa-APIrequests/markAnswerHelpful.js'
-import postQuestion from '../../../server/qa-APIrequests/postQuestion.js'
-import postAnswer from '../../../server/qa-APIrequests/postAnswer.js'
-import answerReported from '../../../server/qa-APIrequests/reportAnswer.js'
+import $ from 'jquery';
+// import getQuestions from '../../../server/qa-APIrequests/getQuestions.js'
+// import getAnswers from '../../../server/qa-APIrequests/getAnswers.js'
+// import markQuestionHelpful from '../../../server/qa-APIrequests/markQuestionHelpful.js'
+// import markAnswerHelpful from '../../../server/qa-APIrequests/markAnswerHelpful.js'
+// import postQuestion from '../../../server/qa-APIrequests/postQuestion.js'
+// import postAnswer from '../../../server/qa-APIrequests/postAnswer.js'
+// import answerReported from '../../../server/qa-APIrequests/reportAnswer.js'
 
 class QuestionApp extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class QuestionApp extends React.Component {
     this.addQuestion = this.addQuestion.bind(this)
     this.addAnswer = this.addAnswer.bind(this)
     this.setAddAModalShow = this.setAddAModalShow.bind(this)
-    this.reportAnswer = this.reportAnswer.bind(this)
+    this.onReportAnswer = this.onReportAnswer.bind(this)
   }
 
   searchFilter(searchTerm) {
@@ -62,9 +62,15 @@ class QuestionApp extends React.Component {
 
   getProductQuestions() {
     var id = this.props.product_id
-    return getQuestions(id, this.state.page, this.state.count)
+    // return getQuestions(id, this.state.page, this.state.count)
+    $.ajax({
+      method: 'GET',
+      url: '/qa/questions',
+      data: { id: this.props.product_id, page: this.state.page, count: this.state.count},
+      dataType: 'json'
+    })
     .then(result => {
-      return result.data.results.sort((a,b) => {
+      return result.results.sort((a,b) => {
         return b.question_helpfulness - a.question_helpfulness
       })
     })
@@ -100,32 +106,50 @@ class QuestionApp extends React.Component {
         displayedQuestionList: slicedQList
       })
   }
-  addAnswer(body, name, email, questionID) {
-    var data = {body: body, name: name, email: email}
-    console.log(questionID, 'QUESTIONID')
-    return postAnswer(data, questionID)
+  addAnswer(body, name, email, questionID, callback) {
+    var data = {body: body, name: name, email: email, questionID: questionID}
+
+    $.ajax({
+      method: 'POST',
+      url: '/qa/questions/answers',
+      data: data
+    })
     .then(result => {
       this.getProductQuestions()
+      callback()
     })
     .catch(err => {
       console.log(err)
     })
   }
 
-  addQuestion(body, name, email) {
+  addQuestion(body, name, email, callback) {
     var data = {body: body, name: name, email: email, product_id: parseInt(this.props.product_id)}
-    return postQuestion(data)
+    console.log('before ajax call to add Q')
+    $.ajax({
+      method: 'POST',
+      url: '/qa/questions',
+      data: data
+    })
     .then(result => {
       this.getProductQuestions()
+      callback()
     })
     .catch(err => {
-      console.log(err)
+      console.log(err, 'err in post q')
     })
   }
+
   onClickHelpful(q) {
     let foundQ = this.state.voteQ.find(element => element === q.question_id)
-    if(!foundQ)
-      return markQuestionHelpful(q.question_id)
+    console.log(foundQ, 'FOUNDQ')
+    if(!foundQ) {
+      $.ajax({
+        method: 'PUT',
+        url: '/qa/questions/helpful',
+        data: { id: q.question_id },
+        dataType: 'json'
+      })
       .then(result => {
         return this.getProductQuestions()
       })
@@ -133,20 +157,27 @@ class QuestionApp extends React.Component {
         var joined = this.state.voteQ.concat(q.question_id);
         this.setState({ voteQ: joined })
       })
+    }
   }
   onClickHelpfulA(a) {
     let foundA = this.state.voteA.find(element => element === a.id)
-    if(!foundA)
-      return markAnswerHelpful(a.id)
+    if(!foundA) {
+      $.ajax({
+      method: 'PUT',
+      url: '/qa/answers/helpful',
+      data: { id: a.id},
+      dataType: 'json'
+    })
       .then(result => {
+        console.log('result in answer helpful', result )
         return this.getProductQuestions()
       })
       .then(result => {
         var joined = this.state.voteA.concat(a.id);
         this.setState({ voteA: joined })
       })
-  }
-  reportAnswer(answer) {
+  }}
+  onReportAnswer(answer) {
     console.log('in REPORTED', answer)
     let foundReportedAnswer = this.state.reported.find(element => element === answer.id)
     if(!foundReportedAnswer){
@@ -177,7 +208,7 @@ class QuestionApp extends React.Component {
           <Search searchFilter={this.searchFilter}/>
         </nav>
         <div>
-          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} displayedQuestions={this.state.displayedQuestionList} onClickHelpful={this.onClickHelpful} onClickHelpfulA={this.onClickHelpfulA} reported={this.state.reported} setAddAModalShow={this.setAddAModalShow} show={this.state.addAModalShow} addAnswer={this.addAnswer} reportAnswer={this.reportAnswer} modalQ={this.state.answerModalQuestion}/>
+          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} displayedQuestions={this.state.displayedQuestionList} onClickHelpful={this.onClickHelpful} onClickHelpfulA={this.onClickHelpfulA} reported={this.state.reported} setAddAModalShow={this.setAddAModalShow} show={this.state.addAModalShow} addAnswer={this.addAnswer} onReportAnswer={this.onReportAnswer} modalQ={this.state.answerModalQuestion}/>
         </div>
         <div className="qa-footer">
             <MoreQuestions questionList={this.state.questionList} onClick={this.handleMoreQuestions} displayedQuestions={this.state.numQuestionsDisplayed} length={this.state.questionListLength}/>

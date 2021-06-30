@@ -23,7 +23,7 @@ const Question = (props) => {
       </div>
     </div>
     <div className="qa-answer">
-      <div><AnswerList answers={props.question.answers} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported}reportAnswer={props.reportAnswer}/></div>
+      <div><AnswerList answers={props.question.answers} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported}onReportAnswer={props.onReportAnswer}/></div>
     </div>
   </div>
   )

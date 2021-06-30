@@ -27,12 +27,10 @@ class AddQuestionModal extends React.Component {
     if((this.state.qaquestion.length < 1) || (this.state.qanickname.length < 1) || (this.state.qaemail.length < 1) || (!this.state.qaemail.includes("@"))) {
       window.alert('You must enter all mandatory fields')
     } else {
-      this.props.addQuestion(this.state.qaquestion, this.state.qanickname, this.state.qaemail)
-      .then(result => {
+      return this.props.addQuestion(this.state.qaquestion, this.state.qanickname, this.state.qaemail, ()=> {
         this.props.onClose();
       })
     }
-
   }
   render () {
     if(!this.props.show) {
