@@ -13,6 +13,7 @@ class Review extends React.Component {
       sort: 'relevance',
       filters: [],
       popup: false,
+      userData: []
     };
     if (props.data !== undefined) {
       this.setState({ data: props.data });
@@ -25,6 +26,9 @@ class Review extends React.Component {
     this.togglePopup = this.togglePopup.bind(this);
 
   }
+
+
+
 
   toggleStarFilter(e) {
     let filters = this.state.filters;

@@ -25,10 +25,12 @@ class ZoomImg extends React.Component {
     return (
       <figure
         onMouseMove={(e) => this.movingZoom(e)}
-        className='overview-image-gallery-zoom-container'>
+        className='overview-image-gallery-zoom-container'
+        onClick={(e) => this.props.click(e)}>
         <img
           src={this.props.src}
-          className='overview-image-gallery-img-zoom'>
+          className='overview-image-gallery-img-zoom'
+        >
         </img>
       </figure>
 

@@ -26,14 +26,16 @@ const ReviewComp = (props) => {
     $.ajax({
       url: '/reviews/helpful',
       data: { review_id },
-      dataType: 'json',
       method: 'put',
-      success: () => {
+      success: (data) => {
         console.log('success');
         setMarkedHelpful(true);
-        props.result.helpfulness++;
+      },
+      error: (err) => {
+        console.log('error', err);
       }
     });
+    props.result.helpfulness++;
   };
 
   const reportReview = () => {

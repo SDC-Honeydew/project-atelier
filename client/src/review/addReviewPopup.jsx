@@ -16,11 +16,12 @@ const CharacteristicsInput = (props) => (
     </div>
     {
       props.ratings.map((rating, index) =>
-      (<div style={{ width: '150px', fontSize: '12px' }} >
-        <label htmlFor={rating} >{rating}</label><br />
-        <input type="radio" name={'characteristics[' + props.id + ']'} value={index + 1} onClick={props.onClick} required />
-      </div>)
-      )
+      (
+        <div style={{ width: '150px', fontSize: '12px' }} >
+          <label htmlFor={rating} >{rating}</label><br />
+          <input type="radio" name={'characteristics[' + props.id + ']'} value={index + 1} onClick={props.onClick} required />
+        </div>
+      ))
     }
     <br />
   </div>
@@ -29,7 +30,7 @@ const CharacteristicsInput = (props) => (
 const ReviewSummaryInput = (props) => (
   <div className="input-group mb-3">
     <span className="input-group-text">Summary </span>
-    <textarea className="form-control" name='summary' aria-label="With textarea" maxLength='60'>default value</textarea>
+    <textarea className="form-control" name='summary' aria-label="With textarea" maxLength='60'></textarea>
   </div>
 );
 
