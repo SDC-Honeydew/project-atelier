@@ -13,7 +13,7 @@ import sizeData from './sizeData.json';
 
 
 
-class Overview extends React.Component {
+class ProductOverview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,8 @@ class Overview extends React.Component {
   getOneProduct(id) {
     axios({
       method: 'GET',
-      url: '/r-data',
+      url: '/overview',
+      params: {id}
     })
       .then(res => {
         this.setState({
@@ -55,12 +56,14 @@ class Overview extends React.Component {
       productOverview =
       <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
         <div className='overview-top-row'>
-          <ImageGallery
-            photos={this.state.product.styles[this.state.currentStyleIndex].photos}
-            i={this.state.currentStyleIndex}
-            key={this.state.currentStyleIndex}
-            setMainImg={this.setCurrentStyleIndex}
-          />
+          <div className='overview-left-col'>
+            <ImageGallery
+              photos={this.state.product.styles[this.state.currentStyleIndex].photos}
+              i={this.state.currentStyleIndex}
+              key={this.state.currentStyleIndex}
+              setMainImg={this.setCurrentStyleIndex}
+            />
+          </div>
           <div className='overview-right-col'>
             <ProductInformation
               category={this.state.product.category}
@@ -84,8 +87,7 @@ class Overview extends React.Component {
             slogan = {this.state.product.slogan}
           />
         </div>
-        <button onClick={() => this.getOneProduct()}>Button</button>
-      </div>
+      </div>;
     } else {
       productOverview = <div>Loading...</div>;
     }
@@ -95,4 +97,4 @@ class Overview extends React.Component {
   }
 }
 
-export default Overview;
+export default ProductOverview;

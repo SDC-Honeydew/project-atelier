@@ -6,6 +6,12 @@ dist/
 config.js
 projAtelier-qa.pem
 
+
 coverage/
-package-lock.json
-coverage
+
+__snapshots__/
+
+test.png
+
+__tests__/overview/puppeteer.test.js
+/package-lock.json
