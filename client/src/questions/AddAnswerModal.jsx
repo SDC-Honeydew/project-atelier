@@ -28,7 +28,7 @@ class AddAnswerModal extends React.Component {
     if((this.state.qaanswer.length < 1) || (this.state.qanickname.length < 1) || (this.state.qaemail.length < 1) || (!this.state.qaemail.includes("@"))) {
       window.alert('You must enter all mandatory fields')
     } else {
-      this.props.addAnswer(this.state.qaanswer, this.state.qanickname, this.state.qaemail, this.props.q.question_id)
+      this.props.addAnswer(this.state.qaanswer, this.state.qanickname, this.state.qaemail, this.props.modalQ.question_id)
       .then(result => {
         this.props.onClose();
       })
@@ -45,7 +45,7 @@ class AddAnswerModal extends React.Component {
       <div className="qa-modal-content" onClick={e => e.stopPropagation()}>
         <div className="qa-modal-header">
           <h4 className="qa-modal-title">Submit Your Answer</h4>
-          <h5 className="qa-modal-subtitle">{this.props.name} : {this.props.q}</h5>
+          <h5 className="qa-modal-subtitle">{this.props.name} : {this.props.modalQ.question_body}</h5>
         </div>
         <div className="qa-modal-body">
           <label>

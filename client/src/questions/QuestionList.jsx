@@ -12,8 +12,8 @@ const QuestionList = (props) => {
   if (!props.moreQuestions) {
     return(
       <div className="question-list">
-        <Question question={props.questionList[0]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported} setAddAModalShow={props.setAddAModalShow} show={props.show} reportAnswer={props.reportAnswer} addQuestion={props.addQuestion} addAnswer={props.addAnswer}/>
-        <Question question={props.questionList[1]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported} setAddAModalShow={props.setAddAModalShow} show={props.show} addQuestion={props.addQuestion} addAnswer={props.addAnswer} reportAnswer={props.reportAnswer}/>
+        <Question question={props.questionList[0]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported} setAddAModalShow={props.setAddAModalShow} show={props.show} reportAnswer={props.reportAnswer} addQuestion={props.addQuestion} addAnswer={props.addAnswer} modalQ={props.modalQ}/>
+        <Question question={props.questionList[1]} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported} setAddAModalShow={props.setAddAModalShow} show={props.show} addQuestion={props.addQuestion} addAnswer={props.addAnswer} reportAnswer={props.reportAnswer}modalQ={props.modalQ}/>
       </div>
     )
   }
@@ -23,7 +23,7 @@ const QuestionList = (props) => {
     return(
       <div className="question-list">
         {props.questionList.map((question, key) => {
-          return <Question question={question} key={key} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported} setAddAModalShow={props.setAddAModalShow} show={props.show} addQuestion={props.addQuestion} addAnswer={props.addAnswer} reportAnswer={props.reportAnswer}/>
+          return <Question question={question} key={key} onClickHelpful={props.onClickHelpful} onClickHelpfulA={props.onClickHelpfulA} reported={props.reported} setAddAModalShow={props.setAddAModalShow} show={props.show} addQuestion={props.addQuestion} addAnswer={props.addAnswer} reportAnswer={props.reportAnswer}modalQ={props.modalQ}/>
         })}
       </div>
     )

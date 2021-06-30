@@ -1,7 +1,7 @@
 
 
 import axios from 'axios';
-import TOKEN from '../config.js';
+import TOKEN from '../../config.js';
 
 
 var getAnswers = async (questionID, page, count, callback) => {

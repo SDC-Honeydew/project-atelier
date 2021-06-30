@@ -6,13 +6,13 @@ import MoreQuestions from './MoreQuestions.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import AddQuestionModal from './AddQuestionModal.jsx'
 import TOKEN from '../../../config.js'
-import getQuestions from '../../../APIrequests/getQuestions.js'
-import getAnswers from '../../../APIrequests/getAnswers.js'
-import markQuestionHelpful from '../../../APIrequests/markQuestionHelpful.js'
-import markAnswerHelpful from '../../../APIrequests/markAnswerHelpful.js'
-import postQuestion from '../../../APIrequests/postQuestion.js'
-import postAnswer from '../../../APIrequests/postAnswer.js'
-import answerReported from '../../../APIrequests/reportAnswer.js'
+import getQuestions from '../../../server/qa-APIrequests/getQuestions.js'
+import getAnswers from '../../../server/qa-APIrequests/getAnswers.js'
+import markQuestionHelpful from '../../../server/qa-APIrequests/markQuestionHelpful.js'
+import markAnswerHelpful from '../../../server/qa-APIrequests/markAnswerHelpful.js'
+import postQuestion from '../../../server/qa-APIrequests/postQuestion.js'
+import postAnswer from '../../../server/qa-APIrequests/postAnswer.js'
+import answerReported from '../../../server/qa-APIrequests/reportAnswer.js'
 
 class QuestionApp extends React.Component {
   constructor(props) {
@@ -31,7 +31,8 @@ class QuestionApp extends React.Component {
       productName: this.props.name,
       numQuestionsDisplayed: 2,
       questionListLength: 0,
-      displayedQuestionList: []
+      displayedQuestionList: [],
+      answerModalQuestion: ''
     }
     this.getProductQuestions = this.getProductQuestions.bind(this)
     this.handleMoreQuestions = this.handleMoreQuestions.bind(this)
@@ -99,8 +100,9 @@ class QuestionApp extends React.Component {
         displayedQuestionList: slicedQList
       })
   }
-  addQuestion(body, name, email, photos, questionID) {
-    var data = {body: body, name: name, email: email, photos: photos}
+  addAnswer(body, name, email, questionID) {
+    var data = {body: body, name: name, email: email}
+    console.log(questionID, 'QUESTIONID')
     return postAnswer(data, questionID)
     .then(result => {
       this.getProductQuestions()
@@ -110,7 +112,7 @@ class QuestionApp extends React.Component {
     })
   }
 
-  addAnswer(body, name, email) {
+  addQuestion(body, name, email) {
     var data = {body: body, name: name, email: email, product_id: parseInt(this.props.product_id)}
     return postQuestion(data)
     .then(result => {
@@ -160,10 +162,12 @@ class QuestionApp extends React.Component {
       addQModalShow: boolean
     })
   }
-  setAddAModalShow (boo) {
+  setAddAModalShow (boo, q) {
     this.setState({
-      addAModalShow: boo
+      addAModalShow: boo,
+      answerModalQuestion: q
     })
+    console.log('QQQQQ', q)
   }
   render () {
     return (
@@ -173,7 +177,7 @@ class QuestionApp extends React.Component {
           <Search searchFilter={this.searchFilter}/>
         </nav>
         <div>
-          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} displayedQuestions={this.state.displayedQuestionList} onClickHelpful={this.onClickHelpful} onClickHelpfulA={this.onClickHelpfulA} reported={this.state.reported} setAddAModalShow={this.setAddAModalShow} show={this.state.addAModalShow} addAnswer={this.addAnswer} reportAnswer={this.reportAnswer}/>
+          <QuestionList questionList={this.state.questionList} product_id={this.props.product_id} moreQuestions={this.state.moreQuestions} displayedQuestions={this.state.displayedQuestionList} onClickHelpful={this.onClickHelpful} onClickHelpfulA={this.onClickHelpfulA} reported={this.state.reported} setAddAModalShow={this.setAddAModalShow} show={this.state.addAModalShow} addAnswer={this.addAnswer} reportAnswer={this.reportAnswer} modalQ={this.state.answerModalQuestion}/>
         </div>
         <div className="qa-footer">
             <MoreQuestions questionList={this.state.questionList} onClick={this.handleMoreQuestions} displayedQuestions={this.state.numQuestionsDisplayed} length={this.state.questionListLength}/>

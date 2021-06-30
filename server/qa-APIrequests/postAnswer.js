@@ -1,5 +1,5 @@
 import axios from 'axios';
-import TOKEN from '../config.js';
+import TOKEN from '../../config.js';
 
 
 
@@ -9,7 +9,7 @@ var postAnswer = async (data, questionID) => {
   axios.defaults.headers.common['Authorization'] = TOKEN;
 
   try {
-    console.log('data sent to post', data)
+    console.log('data sent to post', data, questionID)
     const resp = await axios.post(url, data);
     console.log(resp, "response in postAnswer")
     return resp
