@@ -54,7 +54,7 @@ class ProductOverview extends React.Component {
     var productOverview;
     if (this.state.product.styles) {
       productOverview =
-      <div data-testid='overview'className='overview-product' style={{border: '1px solid black'}}>
+      <div data-testid='overview'className='overview-product'>
         <div className='overview-top-row'>
           <div className='overview-left-col'>
             <ImageGallery
@@ -85,6 +85,7 @@ class ProductOverview extends React.Component {
           <ProductDescription
             description={this.state.product.description}
             slogan = {this.state.product.slogan}
+            features = {this.state.product.features}
           />
         </div>
       </div>;
