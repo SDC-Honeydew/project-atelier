@@ -64,8 +64,6 @@ module.exports = {
   },
   markReviewHelpful: (req, res) => {
     const review_id = Number(req.body.review_id);
-    console.log(review_id);
-
     axios({
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/helpful`,
@@ -74,7 +72,9 @@ module.exports = {
       }
     }).
       then(response => {
-        console.log(response);
+        console.log('success markhelpful');
+        res.send('sucess');
+        res.end();
       })
       .catch(err => { console.log('err'); });
   },
