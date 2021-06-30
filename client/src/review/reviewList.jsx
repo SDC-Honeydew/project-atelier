@@ -69,7 +69,7 @@ const ReviewList = (props) => {
         {filterData
           .map((result, index) => {
             if (index < numOfReview) {
-              return (<ReviewComp result={result} />);
+              return (<ReviewComp result={result} key={`result_${result.review_id}`}/>);
             }
           })}
       </div>

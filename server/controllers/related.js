@@ -57,14 +57,12 @@ module.exports = {
         var currentProdStyles = responses[i].data.results;
         for (var style = 0; style < currentProdStyles.length; style++) {
           if (currentProdStyles[style]['default?'] === true) {
-            console.log('DEFAULT STYLE DATA FROM API //////////', currentProdStyles[style]);
             relatedProductData[i]['original_price'] = currentProdStyles[style]['original_price'];
             relatedProductData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
             relatedProductData[i].image = currentProdStyles[style].photos[0].url;
           }
         }
       }
-      // console.log('related products after adding style', relatedProductData);
 
     })).then(() => {
       // request to the reviews API for each product
@@ -79,11 +77,10 @@ module.exports = {
       ));
     }).then(axios.spread((...responses) => {
 
-      /// ad the average review to each product object
+      /// add the average review to each product object
 
       for (var i = 0; i < responses.length; i++) {
         var currentProdRatings = responses[i].data.ratings;
-        // console.log('RATINGS FOR THE CURRENT PRODUCT /////', currentProdRatings);
 
         var count = 0;
         var total = 0;
@@ -98,7 +95,6 @@ module.exports = {
           relatedProductData[i].avgReview = total / count;
         }
       }
-      console.log('related products after adding reviews', relatedProductData);
       res.send(relatedProductData);
 
     })).catch((err) => {
@@ -108,5 +104,136 @@ module.exports = {
 
     // do a request to reviews
     // add the average rating for that item to the object
+  },
+
+  getFeatures: (req, res) => {
+    axios({
+      method: 'get',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${req.query.item}`,
+      headers: {
+        'Authorization': `${config.TOKEN}`
+      }
+    }).then((response) => {
+      res.send({
+        name: response.data.name,
+        features: response.data.features});
+    }).catch((err) => {
+      console.log('err retrieving current prod features from API', err);
+      res.sendStatus(502);
+    });
+  },
+
+  getOutfit: (req, res) => {
+    var outfitIds = req.cookies.outfit;
+    var outfitData = [];
+    outfitIds.forEach((Id) => {
+      outfitData.push({ id: Id});
+    });
+
+    axios.all(outfitIds.map((itemID) =>
+      axios({
+        method: 'get',
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${itemID}`,
+        headers: {
+          'Authorization': `${config.TOKEN}`
+        }
+      })
+    )).then(axios.spread((...responses) => {
+      // add the name, category, features to each product object
+      for (var i = 0; i < responses.length; i++) {
+        outfitData[i].name = responses[i].data.name;
+        outfitData[i].category = responses[i].data.category;
+        outfitData[i].features = responses[i].data.features;
+      }
+    })).then(() => {
+      // request to the style API for each product
+      return axios.all(outfitIds.map((outfitID) =>
+        axios({
+          method: 'get',
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${outfitID}/styles`,
+          headers: {
+            'Authorization': `${config.TOKEN}`
+          }
+        })
+      ));
+    }).then(axios.spread((...responses) => {
+      /// ad the original price, sale price, and photo from the default style to each product object
+      for (var i = 0; i < responses.length; i++) {
+        var currentProdStyles = responses[i].data.results;
+        for (var style = 0; style < currentProdStyles.length; style++) {
+          if (currentProdStyles[style]['default?'] === true) {
+            outfitData[i]['original_price'] = currentProdStyles[style]['original_price'];
+            outfitData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
+            outfitData[i].image = currentProdStyles[style].photos[0].url;
+          }
+        }
+      }
+
+    })).then(() => {
+      // request to the reviews API for each product
+      return axios.all(outfitIds.map((outfitID) =>
+        axios({
+          method: 'get',
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta/?product_id=${outfitID}`,
+          headers: {
+            'Authorization': `${config.TOKEN}`
+          }
+        })
+      ));
+    }).then(axios.spread((...responses) => {
+
+      /// ad the average review to each product object
+
+      for (var i = 0; i < responses.length; i++) {
+        var currentProdRatings = responses[i].data.ratings;
+
+        var count = 0;
+        var total = 0;
+        for (var key in currentProdRatings) {
+          count += parseInt(currentProdRatings[key]);
+          total += parseInt(key) * parseInt(currentProdRatings[key]);
+        }
+
+        if (count === 0) {
+          outfitData[i].avgReview = null;
+        } else {
+          outfitData[i].avgReview = total / count;
+        }
+      }
+      res.send(outfitData);
+
+    })).catch((err) => {
+      console.log('err retrieving related product data from API', err);
+      res.send(502);
+    });
+
+  },
+
+  addToOutfit: (req, res) => {
+    var cookieJar = [];
+    // if there are existing cookies:
+    if (req.cookies.outfit) {
+      // store them
+      cookieJar = req.cookies.outfit;
+      // clear cookie
+      res.clearCookie('outfit');
+    }
+
+    var item = req.body.params.item;
+
+    if (cookieJar.indexOf(item) === -1) {
+      cookieJar.push(item);
+    }
+    res.cookie('outfit', cookieJar).send('cookie set');
+  },
+
+  removeFromOutfit: (req, res) => {
+    var cookieJar = req.cookies.outfit;
+    res.clearCookie('outfit');
+    var item = req.body.params.item;
+    var itemIndex = cookieJar.indexOf(item);
+    cookieJar.splice(itemIndex, 1);
+    res.cookie('outfit', cookieJar).send('cookie set');
   }
+
 };

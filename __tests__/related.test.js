@@ -1,10 +1,12 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from '../client/src/app.jsx';
 import React from 'react';
 import RelatedProducts from '../client/src/related/relatedProducts.jsx';
 import RelatedList from '../client/src/related/relatedList.jsx';
 import ProductCard from '../client/src/related/productCard.jsx';
+import ComparisonModal from '../client/src/related/comparisonModal.jsx';
+import OutfitList from '../client/src/related/outfitList.jsx';
 
 var products = [
   {
@@ -43,7 +45,25 @@ var products = [
         'value': 'White'
       }
     ]
-  }
+  },
+  {
+    'id': 14,
+    'name': 'Truthy Trainers',
+    'category': 'Running Shoes',
+    'original_price': '0',
+    'image': 'urlplaceholder/style_1_photo_number.jpg',
+    'avgReview': 4.3,
+    'features': [
+      {
+        'feature': 'Sole',
+        'value': 'Pure'
+      },
+      {
+        'feature': 'Waterproof',
+        'value': true
+      }
+    ]
+  },
 ];
 
 afterEach(cleanup);
@@ -54,6 +74,7 @@ describe('Related Products List', () => {
     expect(screen.getByText('RELATED PRODUCTS')).toBeInTheDocument();
   });
 
+  //consider refactoring to have products in related list component
   test('Each card will show information for single product', () => {
     render(<RelatedList />);
     var cards = document.getElementsByClassName('related_productCard');
@@ -91,23 +112,65 @@ describe('Product card', () => {
     expect(productImage[0].src).toBe('http://localhost/urlplaceholder/style_1_photo_number.jpg');
   });
 
+});
+
+describe('Comparison Modal', () => {
+  test('The modal should be titled “Comparing”.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    expect(screen.getByText('COMPARING')).toBeInTheDocument();
+  });
+
+  test('All characteristics for both products will be combined and reconciled against one another.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    var featureRows = document.getElementsByClassName('related_featureRow');
+    expect(featureRows.length).toEqual(3);
+  });
+
+  test('If the characteristic has a specific value it should display.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    var soleValue = document.getElementsByClassName('related_test_Sole')[0].innerHTML;
+    expect(soleValue).toEqual('Wood');
+  });
+
+  test('If the characteristic is a fact such that it is ‘true’ for the given product, then the value should display as a checkmark.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[2]} showModal={true}/>);
+    expect(screen.getByText('✓')).toBeInTheDocument();
+  });
+
+  test(' For any characteristics that do not apply to the product, the value should simply be left blank.', () => {
+    render(<ComparisonModal currentProd={products[0]} comparisonProd={products[1]} showModal={true}/>);
+    var materialValue = document.getElementsByClassName('related_test_Material')[0].innerHTML;
+    expect(materialValue).toEqual('');
+  });
 
 });
 
-// 1.4.1.1.  Product Information
-// The following information will appear on the card.  This information will all be read-only and will not have any interactivity associated.
-// Product Category
+describe('Outfit List', () => {
+  test('The list will be titled “Your Outfit"', () => {
+    render(<OutfitList item={'22132'} handleCardClick={null}/>);
+    expect(screen.getByText('YOUR OUTFIT')).toBeInTheDocument();
+  });
 
-// Product Name
+  test('By default, this list should contain no products within it.', () => {
+    render(<OutfitList item={'22132'} handleCardClick={null}/>);
+    var products = document.getElementsByClassName('related_productCard');
+    expect(products.length).toEqual(1);
+  });
 
-// Price - As the price is not actually derived from the product, the price displayed should be that for the default style. Sale prices should be reflected.  If the style is currently discounted, then the sale price should appear in red, followed by the original price which is struckthrough.
+  test('The first card will not display a product and will read "Add to Outfit"', () => {
+    render(<OutfitList item={'22132'} handleCardClick={null}/>);
+    var add = document.getElementsByClassName('related_addToOutfit');
+    expect(add[0].innerHTML).toEqual(expect.stringContaining('Add to Outfit'));
+  });
+
+  test('Items will be added to the list only when a user explicitly selects them to be added.', () => {
+
+    render(<OutfitList item={'22132'} handleCardClick={null}/>);
+    const add = screen.getByText('Add to Outfit');
+    fireEvent.click(add);
+    setTimeout(expect(document.cookie).not.toEqual('undefined'), 5000);
 
 
-// Star Rating (# of Reviews) - Each product has an average rating based on its reviews.  The average rating of the product will be displayed in the format of solid or outlined stars, where the solid stars represent the review score. A total of 5 stars should always appear, and the amount filled in should correspond to the average score.
 
-
-// The visual for rating should be representative of up to a quarter of a review point.  For example, if the average is 3.8, this should display as 3¾ solid stars and 1¼ outlined stars.  If there are no reviews, this entire section should be hidden.
-
-// 1.4.1.2.  Product Preview Images
-// The product card should display preview images of the related products.  The images which appear on the product card should be the same that appear in the Overview module on the item detail page for that product.
-// By default, the preview image displayed on each card will be the primary image for that product.  This should be the same which first appears on the image detail page’s image gallery.
+  });
+});

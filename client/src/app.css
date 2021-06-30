@@ -401,6 +401,7 @@ Overview Image Gallery
   height: 20px;
 }
 
+
 .overview-product-description-container {
   display: flex;
   flex-direction: row;
@@ -417,28 +418,21 @@ Overview Image Gallery
   max-width: 75%;
   margin-right: 20px;
 }
-/*
-
-
-Review CSS
 
 
 
-/****************RELATED PRODUCTS WIDGET*****************/
 
-#related_relatedDiv {
-  background-color: rgb(0, 255, 157);
-}
+
+/**************** RELATED PRODUCTS WIDGET*****************/
 
 #related_relatedProducts{
-  background-color:cornflowerblue;
   height: 300px;
 }
 
-#related_relatedList {
+.related_productList {
   display: grid;
   grid-template-areas:
-  'product product product product product';
+  'product product product product product product product';
   grid-gap: 10px;
   grid-template-rows: 300px;
   padding: 10px;
@@ -453,8 +447,9 @@ Review CSS
   top: 0;
   width: 175px;
   height: 250px;
-  border: solid black;
+  border: solid black 1px;
   float: left;
+  z-index: 0;
 }
 
 .related_productCardImage{
@@ -465,7 +460,12 @@ Review CSS
   display: block;
   margin-left: auto;
   margin-right: auto;
-  z-index: 0;
+  z-index: 5;
+}
+
+.related_addToOutfit {
+  text-align: center;
+  font-size: 30px;
 }
 
 .related_icon{
@@ -481,7 +481,53 @@ Review CSS
   text-decoration: line-through;
 }
 
-/******************************************************/
+.related_modal{
+  width: 450px;
+  background: white;
+  visibility: visible;
+  position: absolute;
+  top: 1000px;
+  margin-left: 30%;
+  margin-right: 30%;
+  z-index: 15;
+  padding: 10px;
+  border: black solid 1px;
+  font-size: 12px;
+}
+
+.related_closeModal{
+  text-align: right;
+}
+
+.related_comparisonTable{
+  width: 100%;
+}
+
+.related_comparisonCurrent{
+  text-align: left;
+  width: 40%;
+}
+
+.related_comparisonFeature{
+  text-align: center;
+  width: 20%;
+}
+
+.related_comparisonCompare{
+  text-align: right;
+  width: 40%;
+}
+
+/**************** END RELATED PRODUCTS********************/
+
+
+/*
+
+
+Review CSS
+
+
+*/
 
 
 

@@ -42,7 +42,7 @@ class Home extends React.Component {
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{this.state.colorTheme}</label>
         </div>
         <ProductOverview id={this.state.id}/>
-        <RelatedProducts />
+        <RelatedProducts item={this.state.id}/>
         <Review id={this.state.id} />
       </div>
     );
