@@ -1,7 +1,6 @@
 import React from 'react';
 import ReviewList from './reviewList.jsx';
 import RatingBreakdown from './ratingBreakdown.jsx';
-import reviewData from '../../../reviewSampleData.json';
 import ProductBreakdown from './productBreakdown.jsx';
 import AddReviewPopup from './addReviewPopup.jsx';
 import $ from 'jquery';
@@ -9,7 +8,40 @@ class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: reviewData,
+      data: {
+        'reviews': {
+          'product': '2',
+          'page': 0,
+          'count': 5,
+          'results': [
+          ]
+        },
+        'meta': {
+          'product_id': '2',
+          'ratings': {
+            '5': 1,
+            '3': 1,
+            '4': 3
+          },
+          'recommended': {
+            '0': 5
+          },
+          'characteristics': {
+            'Size': {
+              'id': 14,
+              'value': 4.0000
+            },
+            'Width': {
+              'id': 15,
+              'value': 3.5000
+            },
+            'Comfort': {
+              'id': 16,
+              'value': 4.0000
+            }
+          }
+        }
+      },
       sort: 'relevance',
       filters: [],
       popup: false,
