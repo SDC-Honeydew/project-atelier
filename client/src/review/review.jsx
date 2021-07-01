@@ -3,6 +3,7 @@ import ReviewList from './reviewList.jsx';
 import RatingBreakdown from './ratingBreakdown.jsx';
 import ProductBreakdown from './productBreakdown.jsx';
 import AddReviewPopup from './addReviewPopup.jsx';
+import trackClicks from '../tracking/trackClicks.jsx';
 import $ from 'jquery';
 class Review extends React.Component {
   constructor(props) {
@@ -101,7 +102,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div id="review">
+      <div id="review" onClick={(e) => this.props.logged(e)}>
         <div className='review-grid-container'>
           <div className='review-header-area'>Rating & Reviews</div>
           <div className='review-list-area'>
@@ -120,4 +121,4 @@ class Review extends React.Component {
   }
 }
 
-export default Review;
+export default trackClicks(Review);
