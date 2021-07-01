@@ -807,10 +807,7 @@ Review CSS
 .qa-search-input {
   width: 90%;
 }
-.qa-search-button {
-  /* width: 10%;
-  float: right */
-}
+
 .qa-question {
   max-width: 800px;
   height: 150px;
