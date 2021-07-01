@@ -9,7 +9,7 @@ module.exports = {
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions`,
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       },
       data: data
     }).then(response => {

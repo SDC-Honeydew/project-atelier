@@ -8,7 +8,7 @@ module.exports = {
       method: 'get',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions',
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       },
       params: {
         'product_id': `${req.query.id}`,
@@ -25,7 +25,7 @@ module.exports = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.id}/helpful`,
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       }
     }).then(response => {
       res.send('success');
@@ -37,7 +37,7 @@ module.exports = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.id}/helpful`,
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       }
     }).then(response => {
       res.send('success');
@@ -51,7 +51,7 @@ module.exports = {
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${questionID}/answers`,
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       },
       data: data
     }).then(response => {
@@ -68,7 +68,7 @@ module.exports = {
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions',
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       },
       data: data
     }).then(response => {
@@ -81,7 +81,7 @@ module.exports = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.answer_id}/report`,
       headers: {
-        'Authorization': `${config}`
+        'Authorization': `${config.TOKEN}`
       }
     }).then(response => {
       res.send('success');
