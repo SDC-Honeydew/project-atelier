@@ -47,18 +47,21 @@ class Review extends React.Component {
       popup: false,
       userData: []
     };
-    if (props.data !== undefined) {
-      this.setState({ data: props.data });
-    }
-    if (props.id !== undefined) {
-      this.getReviewsData(props.id);
-    }
+
     this.toggleStarFilter = this.toggleStarFilter.bind(this);
     this.updateSortType = this.updateSortType.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
 
   }
 
+  componentDidMount() {
+    if (this.props.data !== undefined) {
+      this.setState({ data: this.props.data });
+    }
+    if (this.props.id !== undefined) {
+      this.getReviewsData(this.props.id);
+    }
+  }
 
 
 
