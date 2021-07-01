@@ -6,6 +6,7 @@
   --border-color: rgb(231, 230, 230);
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
+  --header-color: forestgreen;
 }
 
 body {
@@ -49,6 +50,34 @@ a:hover {
   border-color:var(--border-color);
 }
 
+
+/* Header */
+
+.timpani-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 75px;
+  align-items: center;
+  background-color: var(--header-color);
+  color: white;
+  padding: 15px
+}
+
+.timpano-trading-co {
+  font-family: 'Big Shoulders Stencil Display', cursive;
+  color: white;
+}
+
+.timpani-logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.timpani-logo-img {
+  filter: invert(1);
+  margin-right: 7px;
+}
 
 /*
 
