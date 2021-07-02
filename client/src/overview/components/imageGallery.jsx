@@ -20,11 +20,6 @@ class ImageGallery extends React.Component {
     this.expandImg = this.expandImg.bind(this);
   }
 
-  componentDidMount() {
-    this.props.photos.forEach((photo) => {
-      new Image().src = photo.url;
-    })
-  }
 
   setMainImg(e, i, imgUrl) {
     e.preventDefault();
