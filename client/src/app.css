@@ -514,19 +514,32 @@ Overview Image Gallery
   text-decoration: line-through;
 }
 
-.related_modal{
-  width: 450px;
+.related_modal_content{
+  width: 700px;
   visibility: visible;
-  position: absolute;
-  top: 1000px;
-  margin-left: 30%;
-  margin-right: 30%;
-  z-index: 15;
+  position: relative;
+  margin-left: 10%;
+  margin-right: 10%;
+  z-index: 51;
   padding: 10px;
-  font-size: 12px;
+  font-size: 20px;
   background-color: var(--background-color);
   color: var(--font-color);
   border-color: var(--border-color);
+  cursor: default;
+}
+
+.related_modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 
 .related_closeModal{
@@ -535,6 +548,17 @@ Overview Image Gallery
 
 .related_comparisonTable{
   width: 100%;
+}
+
+.related_comparisonRows{
+  display: block;
+  max-height: 180px;
+  overflow: auto;
+  cursor: default;
+}
+
+.related_comparisonHeaders{
+  display: block;
 }
 
 .related_comparisonCurrent{
