@@ -97,9 +97,9 @@ class OutfitList extends React.Component {
       <div id='related_outfit'>
         <h6>YOUR OUTFIT</h6>
         <div className='related_productList'>
-          <div className="related_productCard related_addToOutfit" id='add
-          toOutfit' onClick={this.onPlusClick}><p>+</p><p>Add to Outfit</p></div>
           <ScrollButton direction={'L'} start={this.state.start} end={this.state.end} length={this.state.length} onClick={this.scrollLeft}/>
+          <div className="related_productCard related_addToOutfit" id='add
+          toOutfit' onClick={this.onPlusClick}><p>+</p><p>Add the Current Item to Your Outfit</p></div>
           {outfit.map((product) =>
             <ProductCard productInfo={product} cardType={'outfit'} key={`outfit_${product.id}`} handleCardClick={this.props.handleCardClick} onIconClick={this.onXClick}/>
           )}
