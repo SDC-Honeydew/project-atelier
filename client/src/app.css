@@ -6,6 +6,7 @@
   --border-color: rgb(231, 230, 230);
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
+  --header-color: forestgreen;
 }
 
 body {
@@ -49,6 +50,34 @@ a:hover {
   border-color:var(--border-color);
 }
 
+
+/* Header */
+
+.timpani-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 75px;
+  align-items: center;
+  background-color: var(--header-color);
+  color: white;
+  padding: 15px
+}
+
+.timpano-trading-co {
+  font-family: 'Big Shoulders Stencil Display', cursive;
+  color: white;
+}
+
+.timpani-logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.timpani-logo-img {
+  filter: invert(1);
+  margin-right: 7px;
+}
 
 /*
 
@@ -767,4 +796,132 @@ Review CSS
 
 .review-body {
   word-wrap: break-word;
+}
+/******************************************************/
+.qa-header {
+  font-size: medium;
+  max-width: 800px;
+  height: 30px;
+  margin: auto;
+}
+.qa-navbar {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+}
+.qa-search {
+  display: flex;
+
+
+}
+.qa-search-input {
+  width: 90%;
+}
+
+.qa-question {
+  max-width: 800px;
+  height: 150px;
+  margin: auto;
+
+
+}
+.question-list {
+  max-width: 800px;
+  height: 300px;
+  margin: auto;
+  overflow-y: auto;
+}
+.qa-question-body {
+  font-weight: bold;
+
+}
+.qa-question-buttons {
+  float: right;
+}
+.qa-addAnswer {
+  background: none;
+  border: none;
+  font-size: small;
+
+}
+.qa-helpful-button {
+
+  background: none;
+  border: none;
+  font-size: small;
+}
+
+
+.qa-divider{
+  width:20px;
+  height:auto;
+  display:inline-block;
+}
+.qa-A {
+  flex-wrap: wrap;
+}
+.qa-answer-body {
+  max-width: 400;
+  margin: auto;
+}
+.qa-answer-user {
+  font-size: small;
+}
+.qa-answer-button {
+  background: none;
+  border: none;
+}
+.qa-footer {
+  max-width: 800px;
+  margin: auto;
+}
+.qa-ma-button {
+  background: none;
+  width: auto;
+  height: 60px;
+  font-weight: bold;
+}
+.qa-report-btn {
+  background: none;
+  border: none;
+}
+
+.qa-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qa-modal-content {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: #fff;
+  overflow: auto;
+  cursor: default;
+}
+
+.qa-modal-header,
+.qa-modal-footer {
+  padding: 10px;
+  background: var(--lightgray);
+}
+
+.qa-modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qa-modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }

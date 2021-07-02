@@ -2,6 +2,7 @@ import React from 'react';
 import RelatedProducts from './related/relatedProducts.jsx';
 import Review from './review/review.jsx';
 import ProductOverview from './overview/overview.jsx';
+import QuestionApp from './questions/QuestionApp.jsx';
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +25,7 @@ class Home extends React.Component {
       document.documentElement.style.setProperty('--font-color', '#000');
       document.documentElement.style.setProperty('--primary-color', '#5E81AC');
       document.documentElement.style.setProperty('--primary-color-hover', '#81A1C1');
+      document.documentElement.style.setProperty('--header-color', 'forestgreen');
       return;
     }
     // dark mode
@@ -32,17 +34,25 @@ class Home extends React.Component {
     document.documentElement.style.setProperty('--font-color', '#fff');
     document.documentElement.style.setProperty('--primary-color', '#EBCB8B');
     document.documentElement.style.setProperty('--primary-color-hover', '#D08770');
+    document.documentElement.style.setProperty('--header-color', '#405c7d');
   }
 
   render() {
     return (
       <div>
-        <div className="form-check form-switch">
-          <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.toggleTheme} />
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{this.state.colorTheme}</label>
+        <div className='timpani-header'>
+          <div className='timpani-logo'>
+            <img className='timpani-logo-img' src="https://img.icons8.com/ios/50/000000/timpani.png"/>
+            <h1 className='timpano-trading-co'>Timpano Trading Co.</h1>
+          </div>
+          <div className="form-check form-switch">
+            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.toggleTheme} />
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{this.state.colorTheme}</label>
+          </div>
         </div>
         <ProductOverview id={this.state.id}/>
         <RelatedProducts item={this.state.id}/>
+        <QuestionApp product_id={this.state.id}/>
         <Review id={this.state.id} />
       </div>
     );
