@@ -7,7 +7,7 @@
     "test": "jest --silent --coverage",
     "test-review": "jest --coverage --collectCoverageFrom=client/src/review/*.{js,jsx} --silent --colors",
     "test-dev": "jest --silent --coverage --watch",
-    "react-dev": "webpack --mode development --watch",
+    "react-dev": "webpack --mode production --watch",
     "server-dev": "nodemon server/index.js",
     "start": "node server/index.js"
   },
@@ -41,8 +41,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+    "brotli-webpack-plugin": "^1.1.0",
+    "compression": "^1.7.4",
+    "compression-webpack-plugin": "^8.0.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "express-static-gzip": "^2.1.1",
     "install": "^0.13.0",
     "jquery": "^3.6.0",
     "npm": "^7.19.0",

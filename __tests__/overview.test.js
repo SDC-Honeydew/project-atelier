@@ -1,5 +1,5 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom';
+
 
 
 import ProductOverview from '../client/src/overview/overview.jsx';
@@ -206,23 +206,23 @@ describe('Overview Component with Sample Data', () => {
     });
   });
 
-  describe('Mock Functions', () => {
-    let wrapper;
+  // describe('Mock Functions', () => {
+  //   let wrapper;
 
-    const props = {
-      product: sampleData,
-      currentStyleIndex: 0
-    };
+  //   const props = {
+  //     product: sampleData,
+  //     currentStyleIndex: 0
+  //   };
 
-    beforeEach(() => {
-      wrapper = shallow(<ProductOverview {...props}/>);
-    });
+  //   beforeEach(() => {
+  //     wrapper = shallow(<ProductOverview {...props}/>);
+  //   });
 
-    test('should check `componentDidMount()`', () => {
-      const instance = wrapper.instance();
-      jest.spyOn(instance, 'getOneProduct');
-      instance.componentDidMount();
-      expect(instance.getOneProduct).toHaveBeenCalledTimes(1);
-    });
-  });
+  //   test('should check `componentDidMount()`', () => {
+  //     const instance = wrapper.instance();
+  //     jest.spyOn(instance, 'getOneProduct');
+  //     instance.componentDidMount();
+  //     expect(instance.getOneProduct).toHaveBeenCalledTimes(1);
+  //   });
+  //});
 });
