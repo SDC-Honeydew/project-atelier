@@ -6,7 +6,7 @@ import MoreQuestions from './MoreQuestions.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import AddQuestionModal from './AddQuestionModal.jsx'
 import $ from 'jquery';
-import trackClicks from '../tracking/trackClicks.jsx'
+import trackClicks from '../tracking/trackClicks.jsx';
 
 class QuestionApp extends React.Component {
   constructor(props) {

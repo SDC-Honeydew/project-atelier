@@ -20,6 +20,7 @@ class ImageGallery extends React.Component {
     this.expandImg = this.expandImg.bind(this);
   }
 
+
   setMainImg(e, i, imgUrl) {
     e.preventDefault();
     var mainImg = imgUrl || e.target.src || this.props.photos[i].url;
@@ -68,7 +69,6 @@ class ImageGallery extends React.Component {
       thumbnailCarousel = <ThumbnailCarousel imgs={this.state.thumbnailImgs} setMainImg={this.setMainImg} mainImg={this.state.mainImg} expanded={true} />;
     }
 
-
     return (
       <div className={`overview-image-gallery${this.state.expand ? '-expand' : ''}`} data-testid='image-gallery'
       >
@@ -77,8 +77,8 @@ class ImageGallery extends React.Component {
           {!this.state.zoom && this.state.mainImg !== this.state.firstImg &&
           <button onClick={(e) => this.setMainImg(e, this.state.currentIndex - 1)} className={`overview-image-gallery-left-arrow${this.state.expand ? '-expand' : ''}`}>&#10140;</button>
           }
+
           <img
-            rel='preload'
             src={this.state.mainImg}
             className={`overview-image-gallery-img${this.state.expand ? '-expand' : ''}`}
             onClick={(e) => this.expandImg(e)} >
