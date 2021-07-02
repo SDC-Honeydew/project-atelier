@@ -6,26 +6,27 @@ import SalePrice from './salePrice.jsx';
 class ProductCard extends React.Component {
 
   render() {
-    var iconSrc, onIconClick;
+    var iconText, imgAlt;
     if (this.props.cardType === 'related') {
-      iconSrc = 'https://cdn3.iconfinder.com/data/icons/sympletts-free-sampler/128/star-512.png';
+      iconText = '★';
     } else {
-      iconSrc = 'https://static.vecteezy.com/system/resources/thumbnails/001/200/173/small/x.png';
+      iconText = 'x';
     }
+    imgAlt = `${this.props.productInfo.category}: ${this.props.productInfo.name}`;
     return (
       <div className="related_productCard">
-        <img className='related_productCardImage' src={this.props.productInfo.image || 'https://static.thenounproject.com/png/1103191-200.png'} onClick={(event) => {
+        <img className='related_productCardImage' src={this.props.productInfo.image || 'https://static.thenounproject.com/png/1103191-200.png'} alt={imgAlt} onClick={(event) => {
           event.preventDefault();
           this.props.handleCardClick(this.props.productInfo.id);
         }}></img>
-        <img className='related_icon' src={iconSrc} onClick={() => {
+        <p className='related_icon' onClick={() => {
           var productClicked = {
             name: this.props.productInfo.name,
             id: this.props.productInfo.id,
             features: this.props.productInfo.features
           };
           this.props.onIconClick(productClicked);
-        }}></img>
+        }}>{iconText}</p>
         <div className='related_details' onClick={(event) => {
           event.preventDefault();
           this.props.handleCardClick(this.props.productInfo.id);

@@ -57,7 +57,7 @@ module.exports = {
         var currentProdStyles = responses[i].data.results;
         relatedProductData[i]['original_price'] = currentProdStyles[0]['original_price'];
         relatedProductData[i]['sale_price'] = currentProdStyles[0]['sale_price'];
-        relatedProductData[i].image = currentProdStyles[0].photos[0].url;
+        relatedProductData[i].image = currentProdStyles[0].photos[0].thumbnail_url;
       }
 
     })).then(() => {
@@ -158,7 +158,7 @@ module.exports = {
         var currentProdStyles = responses[i].data.results;
         outfitData[i]['original_price'] = currentProdStyles[0]['original_price'];
         outfitData[i]['sale_price'] = currentProdStyles[0]['sale_price'];
-        outfitData[i].image = currentProdStyles[0].photos[0].url;
+        outfitData[i].image = currentProdStyles[0].photos[0].thumbnail_url;
       }
 
     })).then(() => {
