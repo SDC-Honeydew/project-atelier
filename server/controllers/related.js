@@ -55,13 +55,9 @@ module.exports = {
       /// ad the original price, sale price, and photo from the default style to each product object
       for (var i = 0; i < responses.length; i++) {
         var currentProdStyles = responses[i].data.results;
-        for (var style = 0; style < currentProdStyles.length; style++) {
-          if (currentProdStyles[style]['default?'] === true) {
-            relatedProductData[i]['original_price'] = currentProdStyles[style]['original_price'];
-            relatedProductData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
-            relatedProductData[i].image = currentProdStyles[style].photos[0].url;
-          }
-        }
+        relatedProductData[i]['original_price'] = currentProdStyles[0]['original_price'];
+        relatedProductData[i]['sale_price'] = currentProdStyles[0]['sale_price'];
+        relatedProductData[i].image = currentProdStyles[0].photos[0].url;
       }
 
     })).then(() => {
@@ -160,13 +156,9 @@ module.exports = {
       /// ad the original price, sale price, and photo from the default style to each product object
       for (var i = 0; i < responses.length; i++) {
         var currentProdStyles = responses[i].data.results;
-        for (var style = 0; style < currentProdStyles.length; style++) {
-          if (currentProdStyles[style]['default?'] === true) {
-            outfitData[i]['original_price'] = currentProdStyles[style]['original_price'];
-            outfitData[i]['sale_price'] = currentProdStyles[style]['sale_price'];
-            outfitData[i].image = currentProdStyles[style].photos[0].url;
-          }
-        }
+        outfitData[i]['original_price'] = currentProdStyles[0]['original_price'];
+        outfitData[i]['sale_price'] = currentProdStyles[0]['sale_price'];
+        outfitData[i].image = currentProdStyles[0].photos[0].url;
       }
 
     })).then(() => {
@@ -185,8 +177,9 @@ module.exports = {
       /// ad the average review to each product object
 
       for (var i = 0; i < responses.length; i++) {
-        var currentProdRatings = responses[i].data.ratings;
+        console.log(responses[i]);
 
+        var currentProdRatings = responses[i].data.ratings;
         var count = 0;
         var total = 0;
         for (var key in currentProdRatings) {

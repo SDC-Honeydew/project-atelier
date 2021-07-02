@@ -455,16 +455,17 @@ Overview Image Gallery
 /**************** RELATED PRODUCTS WIDGET*****************/
 
 #related_relatedProducts{
-  height: 300px;
+  height: 330px;
 }
 
 .related_productList {
   display: grid;
   grid-template-areas:
   'product product product product product product product';
-  grid-gap: 10px;
+  grid-gap: 15px;
   grid-template-rows: 300px;
-  padding: 10px;
+  padding-right: 15px;
+  padding-bottom: 60px;
 }
 
 .related_details{
@@ -474,8 +475,8 @@ Overview Image Gallery
 .related_productCard {
   position: relative;
   top: 0;
-  width: 175px;
-  height: 250px;
+  width: 200px;
+  height: 275px;
   border-color: var(--border-color);
   border: solid 1px;
   float: left;
@@ -485,7 +486,7 @@ Overview Image Gallery
 .related_productCardImage{
   position: relative;
   top: 0;
-  max-height: 120px;
+  max-height: 135px;
   max-width: 100%;
   display: block;
   margin-left: auto;
