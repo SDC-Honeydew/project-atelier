@@ -177,7 +177,6 @@ module.exports = {
       /// ad the average review to each product object
 
       for (var i = 0; i < responses.length; i++) {
-        console.log(responses[i]);
 
         var currentProdRatings = responses[i].data.ratings;
         var count = 0;

@@ -14,13 +14,13 @@ class ScrollButton extends React.Component {
     } else if (this.props.direction === 'L') {
       jsx = (
         <div className='related_scrollButton'>
-          <btn className='related_leftButton' onClick={this.props.onClick}>{'<'}</btn>
+          <p className='related_leftButton' onClick={this.props.onClick}>{'<'}</p>
         </div>
       );
     } else {
       jsx = (
         <div className='related_scrollButton'>
-          <btn className='related_rightButton' onClick={this.props.onClick}>{'>'}</btn>
+          <p className='related_rightButton' onClick={this.props.onClick}>{'>'}</p>
         </div>
       );
     }
