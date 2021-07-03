@@ -22,7 +22,7 @@ class ProductInformation extends React.Component {
     }
     return (
       <div data-testid='product-info'>
-        <StarRating rating={2.5} />
+        <StarRating rating={this.props.avgRating} />
         <span className='overview-productInfo-category'>{this.props.category}</span>
         <h2 className='overview-productInfo-name'>{this.props.name}</h2>
         {price}

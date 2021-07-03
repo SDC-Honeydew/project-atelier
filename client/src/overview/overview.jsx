@@ -19,6 +19,7 @@ class ProductOverview extends React.Component {
     super(props);
     this.state = {
       product: {},
+      avgRating: null,
       currentStyleIndex: 0
     };
     //this.getOneProduct(this.props.id)
@@ -31,19 +32,33 @@ class ProductOverview extends React.Component {
   }
 
   getOneProduct(id) {
+    var product, avgRating;
     axios({
       method: 'GET',
       url: '/overview',
       params: {id}
     })
       .then(res => {
-        this.setState({
-          product: res.data
-        });
-      })
-      .catch(err => console.log(err, 'whyyyyy'));
+        product = res.data;
+        axios({
+          method: 'GET',
+          url: '/reviews',
+          params: {id}
+        })
+          .then(res => {
+            var numberOfReviews = res.data.reviews.results.length;
+            avgRating = numberOfReviews > 0 ? Math.round(res.data.reviews.results.reduce((acc, curr) => acc + curr.rating , 0) / numberOfReviews * 10) / 10 : 0;
 
+            this.setState({
+              product, avgRating
+            })
+              .catch(err => console.log('err ', err));
+          })
+          .catch(err => console.log(err, 'whyyyyy'));
+
+      });
   }
+
 
   setCurrentStyleIndex(currentStyleIndex) {
     this.setState({
@@ -71,6 +86,7 @@ class ProductOverview extends React.Component {
                 category={this.state.product.category}
                 name={this.state.product.name}
                 price={this.state.product.styles[this.state.currentStyleIndex]}
+                avgRating={this.state.avgRating}
               />
               <StyleSelector
                 styles={this.state.product.styles}
