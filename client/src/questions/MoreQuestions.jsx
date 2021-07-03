@@ -6,7 +6,7 @@ const MoreQuestions = (props) => {
     return null
   }
   return (
-    <button className="qa-ma-button" onClick={() => props.onClick()}> More Answered Questions</button>
+    <button className="btn btn-primary" onClick={() => props.onClick()}> MORE ANSWERED QUESTIONS</button>
   )
 
 }
