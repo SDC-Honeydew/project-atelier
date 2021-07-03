@@ -937,13 +937,13 @@ Review CSS
   /* margin: auto; */
 }
 
-.qa-ma-button {
+/* .qa-ma-button {
   background: var(--background-color);
   color: var(--font-color);
   width: auto;
   height: 60px;
   font-weight: bold;
-}
+} */
 .qa-report-btn {
   /* background: none; */
   background: var(--background-color);

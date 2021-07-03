@@ -188,7 +188,7 @@ describe('Add Answer', () => {
 describe('Add Question', () => {
   test('it renders', () => {
     render(<AddQuestion />);
-    var questClass = document.getElementsByClassName('qa-ma-button')
+    var questClass = document.getElementsByClassName('btn btn-primary')
     expect(questClass.length).toEqual(1);
   });
 
