@@ -173,7 +173,7 @@ describe('Search Component', () => {
 describe('More Questions', () => {
   test('it renders', () => {
     render(<MoreQuestions />);
-    expect(screen.getByText('More Answered Questions')).toBeInTheDocument();
+    expect(screen.getByText('MORE ANSWERED QUESTIONS')).toBeInTheDocument();
   });
 
 
