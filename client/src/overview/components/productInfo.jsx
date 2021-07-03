@@ -24,7 +24,7 @@ class ProductInformation extends React.Component {
     if (this.props.numberOfReviews > 0) {
       starRating = <div className='overview-star-container'>
         <StarRating rating={this.props.avgRating} />
-        &nbsp;&nbsp;
+        &nbsp;
         <a href='#review' style={{fontSize: '15px'}}>{`Read all ${this.props.numberOfReviews} reviews!`}</a>
       </div>;
     }
