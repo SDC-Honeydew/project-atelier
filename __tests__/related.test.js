@@ -160,13 +160,13 @@ describe('Outfit List', () => {
   test('The first card will not display a product and will read "Add to Outfit"', () => {
     render(<OutfitList item={'22132'} handleCardClick={null}/>);
     var add = document.getElementsByClassName('related_addToOutfit');
-    expect(add[0].innerHTML).toEqual(expect.stringContaining('Add to Outfit'));
+    expect(add[0].innerHTML).toEqual(expect.stringContaining('Add the Current Item to Your Outfit'));
   });
 
   test('Items will be added to the list only when a user explicitly selects them to be added.', () => {
 
     render(<OutfitList item={'22132'} handleCardClick={null}/>);
-    const add = screen.getByText('Add to Outfit');
+    const add = screen.getByText('Add the Current Item to Your Outfit');
     fireEvent.click(add);
     setTimeout(expect(document.cookie).not.toEqual('undefined'), 5000);
 
