@@ -1,6 +1,8 @@
 import React from 'react';
 import RelatedList from './relatedList.jsx';
 import OutfitList from './outfitList.jsx';
+import trackClicks from '../tracking/trackClicks.jsx';
+
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class RelatedProducts extends React.Component {
 
   render() {
     return (
-      <div id="related_relatedDiv">
+      <div id="related_relatedDiv" onClick={(e) => this.props.logged(e)}>
         <RelatedList item={this.props.item} handleCardClick={this.getNewProduct} />
         <OutfitList item={this.props.item} handleCardClick={this.getNewProduct}/>
       </div>
@@ -23,4 +25,4 @@ class RelatedProducts extends React.Component {
   }
 }
 
-export default RelatedProducts;
+export default trackClicks(RelatedProducts);
