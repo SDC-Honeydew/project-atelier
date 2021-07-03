@@ -42,7 +42,7 @@ class Home extends React.Component {
       <div>
         <div className='timpani-header'>
           <div className='timpani-logo'>
-            <img className='timpani-logo-img' src="https://img.icons8.com/ios/50/000000/timpani.png"/>
+            <img className='timpani-logo-img' src="https://img.icons8.com/ios/50/000000/timpani.png" alt='timpani-logo'/>
             <h1 className='timpano-trading-co'>Timpano Trading Co.</h1>
           </div>
           <div className="form-check form-switch">
