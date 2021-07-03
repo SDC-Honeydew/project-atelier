@@ -678,6 +678,8 @@ Review CSS
   border-color: var(--border-color);
   border-style: solid;
   border-radius: 5px;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .review-header-area { grid-area: header; }
