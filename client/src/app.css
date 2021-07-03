@@ -176,10 +176,6 @@ Overview
   width: 100%;
 }
 
-.overview-addToCart-button {
-  width: 80%;
-}
-
 .overview-size-dropdown, .overview-quantity-dropdown {
   position: absolute;
   top: 100%;
