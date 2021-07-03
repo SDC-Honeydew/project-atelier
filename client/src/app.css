@@ -7,6 +7,10 @@
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
   --header-color: forestgreen;
+  --image-container: #CDCDCD;
+  --image-container-buttons: grey;
+  --style-title: grey;
+  --feature-check: forestgreen;
 }
 
 body {
@@ -164,7 +168,8 @@ Overview
 .overview-size-button, .overview-quantity-button, .overview-addToCart-button {
   padding: 10px;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: var(--font-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -184,7 +189,7 @@ Overview
 
 .overview-size-ul, .overview-quantity-ul {
   list-style: none;
-  background-color: white;
+  background-color: var(--background-color);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   justify-content: center;
   width: 100%;
@@ -194,6 +199,7 @@ Overview
 .overview-addToCart-dropdown-li {
   border-bottom: 1px solid lightgrey;
   text-align: center;
+
 }
 
 .overview-addToCart-dropdown-li:hover {
@@ -211,18 +217,22 @@ Overview
 }
 
 .overview-style-title {
-  color: grey;
+  color: var(--style-title);
 }
 .overview-styles-img {
   border-radius: 50px;
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: var(--font-color);
 }
 
 .overview-styles-checkbox {
   position: absolute;
   left: 40px;
   z-index: 1;
-  top: 0px;
+  top: -10px;
+  color: var(--feature-check);
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .overview-styles-checkbox-hidden {
@@ -277,10 +287,11 @@ Overview Image Gallery
 .overview-image-gallery {
   position: relative;
   margin: 0px 50px;
+  margin-left: 20px;
   background-repeat: no-repeat;
   width: 800px;
   height: 500px;
-  background-color: lightgrey;
+  background-color: var(--image-container);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,7 +300,7 @@ Overview Image Gallery
   width: 100%;
     height: 100%;
     top: 0;
-    background-color: lightgrey;
+    background-color: var(--image-container);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -324,16 +335,14 @@ Overview Image Gallery
 }
 
 .overview-image-gallery-left-arrow-expand {
-  align-self: center;
   transform: rotate(180deg);
-  border: none;
-  background-color: transparent;
 }
 
-.overview-image-gallery-right-arrow-expand {
+.overview-image-gallery-right-arrow-expand, .overview-image-gallery-left-arrow-expand {
   align-self: center;
   border: none;
   background-color: transparent;
+  color: var(--image-container-buttons)
 }
 
 .overview-image-gallery-popup-container {
@@ -388,20 +397,30 @@ Overview Image Gallery
   cursor: default;
 }
 .overview-thumbnails-img {
-  padding: 10px;
-  width: 60px;
-  height: 60px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
 
 .overview-thumbnails-small-img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 20px;
+  width: 15px;
+  height: 15px;
+  filter: var(--filter-img)
+}
+.highlight, .highlight-small {
+  border-bottom: 3px solid;
+  border-color: var(--font-color);
 }
 
 .highlight {
-  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+  margin-bottom: -5px;
+  width: 35px;
+  height: 40px;
 }
+
+
 
 .overview-image-gallery-left-arrow {
   transform: rotate(180deg);
@@ -413,7 +432,7 @@ Overview Image Gallery
   top: 50%;
   border: none;
   background-color: transparent;
-  color: grey;
+  color: var(--image-container-buttons);
 }
 .overview-image-gallery-expand-button {
   border: none;
@@ -423,6 +442,7 @@ Overview Image Gallery
   top: 0;
   background-color: transparent;
   font-size: 20px;
+  color: var(--image-container-buttons)
 }
 .overview-enlarge-img {
   color: grey;
@@ -434,6 +454,7 @@ Overview Image Gallery
 .overview-product-description-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .overview-features {
@@ -441,13 +462,19 @@ Overview Image Gallery
   flex-direction: column;
   justify-content: space-evenly;
   padding-left: 10px;
-  border-left: 2px solid black;
+  border-left: 2px solid;
+  border-color: var(--font-color);
 }
 .overview-descriptions {
   max-width: 75%;
   margin-right: 20px;
 }
 
+.overview-feature-check {
+  color: var(--feature-check);
+  font-weight: bold;
+  font-size: 20px;
+}
 
 
 

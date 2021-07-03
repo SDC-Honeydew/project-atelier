@@ -11,7 +11,7 @@ const ProductStyle = (props) => {
         width='50'
         alt={props.style.name}>
       </img>
-      {props.showCheck && <p className='overview-styles-checkbox'>&#9989;</p>}
+      {props.showCheck && <p className='overview-styles-checkbox'>&#10003;</p>}
     </li>
   );
 };
