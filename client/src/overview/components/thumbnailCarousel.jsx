@@ -29,7 +29,7 @@ class ThumbnailCarousel extends React.Component {
       imgs = this.props.imgs.slice(this.state.start, this.state.start + 7).map((img, key) => (
         <img
           onClick={(e) => this.props.setMainImg(e, key, img.url)}
-          className={`overview-thumbnails-small-img${this.props.mainImg === img.url ? ' highlight' : ''}`}
+          className={`overview-thumbnails-small-img${this.props.mainImg === img.url ? ' highlight-small' : ''}`}
           src={'https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-12.jpg'}
           alt='style image'>
         </img>

@@ -5,7 +5,7 @@ const ProductDescription = (props) => {
 
   if (props.features) {
     features = props.features.map(feature => {
-      return <span>{`${feature.feature}: ${feature.value}`}</span>;
+      return <div><span className='overview-feature-check'>&#10003;</span>&nbsp;&nbsp;{`${feature.feature}: ${feature.value}`}</div>;
     });
   }
 

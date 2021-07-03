@@ -10,7 +10,7 @@ const ProductStyle = (props) => {
         height='50'
         width='50'>
       </img>
-      {props.showCheck && <p className='overview-styles-checkbox'>&#9989;</p>}
+      {props.showCheck && <p className='overview-styles-checkbox'>&#10003;</p>}
     </li>
   );
 };
