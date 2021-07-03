@@ -858,33 +858,35 @@ Review CSS
   font-size: medium;
   max-width: 800px;
   height: 30px;
-  margin: auto;
+  /* margin: auto; */
 }
 .qa-navbar {
-  max-width: 800px;
+  /* max-width: 800px; */
   width: 100%;
-  margin: auto;
+  /* margin: auto; */
 }
 .qa-search {
+  background: var(--background-color);
+  color: var(--font-color);
   display: flex;
 
 
 }
 .qa-search-input {
-  width: 90%;
+  width: 100%;
 }
 
 .qa-question {
-  max-width: 800px;
+
   height: 150px;
-  margin: auto;
+  /* margin: auto; */
 
 
 }
 .question-list {
-  max-width: 800px;
+
   height: 300px;
-  margin: auto;
+  /* margin: auto; */
   overflow-y: auto;
 }
 .qa-question-body {
@@ -892,17 +894,21 @@ Review CSS
 
 }
 .qa-question-buttons {
+  background: var(--background-color);
+  color: var(--font-color);
   float: right;
 }
 .qa-addAnswer {
-  background: none;
+  background: var(--background-color);
+  color: var(--font-color);
   border: none;
   font-size: small;
 
 }
 .qa-helpful-button {
-
-  background: none;
+  background: var(--background-color);
+  color: var(--font-color);
+  /* background: none; */
   border: none;
   font-size: small;
 }
@@ -918,27 +924,32 @@ Review CSS
 }
 .qa-answer-body {
   max-width: 400;
-  margin: auto;
+  /* margin: auto; */
 }
 .qa-answer-user {
   font-size: small;
 }
 .qa-answer-button {
-  background: none;
+  background: var(--background-color);
+  color: var(--font-color);
   border: none;
 }
 .qa-footer {
   max-width: 800px;
-  margin: auto;
+  /* margin: auto; */
 }
-.qa-ma-button {
-  background: none;
+
+/* .qa-ma-button {
+  background: var(--background-color);
+  color: var(--font-color);
   width: auto;
   height: 60px;
   font-weight: bold;
-}
+} */
 .qa-report-btn {
-  background: none;
+  /* background: none; */
+  background: var(--background-color);
+  color: var(--font-color);
   border: none;
 }
 
@@ -959,7 +970,8 @@ Review CSS
   max-width: 800px;
   max-height: 80vh;
   border-radius: 5px;
-  background: #fff;
+  background: var(--background-color);
+  color: var(--font-color);
   overflow: auto;
   cursor: default;
 }

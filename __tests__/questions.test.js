@@ -173,7 +173,7 @@ describe('Search Component', () => {
 describe('More Questions', () => {
   test('it renders', () => {
     render(<MoreQuestions />);
-    expect(screen.getByText('More Answered Questions')).toBeInTheDocument();
+    expect(screen.getByText('MORE ANSWERED QUESTIONS')).toBeInTheDocument();
   });
 
 
@@ -188,7 +188,7 @@ describe('Add Answer', () => {
 describe('Add Question', () => {
   test('it renders', () => {
     render(<AddQuestion />);
-    var questClass = document.getElementsByClassName('qa-ma-button')
+    var questClass = document.getElementsByClassName('btn btn-primary')
     expect(questClass.length).toEqual(1);
   });
 

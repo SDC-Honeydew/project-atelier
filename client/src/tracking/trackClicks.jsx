@@ -16,7 +16,7 @@ function trackClicks(WrappedComponent, props) {
   logged(e) {
     const currentDateTime = Date().toLocaleString()
     const data = {element: e.target.innerHTML, widget: WrappedComponent.name, time: currentDateTime}
-
+    console.log('data posted to api clicks', data)
     $.post('/interactions', data, ()=> {
       console.log('success in post to interactions')
     })
