@@ -7,6 +7,10 @@
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
   --header-color: forestgreen;
+  --image-container: #cfe3cf;
+  --image-container-buttons: grey;
+  --style-title: grey;
+  --feature-check: forestgreen;
 }
 
 body {
@@ -164,15 +168,12 @@ Overview
 .overview-size-button, .overview-quantity-button, .overview-addToCart-button {
   padding: 10px;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: var(--font-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-}
-
-.overview-addToCart-button {
-  width: 80%;
 }
 
 .overview-size-dropdown, .overview-quantity-dropdown {
@@ -184,7 +185,7 @@ Overview
 
 .overview-size-ul, .overview-quantity-ul {
   list-style: none;
-  background-color: white;
+  background-color: var(--background-color);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   justify-content: center;
   width: 100%;
@@ -194,6 +195,7 @@ Overview
 .overview-addToCart-dropdown-li {
   border-bottom: 1px solid lightgrey;
   text-align: center;
+
 }
 
 .overview-addToCart-dropdown-li:hover {
@@ -211,18 +213,22 @@ Overview
 }
 
 .overview-style-title {
-  color: grey;
+  color: var(--style-title);
 }
 .overview-styles-img {
   border-radius: 50px;
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: var(--font-color);
 }
 
 .overview-styles-checkbox {
   position: absolute;
   left: 40px;
   z-index: 1;
-  top: 0px;
+  top: -10px;
+  color: var(--feature-check);
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .overview-styles-checkbox-hidden {
@@ -277,19 +283,21 @@ Overview Image Gallery
 .overview-image-gallery {
   position: relative;
   margin: 0px 50px;
+  margin-left: 20px;
   background-repeat: no-repeat;
   width: 800px;
   height: 500px;
-  background-color: lightgrey;
+  background-color: var(--image-container);
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 .overview-image-gallery-expand {
   width: 100%;
     height: 100%;
     top: 0;
-    background-color: lightgrey;
+    background-color: var(--image-container);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -324,16 +332,14 @@ Overview Image Gallery
 }
 
 .overview-image-gallery-left-arrow-expand {
-  align-self: center;
   transform: rotate(180deg);
-  border: none;
-  background-color: transparent;
 }
 
-.overview-image-gallery-right-arrow-expand {
+.overview-image-gallery-right-arrow-expand, .overview-image-gallery-left-arrow-expand {
   align-self: center;
   border: none;
   background-color: transparent;
+  color: var(--image-container-buttons)
 }
 
 .overview-image-gallery-popup-container {
@@ -388,20 +394,30 @@ Overview Image Gallery
   cursor: default;
 }
 .overview-thumbnails-img {
-  padding: 10px;
-  width: 60px;
-  height: 60px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
 
 .overview-thumbnails-small-img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 20px;
+  width: 15px;
+  height: 15px;
+  filter: var(--filter-img)
+}
+.highlight, .highlight-small {
+  border-bottom: 3px solid;
+  border-color: var(--font-color);
 }
 
 .highlight {
-  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+  margin-bottom: -5px;
+  width: 35px;
+  height: 40px;
 }
+
+
 
 .overview-image-gallery-left-arrow {
   transform: rotate(180deg);
@@ -413,7 +429,7 @@ Overview Image Gallery
   top: 50%;
   border: none;
   background-color: transparent;
-  color: grey;
+  color: var(--image-container-buttons);
 }
 .overview-image-gallery-expand-button {
   border: none;
@@ -423,6 +439,7 @@ Overview Image Gallery
   top: 0;
   background-color: transparent;
   font-size: 20px;
+  color: var(--image-container-buttons)
 }
 .overview-enlarge-img {
   color: grey;
@@ -434,6 +451,12 @@ Overview Image Gallery
 .overview-product-description-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.overview-star-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .overview-features {
@@ -441,13 +464,19 @@ Overview Image Gallery
   flex-direction: column;
   justify-content: space-evenly;
   padding-left: 10px;
-  border-left: 2px solid black;
+  border-left: 2px solid;
+  border-color: var(--font-color);
 }
 .overview-descriptions {
   max-width: 75%;
   margin-right: 20px;
 }
 
+.overview-feature-check {
+  color: var(--feature-check);
+  font-weight: bold;
+  font-size: 20px;
+}
 
 
 
@@ -455,16 +484,17 @@ Overview Image Gallery
 /**************** RELATED PRODUCTS WIDGET*****************/
 
 #related_relatedProducts{
-  height: 300px;
+  height: 330px;
 }
 
 .related_productList {
   display: grid;
   grid-template-areas:
   'product product product product product product product';
-  grid-gap: 10px;
+  grid-gap: 15px;
   grid-template-rows: 300px;
-  padding: 10px;
+  padding-right: 15px;
+  padding-bottom: 60px;
 }
 
 .related_details{
@@ -474,9 +504,10 @@ Overview Image Gallery
 .related_productCard {
   position: relative;
   top: 0;
-  width: 175px;
-  height: 250px;
-  border: solid black 1px;
+  width: 200px;
+  height: 275px;
+  border-color: var(--border-color);
+  border: solid 1px;
   float: left;
   z-index: 0;
 }
@@ -484,7 +515,7 @@ Overview Image Gallery
 .related_productCardImage{
   position: relative;
   top: 0;
-  max-height: 120px;
+  max-height: 135px;
   max-width: 100%;
   display: block;
   margin-left: auto;
@@ -494,15 +525,17 @@ Overview Image Gallery
 
 .related_addToOutfit {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
+  padding: 2px;
 }
 
 .related_icon{
   position: absolute;
   top: 2px;
-  left: 135px;
-  width: 30px;
+  left: 170px;
   z-index: 10;
+  font: var(--font-color);
+  font-size: 20px;
 }
 
 .related_sale{
@@ -510,18 +543,32 @@ Overview Image Gallery
   text-decoration: line-through;
 }
 
-.related_modal{
-  width: 450px;
-  background: white;
+.related_modal_content{
+  width: 700px;
   visibility: visible;
-  position: absolute;
-  top: 1000px;
-  margin-left: 30%;
-  margin-right: 30%;
-  z-index: 15;
+  position: relative;
+  margin-left: 10%;
+  margin-right: 10%;
+  z-index: 51;
   padding: 10px;
-  border: black solid 1px;
-  font-size: 12px;
+  font-size: 20px;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  border-color: var(--border-color);
+  cursor: default;
+}
+
+.related_modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 
 .related_closeModal{
@@ -530,6 +577,17 @@ Overview Image Gallery
 
 .related_comparisonTable{
   width: 100%;
+}
+
+.related_comparisonRows{
+  display: block;
+  max-height: 180px;
+  overflow: auto;
+  cursor: default;
+}
+
+.related_comparisonHeaders{
+  display: block;
 }
 
 .related_comparisonCurrent{
@@ -545,6 +603,12 @@ Overview Image Gallery
 .related_comparisonCompare{
   text-align: right;
   width: 40%;
+}
+
+.related_scrollButton{
+  justify-content: center;
+  font-size: 50px;
+  width: 50px;
 }
 
 /**************** END RELATED PRODUCTS********************/

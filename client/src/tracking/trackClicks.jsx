@@ -4,7 +4,7 @@ import $ from 'jquery';
 // import React, { useState } from 'react';
 
 function trackClicks(WrappedComponent, props) {
-// var TrackClicks = widget => {
+  // var TrackClicks = widget => {
   return class extends React.Component {
     constructor(props) {
       super(props);

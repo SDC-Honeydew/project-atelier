@@ -1,6 +1,6 @@
 module.exports = {
   entry: "./client/src/index.jsx",
-  mode: "development",
+  mode: "production",
   output: {
     path: __dirname + "/client/dist",
     filename: "bundle.js"

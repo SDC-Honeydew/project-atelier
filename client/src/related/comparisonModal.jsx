@@ -59,27 +59,28 @@ class ComparisonModal extends React.Component {
         );
       }
 
-      return (<div className='related_modal'>
-        <div className='related_closeModal' onClick={(event) => {
-          event.preventDefault();
-          this.props.closeModal();
-        }}>X</div>
-        <p>COMPARING</p>
-        <table className='related_comparisonTable'>
-          <thead>
-            <tr>
-              <th>{current.name}</th>
-              <th></th>
-              <th className='related_comparisonCompare'>{comparison.name}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {featureRows}
-          </tbody>
-        </table>
-
-      </div>);
-
+      return (
+        <div className='related_modal'>
+          <div className='related_modal_content'>
+            <div className='related_closeModal' onClick={(event) => {
+              event.preventDefault();
+              this.props.closeModal();
+            }}>X</div>
+            <p>COMPARING</p>
+            <table className='related_comparisonTable'>
+              <thead className='related_comparisonHeaders'>
+                <tr>
+                  <th>{current.name}</th>
+                  <th></th>
+                  <th className='related_comparisonCompare'>{comparison.name}</th>
+                </tr>
+              </thead>
+              <tbody className='related_comparisonRows'>
+                {featureRows}
+              </tbody>
+            </table>
+          </div>
+        </div>);
     }
 
 

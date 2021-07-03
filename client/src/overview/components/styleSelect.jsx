@@ -5,7 +5,7 @@ const StyleSelector = (props) => {
   return (
     <div>
       <div className='overview-styleSelector-style'>
-        <p className='overview-style'>Style &#62;</p><p className='overview-style-title'> {props.styles[props.currentStyleIndex].name}</p>
+        <p className='overview-style'>Style &#62;</p>&nbsp;<p className='overview-style-title'> {props.styles[props.currentStyleIndex].name}</p>
       </div>
       <ul className='overview-styles-thumbnails-container' data-testid='style-select'>
         {props.styles.map((style, i) => {
