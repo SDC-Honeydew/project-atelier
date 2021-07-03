@@ -7,7 +7,10 @@
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
   --header-color: forestgreen;
-  --image-container: lightgrey;
+  --image-container: #CDCDCD;
+  --image-container-buttons: grey;
+  --style-title: grey;
+  --filter-img: ;
 }
 
 body {
@@ -212,7 +215,7 @@ Overview
 }
 
 .overview-style-title {
-  color: grey;
+  color: var(--style-title);
 }
 .overview-styles-img {
   border-radius: 50px;
@@ -279,6 +282,7 @@ Overview Image Gallery
 .overview-image-gallery {
   position: relative;
   margin: 0px 50px;
+  margin-left: 20px;
   background-repeat: no-repeat;
   width: 800px;
   height: 500px;
@@ -326,16 +330,14 @@ Overview Image Gallery
 }
 
 .overview-image-gallery-left-arrow-expand {
-  align-self: center;
   transform: rotate(180deg);
-  border: none;
-  background-color: transparent;
 }
 
-.overview-image-gallery-right-arrow-expand {
+.overview-image-gallery-right-arrow-expand, .overview-image-gallery-left-arrow-expand {
   align-self: center;
   border: none;
   background-color: transparent;
+  color: var(--image-container-buttons)
 }
 
 .overview-image-gallery-popup-container {
@@ -390,20 +392,30 @@ Overview Image Gallery
   cursor: default;
 }
 .overview-thumbnails-img {
-  padding: 10px;
-  width: 60px;
-  height: 60px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
 
 .overview-thumbnails-small-img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 20px;
+  width: 15px;
+  height: 15px;
+  filter: var(--filter-img)
+}
+.highlight, .highlight-small {
+  border-bottom: 3px solid;
+  border-color: var(--font-color);
 }
 
 .highlight {
-  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+  margin-bottom: -5px;
+  width: 35px;
+  height: 40px;
 }
+
+
 
 .overview-image-gallery-left-arrow {
   transform: rotate(180deg);
@@ -415,7 +427,7 @@ Overview Image Gallery
   top: 50%;
   border: none;
   background-color: transparent;
-  color: grey;
+  color: var(--image-container-buttons);
 }
 .overview-image-gallery-expand-button {
   border: none;
@@ -425,6 +437,7 @@ Overview Image Gallery
   top: 0;
   background-color: transparent;
   font-size: 20px;
+  color: var(--image-container-buttons)
 }
 .overview-enlarge-img {
   color: grey;

@@ -26,7 +26,10 @@ class Home extends React.Component {
       document.documentElement.style.setProperty('--primary-color', '#5E81AC');
       document.documentElement.style.setProperty('--primary-color-hover', '#81A1C1');
       document.documentElement.style.setProperty('--header-color', 'forestgreen');
-      document.documentElement.style.setProperty('--image-container', 'lightgrey');
+      document.documentElement.style.setProperty('--image-container', '#CDCDCD');
+      document.documentElement.style.setProperty('--image-container-buttons', 'grey');
+      document.documentElement.style.setProperty('--style-title', 'grey');
+      document.documentElement.style.setProperty('--filter-img', 'invert(0');
       return;
     }
     // dark mode
@@ -37,6 +40,9 @@ class Home extends React.Component {
     document.documentElement.style.setProperty('--primary-color-hover', '#D08770');
     document.documentElement.style.setProperty('--header-color', '#405c7d');
     document.documentElement.style.setProperty('--image-container', '#405c7d');
+    document.documentElement.style.setProperty('--image-container-buttons', '#CDCDCD');
+    document.documentElement.style.setProperty('--style-title', 'lightgrey');
+    document.documentElement.style.setProperty('--filter-img', 'filter(1)');
 
   }
 
