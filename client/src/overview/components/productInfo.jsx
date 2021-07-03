@@ -8,7 +8,7 @@ class ProductInformation extends React.Component {
   }
 
   render() {
-    var price;
+    var price, starRating;
 
     if (this.props.price.sale_price) {
       price =
@@ -20,9 +20,17 @@ class ProductInformation extends React.Component {
       price =
         <p className='overview-productInfo-ogPrice'>{`$${this.props.price.original_price}`}</p>;
     }
+
+    if (this.props.numberOfReviews > 0) {
+      starRating = <div className='overview-star-container'>
+        <StarRating rating={this.props.avgRating} />
+        &nbsp;&nbsp;
+        <a href='#review' style={{fontSize: '15px'}}>{`Read all ${this.props.numberOfReviews} reviews!`}</a>
+      </div>;
+    }
     return (
       <div data-testid='product-info'>
-        <StarRating rating={this.props.avgRating} />
+        {starRating}
         <span className='overview-productInfo-category'>{this.props.category}</span>
         <h2 className='overview-productInfo-name'>{this.props.name}</h2>
         {price}

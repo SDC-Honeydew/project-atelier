@@ -20,6 +20,7 @@ class ProductOverview extends React.Component {
     this.state = {
       product: {},
       avgRating: null,
+      numberOfReviews: null,
       currentStyleIndex: 0
     };
     //this.getOneProduct(this.props.id)
@@ -50,7 +51,7 @@ class ProductOverview extends React.Component {
             avgRating = numberOfReviews > 0 ? Math.round(res.data.reviews.results.reduce((acc, curr) => acc + curr.rating , 0) / numberOfReviews * 10) / 10 : 0;
 
             this.setState({
-              product, avgRating
+              product, avgRating, numberOfReviews
             })
               .catch(err => console.log('err ', err));
           })
@@ -87,6 +88,7 @@ class ProductOverview extends React.Component {
                 name={this.state.product.name}
                 price={this.state.product.styles[this.state.currentStyleIndex]}
                 avgRating={this.state.avgRating}
+                numberOfReviews={this.state.numberOfReviews}
               />
               <StyleSelector
                 styles={this.state.product.styles}

@@ -457,6 +457,11 @@ Overview Image Gallery
   justify-content: space-evenly;
 }
 
+.overview-star-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .overview-features {
   display: flex;
   flex-direction: column;
