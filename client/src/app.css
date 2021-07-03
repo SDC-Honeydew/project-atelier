@@ -10,6 +10,7 @@
   --image-container: #CDCDCD;
   --image-container-buttons: grey;
   --style-title: grey;
+  --feature-check: forestgreen;
 }
 
 body {
@@ -228,7 +229,10 @@ Overview
   position: absolute;
   left: 40px;
   z-index: 1;
-  top: 0px;
+  top: -10px;
+  color: var(--feature-check);
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .overview-styles-checkbox-hidden {
@@ -450,6 +454,7 @@ Overview Image Gallery
 .overview-product-description-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .overview-features {
@@ -465,6 +470,11 @@ Overview Image Gallery
   margin-right: 20px;
 }
 
+.overview-feature-check {
+  color: var(--feature-check);
+  font-weight: bold;
+  font-size: 20px;
+}
 
 
 
