@@ -7,6 +7,7 @@
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
   --header-color: forestgreen;
+  --image-container: lightgrey;
 }
 
 body {
@@ -215,7 +216,8 @@ Overview
 }
 .overview-styles-img {
   border-radius: 50px;
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: var(--font-color);
 }
 
 .overview-styles-checkbox {
@@ -280,7 +282,7 @@ Overview Image Gallery
   background-repeat: no-repeat;
   width: 800px;
   height: 500px;
-  background-color: lightgrey;
+  background-color: var(--image-container);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,7 +291,7 @@ Overview Image Gallery
   width: 100%;
     height: 100%;
     top: 0;
-    background-color: lightgrey;
+    background-color: var(--image-container);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -441,7 +443,8 @@ Overview Image Gallery
   flex-direction: column;
   justify-content: space-evenly;
   padding-left: 10px;
-  border-left: 2px solid black;
+  border-left: 2px solid;
+  border-color: var(--font-color);
 }
 .overview-descriptions {
   max-width: 75%;
