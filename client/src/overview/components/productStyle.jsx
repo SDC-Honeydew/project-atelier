@@ -8,7 +8,8 @@ const ProductStyle = (props) => {
         onClick={() => props.toggle(props.i)}
         className='overview-styles-img'
         height='50'
-        width='50'>
+        width='50'
+        alt={props.style.name}>
       </img>
       {props.showCheck && <p className='overview-styles-checkbox'>&#10003;</p>}
     </li>

@@ -26,7 +26,7 @@ class Home extends React.Component {
       document.documentElement.style.setProperty('--primary-color', '#5E81AC');
       document.documentElement.style.setProperty('--primary-color-hover', '#81A1C1');
       document.documentElement.style.setProperty('--header-color', 'forestgreen');
-      document.documentElement.style.setProperty('--image-container', '#CDCDCD');
+      document.documentElement.style.setProperty('--image-container', '#cfe3cf');
       document.documentElement.style.setProperty('--image-container-buttons', 'grey');
       document.documentElement.style.setProperty('--style-title', 'grey');
       document.documentElement.style.setProperty('--feature-check', 'forestgreen');
@@ -50,7 +50,7 @@ class Home extends React.Component {
       <div>
         <div className='timpani-header'>
           <div className='timpani-logo'>
-            <img className='timpani-logo-img' src="https://img.icons8.com/ios/50/000000/timpani.png"/>
+            <img className='timpani-logo-img' src="https://img.icons8.com/ios/50/000000/timpani.png" alt='timpani-logo'/>
             <h1 className='timpano-trading-co'>Timpano Trading Co.</h1>
           </div>
           <div className="form-check form-switch">

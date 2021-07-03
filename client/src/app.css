@@ -7,7 +7,7 @@
   --primary-color: #5E81AC;
   --primary-color-hover: #81A1C1;
   --header-color: forestgreen;
-  --image-container: #CDCDCD;
+  --image-container: #cfe3cf;
   --image-container-buttons: grey;
   --style-title: grey;
   --feature-check: forestgreen;
@@ -176,10 +176,6 @@ Overview
   width: 100%;
 }
 
-.overview-addToCart-button {
-  width: 80%;
-}
-
 .overview-size-dropdown, .overview-quantity-dropdown {
   position: absolute;
   top: 100%;
@@ -295,6 +291,7 @@ Overview Image Gallery
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 .overview-image-gallery-expand {
   width: 100%;
@@ -455,6 +452,11 @@ Overview Image Gallery
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.overview-star-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .overview-features {
