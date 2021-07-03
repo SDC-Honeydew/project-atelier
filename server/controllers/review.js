@@ -58,8 +58,7 @@ module.exports = {
       data: data
     }).
       then(response => {
-        console.log(response);
-        res.send(response);
+        res.send(response.data);
       });
   },
   markReviewHelpful: (req, res) => {
@@ -91,7 +90,7 @@ module.exports = {
       }
     }).
       then(response => {
-        console.log(response);
+        res.send('reported');
       })
       .catch(err => { console.log('err'); });
   }

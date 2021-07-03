@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 const RecommendInput = (props) => (
   <div className='form-check review-recommend-input'>
-    <input className="form-check-input" id='review-recommend-checkbox' type="checkbox" name='recommend' onChange={props.onChange} defaultChecked={false} required />
+    <input className="form-check-input" id='review-recommend-checkbox' type="checkbox" name='recommend' onChange={props.onChange} defaultChecked={false} />
     <label className="form-check-label" >I recommend this product</label>
   </div>
 );
@@ -124,12 +124,10 @@ const AddReviewPopup = (props) => {
       url: '/reviews',
       type: 'POST',
       data: data.serialize(),
-      dataType: 'json',
       success: (res) => {
         if (props.submitCallback !== undefined) {
           props.submitCallback(res);
         }
-        setSubmit(true);
       },
       error: (err) => {
         if (props.errorCallback !== undefined) {
@@ -137,6 +135,7 @@ const AddReviewPopup = (props) => {
         }
       }
     });
+    setSubmit(true);
     return false;
   };
 
