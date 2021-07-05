@@ -1,11 +1,10 @@
 # Timpani Trading Co.
 A modular, client-facing retail portal comprised of Product Overview, Related Products, Question & Answer, and Review widgets.
 
-# Table of Contents
-// Link to the different sections below
-
 # Description
-// A more detailed outline of the project. What does it do? Is there a high level list of features? If describing a project that has visual features, consider adding pictures or animations of the features and functionality in this section. See Adding Screen Captures in Learn.
+This is a application that demonstrates an E-commerce website using REACT state and Express server which makes API calls to the Heroku FEC API. The application loads products and displays them, allowing the user to see a product, related products, questions & answers about the product, and reviews on the product. Users can navigate to related product pages by clicking on any product to get more information including pricing, q&a, and reviews and rating. Users can select items and add them to their shopping cart. The API stores user activity including the element clicked and items added to the shopping cart.
+
+
 
 # Installation
   * Clone project & npm install
